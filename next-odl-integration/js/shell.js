@@ -9,7 +9,7 @@
 				//assign the app to a <div>
 				app.container(document.getElementById('next-app'));
 				$.ajax({
-								//url: "http://172.16.39.133:8181/restcon,xf/operational/network-topology:network-topology/topology/flow:1",
+								//url: "http://172.16.39.132:8181/restcon,xf/operational/network-topology:network-topology/topology/flow:1",
 								url: './data/flow-1.json',
 								type: 'GET',
 								contentType: 'application/json',
@@ -22,5 +22,4 @@
 												topology.attach(app);
 								}
 				});
-				console.log(nx);
 })(nx);
