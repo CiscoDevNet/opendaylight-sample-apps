@@ -1,5 +1,5 @@
 (function (nx) {
-				nx.define('tooltipNode', nx.ui.Component, {
+				nx.define('TooltipNode', nx.ui.Component, {
 								properties: {
 												node: {},
 												topology: {}
@@ -12,6 +12,11 @@
 																tag: 'h2',
 																content: '{#topology.width}'
 												}]
+								},
+								events: {
+												'ready': function(sender,event){
+																console.log('123');
+												}
 								}
 				});
 })(nx);
