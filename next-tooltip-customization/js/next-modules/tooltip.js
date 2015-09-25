@@ -5,7 +5,12 @@
 		properties: {
 			'node': {}, // NeXt automatically provides you the access to a selected nx.graphic.Topology.Node instance
 			'topology': {}, // NeXt also provides you the access to a topology object
-			'newNodeName': '' // we're gonna store a new node's name over here
+			'newNodeName': '', // we're gonna store a new node's name over hereб
+			'test': {
+				get: function(){
+					console.log(this.node,this.nodes,'123',this._node,this._nodes);
+				}
+			}
 		},
 		// 'view' defines the appearance of the tooltip
 		view: {
@@ -43,7 +48,7 @@
 							content: 'Remove'
 						},
 						events: {
-							'click': '{#onRemoveNode}'
+							'click': '{#test}'
 						},
 						props: {
 							'class': 'btn btn-danger'
@@ -58,6 +63,7 @@
 			'onRemoveNode': function (sender, event) {
 				// todo: program node removal
 				// how do i get links/nodes/topology object?
+				console.log(this);
 			}
 			,
 			'onSaveName': function () {
