@@ -1,4 +1,4 @@
-(function (nx) {
+(function (nx, global) {
 				nx.define('TopologyContainer', nx.ui.Component, {
 								properties: {
 												topology: {
@@ -31,20 +31,21 @@
 																																// a gap
 																												}
 																								},
-																								tooltipManageConfig: {
-																												nodeTooltipContentClass: 'TooltipNode'
+																								tooltipManagerConfig: {
+																												nodeTooltipContentClass: 'TooltipNode',
+																												linkTooltipContentClass: 'TooltipLink'
 																								},
 																								'data': topologyData,
 																								'identityKey': 'id', // helps to link source and target
 																								'width': 800,
 																								'height': 400,
 																								'dataProcessor': 'force', // arrange nodes positions if not set
-																								//'enableSmartLabel': true, // moves the labels in order to avoid overlay of them
-																								//'enableGradualScaling': true, // may slow down, if true
-																								//'supportMultipleLink': true // if true, two nodes can have more than one link
+																								'enableSmartLabel': true, // moves the labels in order to avoid overlay of them
+																								'enableGradualScaling': true, // may slow down, if true
+																								'supportMultipleLink': true // if true, two nodes can have more than one link
 																				}
 																}
 												]
 								}
 				});
-})(nx);
+})(nx, nx.global);
