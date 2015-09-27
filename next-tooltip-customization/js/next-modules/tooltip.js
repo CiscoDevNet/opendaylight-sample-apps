@@ -5,12 +5,7 @@
 		properties: {
 			'node': {}, // NeXt automatically provides you the access to a selected nx.graphic.Topology.Node instance
 			'topology': {}, // NeXt also provides you the access to a topology object
-			'newNodeName': '', // we're gonna store a new node's name over hereб
-			'test': {
-				get: function(){
-					console.log(this.node,this.nodes,'123',this._node,this._nodes);
-				}
-			}
+			'newNodeName': ''
 		},
 		// 'view' defines the appearance of the tooltip
 		view: {
@@ -26,10 +21,9 @@
 					},
 					{
 						tag: 'input',
-						content: '{#newNodeName}',
 						props: {
 							'placeholder': 'Input a new name...',
-							'class': 'input form-control'
+							'value': '{#newNodeName}'
 						}
 					},
 					{
@@ -48,7 +42,7 @@
 							content: 'Remove'
 						},
 						events: {
-							'click': '{#test}'
+							'click': '{#onRemoveNode}'
 						},
 						props: {
 							'class': 'btn btn-danger'
@@ -60,15 +54,13 @@
 			}
 		},
 		methods: {
-			'onRemoveNode': function (sender, event) {
-				// todo: program node removal
-				// how do i get links/nodes/topology object?
-				console.log(this);
+			'onRemoveNode': function () {
+				// get a selected node id and pass it to removeNode() of topology instance
+				this.topology().removeNode(this.node().id());
 			}
 			,
 			'onSaveName': function () {
-				// todo: program saving the name
-				alert(1);
+				this.node().label(this.newNodeName());
 			}
 		}
 	})
@@ -77,7 +69,6 @@
 	// see nx.graphic.Topology.Link reference to learn what link's properties you're able to use
 	nx.define('TooltipLink', nx.ui.Component, {
 		properties: {
-			node: {},
 			link: {},
 			topology: {}
 		},
