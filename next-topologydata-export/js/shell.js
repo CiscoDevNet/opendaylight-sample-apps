@@ -6,10 +6,15 @@
 	 */
 	var topologyContainer = new TopologyContainer();
 	var topology = topologyContainer.topology();
+	// create instance of action bar
+	var actionBar = new ActionBar();
+	actionBar.assignTopology(topology);
 	//assign the app to a <div>
 	app.container(document.getElementById('next-app'));
 	// feed topology object with nodes and links...
 	topology.data();
 	// ... then attach the topology to the app instance
 	topology.attach(app);
+	// attach an action bar
+	actionBar.attach(app);
 })(nx);
