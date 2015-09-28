@@ -1,7 +1,8 @@
-(function(nx){
-	nx.define('ActionBar',nx.ui.Component,{
+// This class realizes two buttons and their behavior
+(function (nx) {
+	nx.define('ActionBar', nx.ui.Component, {
 		properties: {
-			'topology': null,
+			'topology': null, // this prop will be actually initialized by this.assignTopology()
 			'exportedData': ''
 		},
 		view: {
@@ -10,6 +11,7 @@
 					tag: 'div',
 					content: [
 						{
+							// create the button and bind it to the event onAdd
 							tag: 'button',
 							content: 'Add Random Node & Link',
 							events: {
@@ -17,8 +19,9 @@
 							}
 						},
 						{
+							// create the button and bind it to the event onJSON
 							tag: 'button',
-							content: 'Create JSON',
+							content: 'Export to JSON',
 							events: {
 								'click': '{#onJSON}'
 							}
@@ -29,6 +32,7 @@
 					tag: 'div',
 					content: {
 						tag: 'textarea',
+						// bind to this class' property - exportedData
 						content: '{#exportedData}',
 						props: {
 							'style': 'width: 200px; height: 100px;'
@@ -39,31 +43,32 @@
 		},
 		methods: {
 			// execute this when hit 'add random node & link'
-			'onAdd': function(){
+			'onAdd': function () {
 				// number of the nodes
 				var len = this.topology().data().nodes.length;
 				// random link's source
-				var source = Math.floor(Math.random() * (len-1));
-				// create node with preset generated data
+				var source = Math.floor(Math.random() * (len - 1));
+				// create node with preset generated data...
 				this.topology().addNode(this.generateNode(len));
-				// link it with the exisiting random node
-				this.topology().addLink({'source':source,'target': len});
+				// ... and link it to the existing random node
+				this.topology().addLink({'source': source, 'target': len});
 				// adjust topology size if necessary
 				this.topology().fit();
 			},
-			'onJSON': function(){
+			// export to JSON
+			'onJSON': function () {
 				// get topology data
-				 this.exportedData(JSON.stringify(this.topology().data()));
+				this.exportedData(JSON.stringify(this.topology().data()));
 			},
 			// assign topology instance (by ref) to the actionbar instance
-			'assignTopology': function(topo){
+			'assignTopology': function (topo) {
 				this.topology(topo);
 			},
 			// generate an object of node data
-			'generateNode': function(len){
+			'generateNode': function (len) {
 				var node = {};
 				// create a name for the node
-				node.name = 'test-'+len;
+				node.name = 'test-' + len;
 				// set random [x;y] position
 				node.x = Math.floor(Math.random() * (this.topology().width()) + 10);
 				node.y = Math.floor(Math.random() * (this.topology().height()) + 10);
