@@ -1,0 +1,100 @@
+{
+	"id": "1aae0e0d-9eed-1bb3-04a3-97a961e491b1",
+	"name": "OpenDaylight Localhost",
+	"values": [
+		{
+			"key": "controller",
+			"value": "http://localhost:8181",
+			"type": "text",
+			"name": "controller",
+			"enabled": true
+		},
+		{
+			"key": "restconf",
+			"value": "{{controller}}/restconf",
+			"type": "text",
+			"name": "restconf",
+			"enabled": true
+		},
+		{
+			"key": "cfg",
+			"value": "{{restconf}}/config",
+			"type": "text",
+			"name": "cfg",
+			"enabled": true
+		},
+		{
+			"key": "oper",
+			"value": "{{restconf}}/operational",
+			"type": "text",
+			"name": "oper",
+			"enabled": true
+		},
+		{
+			"key": "rpc",
+			"value": "{{restconf}}/operations",
+			"type": "text",
+			"name": "rpc",
+			"enabled": true
+		},
+		{
+			"key": "topo",
+			"value": "network-topology:network-topology/topology",
+			"type": "text",
+			"name": "topo",
+			"enabled": true
+		},
+		{
+			"key": "node",
+			"value": "{{topo}}/topology-netconf:node",
+			"type": "text",
+			"name": "node",
+			"enabled": true
+		},
+		{
+			"key": "mount",
+			"value": "yang-ext:mount",
+			"type": "text",
+			"name": "mount",
+			"enabled": true
+		},
+		{
+			"key": "router",
+			"value": "xrvr",
+			"type": "text",
+			"name": "router",
+			"enabled": true
+		},
+		{
+			"key": "ctrl",
+			"value": "{{node}}/controller-config/{{mount}}",
+			"type": "text",
+			"name": "ctrl",
+			"enabled": true
+		},
+		{
+			"key": "rtr",
+			"value": "{{node}}/{{router}}/{{mount}}",
+			"type": "text",
+			"name": "rtr",
+			"enabled": true
+		},
+		{
+			"key": "/",
+			"value": "%2F",
+			"type": "text",
+			"name": "/",
+			"enabled": true
+		},
+		{
+			"key": "authorization",
+			"value": "Basic YWRtaW46YWRtaW4=",
+			"type": "text",
+			"name": "authorization",
+			"enabled": true
+		}
+	],
+	"timestamp": 1441125738145,
+	"synced": false,
+	"syncedFilename": ""
+}
