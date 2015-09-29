@@ -1,5 +1,8 @@
+// See README.md to understand why we use TopologyContainer (class that inherits nx.ui.Component) instead of
+// nx.graphic.Topology
 (function (nx) {
 	nx.define('TopologyContainer', nx.ui.Component, {
+		// we use this trick to use this object as a nx.ui.Component and display topology at the same time
 		properties: {
 			topology: {
 				get: function () {
@@ -7,11 +10,15 @@
 				}
 			}
 		},
+		// define view
 		view: {
 			content: [
 				{
-					'name': 'topology',
-					'type': 'nx.graphic.Topology',
+					'name': 'topology', // object name
+					'type': 'nx.graphic.Topology', // object type
+					// this defines properties of a nx.graphic.Topology instance
+					// see full specifications online
+					// https://developer.cisco.com/site/neXt/document/api-reference-manual/
 					'props': {
 						'adaptive': true, // width 100% if true
 						'showIcon': true,
@@ -25,11 +32,7 @@
 							'color': '#0how00'
 						},
 						'linkConfig': {
-							'linkType': 'curve',// also: parallel
-							'style': {
-								//'stroke-dasharray': '5, 5' // 'a, b' - a is the length of a stroke; b is a length of
-								// a gap
-							}
+							'linkType': 'curve' // also: parallel
 						},
 						tooltipManagerConfig: {
 							nodeTooltipContentClass: 'TooltipNode',

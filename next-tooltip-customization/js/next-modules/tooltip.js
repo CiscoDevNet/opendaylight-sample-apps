@@ -108,6 +108,7 @@
 							},
 							{
 								tag: 'span',
+								// we access link's model to show a source node's name
 								content: '{#link.model.source.name}'
 							}
 						]
@@ -124,6 +125,7 @@
 							},
 							{
 								tag: 'span',
+								// we access link's model to show a target node's name
 								content: '{#link.model.target.name}'
 							}
 						]
