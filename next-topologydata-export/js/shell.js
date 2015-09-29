@@ -9,7 +9,7 @@
 	// create instance of action bar
 	var actionBar = new ActionBar();
 	actionBar.assignTopology(topology);
-	//assign the app to a <div>
+	//assign the app to the <div>
 	app.container(document.getElementById('next-app'));
 	// attach the topology to the app instance
 	topology.attach(app);

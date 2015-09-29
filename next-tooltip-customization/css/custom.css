@@ -1,3 +1,7 @@
 .custom-tooltip {
     width: 300px;
 }
+
+.bold-text {
+    font-weight: 800;
+}

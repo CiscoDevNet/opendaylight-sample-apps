@@ -6,10 +6,8 @@
 	 */
 	var topologyContainer = new TopologyContainer();
 	var topology = topologyContainer.topology();
-	//assign the app to a <div>
+	//assign the app to the <div>
 	app.container(document.getElementById('next-app'));
-	// feed topology object with nodes and links...
-	topology.data();
-	// ... then attach the topology to the app instance
+	// attach the topology to the app instance
 	topology.attach(app);
 })(nx);

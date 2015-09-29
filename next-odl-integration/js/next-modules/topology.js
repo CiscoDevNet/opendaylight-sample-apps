@@ -1,21 +1,28 @@
+// See README.md to understand why we use TopologyContainer (class that inherits nx.ui.Component) instead of
+// nx.graphic.Topology
 (function (nx) {
 	nx.define('TopologyContainer', nx.ui.Component, {
 		properties: {
+			// we use this trick to use this object as a nx.ui.Component and display topology at the same time
 			topology: {
 				get: function () {
-					console.log(topologyData);
+					// it retrieves the topology instance from the view, which is defined below
 					return this.view('topology');
 				}
 			}
 		},
+		// define view
 		view: {
 			content: [
 				{
-					'name': 'topology',
-					'type': 'nx.graphic.Topology',
+					'name': 'topology', // object name
+					'type': 'nx.graphic.Topology', // object type
+					// this defines properties of a nx.graphic.Topology instance
+					// see full specifications online
+					// https://developer.cisco.com/site/neXt/document/api-reference-manual/
 					'props': {
 						'adaptive': true, // width 100% if true
-						'showIcon': true,
+						'showIcon': true, // depicts node as a dot if false
 						'nodeConfig': {
 							'label': 'model.name',
 							/*
@@ -26,11 +33,7 @@
 							'color': '#0how00'
 						},
 						'linkConfig': {
-							'linkType': 'curve',// also: parallel
-							'style': {
-								//'stroke-dasharray': '5, 5' // 'a, b' - a is the length of a stroke; b is a length of
-								// a gap
-							}
+							'linkType': 'curve' // also: parallel
 						},
 						'identityKey': 'name', // helps to link source and target
 						'width': 800,

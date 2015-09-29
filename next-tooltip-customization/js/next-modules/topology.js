@@ -1,4 +1,4 @@
-(function (nx, global) {
+(function (nx) {
 	nx.define('TopologyContainer', nx.ui.Component, {
 		properties: {
 			topology: {
@@ -48,4 +48,4 @@
 			]
 		}
 	});
-})(nx, nx.global);
+})(nx);
