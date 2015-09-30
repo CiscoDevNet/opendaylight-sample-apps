@@ -14,6 +14,8 @@ Because with the container you can easily use all the advantages of a nx.ui.Comp
 
 ## Licensed Code Used by This Application
 1. NeXt UI Toolkit
+
 This application uses the NeXt UI toolkit. The NeXt UI toolkit carries its own license and is available for download through Cisco DevNet (https://github.com/CiscoDevNet/opendaylight-sample-apps.git). The toolkit is contained in its own subdirectory within this application. A copy of the license is provided within that directory.
 2. JQuery
+
 This application uses JQuery (https://jquery.org/)
