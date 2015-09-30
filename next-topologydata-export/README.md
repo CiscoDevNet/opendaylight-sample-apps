@@ -13,7 +13,7 @@ We inject the topology reference into the action bar instance, because we cannot
 Because with the container you can easily use all the advantages of a nx.ui.Component class, as well as display topology. nx.ui.Component allows you to bind events, create methods and do other things, while nx.graphic.Topology realizes the whole bunch of topology stuff. Combined together they let us enjoy coding with NeXt.
 
 ## Licensed Code Used by This Application
-1. NeXt UI Toolkit
+1. NeXt UI Toolkit:
 This application uses the NeXt UI toolkit. The NeXt UI toolkit carries its own license and is available for download through Cisco DevNet (https://github.com/CiscoDevNet/opendaylight-sample-apps.git). The toolkit is contained in its own subdirectory within this application. A copy of the license is provided within that directory.
-2. JQuery
+2. JQuery:
 This application uses JQuery (https://jquery.org/)
