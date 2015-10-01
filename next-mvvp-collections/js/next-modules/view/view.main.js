@@ -1,5 +1,5 @@
-(function(nx){
-	nx.define('contacts.view.Main',nx.ui.Component,{
+(function (nx) {
+	nx.define('contacts.view.Main', nx.ui.Component, {
 		view: {
 			content: [
 				{
@@ -8,7 +8,13 @@
 				},
 				{
 					// load 'displayContacts' view
-					type: 'contacts.view.DisplayContacts'
+					tag: 'table',
+					content: {
+						type: 'contacts.view.DisplayContacts'
+					},
+					props: {
+						'class': 'contact-list'
+					}
 				}
 			]
 		}

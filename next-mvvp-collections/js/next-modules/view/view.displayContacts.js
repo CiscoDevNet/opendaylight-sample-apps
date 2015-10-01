@@ -1,9 +1,10 @@
-(function(nx){
-	nx.define('contacts.view.DisplayContacts',nx.ui.Component,{
+(function (nx) {
+	nx.define('contacts.view.DisplayContacts', nx.ui.Component, {
 		view: {
 			content: [
 				{
 					props: {
+						// grab items from 'items' and make a template of them
 						template: {
 							tag: 'tr',
 							content: [
@@ -24,16 +25,19 @@
 									content: '{email}'
 								},
 								{
-									tag: 'button',
-									content: 'Remove Contact',
-									events: {
-										click: function(sender){
-											var id = sender.model().id;
-											this.model().contacts().removeContact(id);
+									tag: 'td',
+									content: {
+										tag: 'button',
+										content: 'Remove Contact',
+										events: {
+											click: function (sender) {
+												// get the contact's id from the model
+												var id = sender.model().id;
+												// then remove the contact
+												this.model().contacts().removeContact(id);
+											}
 										}
 									}
-
-
 								}
 							]
 						},
@@ -41,7 +45,6 @@
 					}
 				}
 			]
-
 		}
 	});
 })(nx);

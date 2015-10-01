@@ -6,6 +6,7 @@
 		methods: {
 			init: function () {
 				this.inherited();
+				// after that we can use this.contacts() to get access to the viewmodel
 				this._contacts = new contacts.viewmodel.Contacts(this);
 			}
 		}

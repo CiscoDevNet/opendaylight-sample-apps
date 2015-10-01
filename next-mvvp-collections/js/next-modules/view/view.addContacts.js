@@ -83,13 +83,15 @@
 		},
 		methods: {
 			onAdd: function () {
-				var data = {
-					firstName: this.firstName(),
-					lastName: this.lastName(),
-					mobilePhone: this.mobilePhone(),
-					email: this.email()
-				};
-				this.model().contacts().addContact(data);
+				// add a new contact: we're passing the properties inside the collection's method
+				this.model().contacts().addContact(
+					{
+						firstName: this.firstName(),
+						lastName: this.lastName(),
+						mobilePhone: this.mobilePhone(),
+						email: this.email()
+					}
+				);
 				// clear data
 				this.firstName('');
 				this.lastName('');

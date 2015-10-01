@@ -14,6 +14,7 @@
 		}
 	});
 
+	// new app instance
 	var app = new Contacts();
 	// assign the application to the div container
 	app.container(document.getElementById('next-app'));
