@@ -1,3 +1,5 @@
+// Preliminary defined topology
+
 var topologyData = {
 	nodes: [
 		{"id": 0, "x": 410, "y": 100, "name": "12K-1"},
