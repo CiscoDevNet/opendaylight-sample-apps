@@ -42,7 +42,8 @@ server.on('request', function (stream) {
 	});
 	topologyData.links.push({
 		id: topologyData.links.length,
-		source: Math.floor(Math.random() * topologyData.links.length),
+		// random node's id except the new one's
+		source: Math.floor(Math.random() * (newNodeId-1)),
 		target: newNodeId
 	})
 });

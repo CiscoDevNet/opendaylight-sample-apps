@@ -15,7 +15,7 @@
 							tag: 'button',
 							content: 'Update Topology From Server',
 							events: {
-								'click': '{#onUpdate}'
+								'click': '{#updateTopology}'
 							}
 						}
 					]
@@ -24,39 +24,32 @@
 		},
 		methods: {
 			// execute this when hit 'add random node & link'
-			'onUpdate': function () {
+			'updateTopology': function () {
 				var topo = this.topology();
+				// use ajax to fetch an updated topology object
 				$.ajax({
 					type: 'GET',
 					url: 'http://localhost:5555/',
 					dataType: 'json',
 					success: function (data) {
+						// go through fetched nodes' array
 						nx.each(data.nodes, function (nodeData) {
 							var node = topo.getNode(nodeData.id);
-							// add a new node if not exist
+							// if it's an array it means the node exists and we don't need to add it
 							if(typeof(node) != 'Array'){
 								topo.addNode(nodeData);
 							}
-							// update values if changed
-							else {
-								var vertex = node.model();
-								nx.each(nodeData, function (key, value) {
-									vertex.set(key, value);
-								});
-							}
 						});
+						// go through fetched links' array
 						nx.each(data.links,function(linkData){
 							var link = topo.getLink(linkData.id);
+							// if it's an array it means the link exists and we don't need to add it
 							if(typeof(link) != 'Array'){
 								topo.addLink(linkData);
 							}
-							else {
-								var edge = link.model();
-								nx.each(linkData, function (key, value) {
-									edge.set(key, value);
-								});
-							}
-						})
+						});
+						// adjust topology's size
+						topo.fit();
 					}
 				});
 

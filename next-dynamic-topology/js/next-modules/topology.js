@@ -34,7 +34,6 @@
 						'linkConfig': {
 							'linkType': 'curve' // also: parallel
 						},
-						'data': {},
 						'identityKey': 'id', // helps to link source and target
 						'width': 800,
 						'height': 400,

@@ -13,4 +13,5 @@
 	actionBar.assignTopology(topology);
 	actionBar.attach(app);
 	topology.attach(app);
+	actionBar.updateTopology();
 })(nx);

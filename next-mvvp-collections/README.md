@@ -4,10 +4,12 @@ MVVP is a programming pattern that simplifies understanding your code and make i
 Collections are 'wraps' of array in NeXt; and Observable Collection is the special class in NeXt that allows you to listen to events.
 
 ## How To Use This Application
-
+1. Enter a contact's data
+2. Hit 'Add'
+3. Hit 'Remove' if you want to remove any contact
 
 ## How It Works
-
+It uses MVVP idea and NeXt's ObservableCollections. When you enter the data and hit 'Add', the data is added to the Observable Collection (which is able to be listened for the events).
 
 ## Why I Need Collections
 Collections are especially useful for dynamic topologies: you can track changes and modify small pieces of the topology instead of refreshing the whole topology.
