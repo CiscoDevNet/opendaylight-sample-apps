@@ -10,8 +10,10 @@
 	var actionBar = new ActionBar();
 	//assign the app to the <div>
 	app.container(document.getElementById('next-app'));
+	// pass topology's instance into action's bar instance
 	actionBar.assignTopology(topology);
 	actionBar.attach(app);
 	topology.attach(app);
+	// preload topology
 	actionBar.updateTopology();
 })(nx);
