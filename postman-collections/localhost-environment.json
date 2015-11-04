@@ -46,7 +46,7 @@
 		},
 		{
 			"key": "node",
-			"value": "{{topo}}/topology-netconf:node",
+			"value": "{{topo}}/topology-netconf/node",
 			"type": "text",
 			"name": "node",
 			"enabled": true
@@ -60,7 +60,7 @@
 		},
 		{
 			"key": "router",
-			"value": "xrvr",
+			"value": "xrvr-1",
 			"type": "text",
 			"name": "router",
 			"enabled": true
@@ -94,7 +94,7 @@
 			"enabled": true
 		}
 	],
-	"timestamp": 1441125738145,
+	"timestamp": 1446672920810,
 	"synced": false,
 	"syncedFilename": ""
 }
