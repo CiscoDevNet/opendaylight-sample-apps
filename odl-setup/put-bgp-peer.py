@@ -1,17 +1,5 @@
 #!/usr/bin/env python
 
-"""
-put-bgp-peer
-
-adds BGP peer to ODL
-
-parameters:
-* ODL IP address
-* peer IP address 
- 
-uses HTTP PUT with JSON payload
-"""
-
 import sys
 import requests
 
@@ -56,11 +44,6 @@ request_template = '''
     ]
 }
 '''
-
-# check args length
-if (len(sys.argv) != 3):
-        print "usage %s ODL_IP_address Peer_IP_address" % sys.argv[0]
-        sys.exit(1)
 
 req_hdrs = { 'Content-Type' : 'application/json' }
 

@@ -1,15 +1,4 @@
 #!/usr/bin/env python
-"""
-is-node-connected
-
-parameters:
-* ODL IP Address
-* NETCONF node name
-
-returns 0 if NETCONF node is mounted by ODL
-returns 1 if NETCONF node not mounted yet
-returns 2 if node not in NETCONF topology
-"""
 
 import sys
 import requests
@@ -17,11 +6,6 @@ import json
 
 odl_user = 'admin'
 odl_pass = 'admin'
-
-# check args length
-if (len(sys.argv) != 3):
-        print "usage %s ODL_IP_address node_name" % sys.argv[0]
-        sys.exit(1)
 
 req_hdrs = { 'Content-Type' : 'application/json' }
 

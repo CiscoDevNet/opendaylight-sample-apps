@@ -1,17 +1,5 @@
 #!/usr/bin/env python
 
-"""
-put-bgp-neighbor
-
-adds ODL as BGP neighbor of XR node
-
-parameters:
-* ODL IP address
-* XR NETCONF node name
-
-uses HTTP PUT with JSON payload
-"""
-
 import sys
 import requests
 
@@ -54,20 +42,15 @@ request_template = '''
 }
 '''
 
-# check args length
-if (len(sys.argv) != 3):
-	print "usage %s ODL_IP_address node_name" % sys.argv[0] 
-	sys.exit(1)
-
 req_hdrs = { 'Content-Type' : 'application/json' }
 
 req_body = request_template % (sys.argv[1], odl_asn)
 
 url = 	'http://' + sys.argv[1] + ':8181' + \
-	'/restconf/config/network-topology:network-topology/topology' + \
-	'/topology-netconf/node/' + sys.argv[2] + '/yang-ext:mount' + \
-	'/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/' + \
-	str(odl_asn) + '/default-vrf/bgp-entity/neighbors/neighbor/' + sys.argv[1]
+		'/restconf/config/network-topology:network-topology/topology' + \
+		'/topology-netconf/node/' + sys.argv[2] + '/yang-ext:mount' + \
+		'/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/' + \
+        str(odl_asn) + '/default-vrf/bgp-entity/neighbors/neighbor/' + sys.argv[1]
 
 resp = requests.put(url, data=req_body, headers=req_hdrs, auth=(odl_user, odl_pass))
 
