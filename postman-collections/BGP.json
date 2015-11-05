@@ -13,21 +13,18 @@
 			"id": "2c3ca95b-b345-143d-9188-be011277ad68",
 			"name": "App RIB",
 			"description": "",
-			"write": true,
 			"order": [
-				"69071619-71a3-6c1e-c827-c8805e100209",
 				"63b3fe98-10bd-2541-cc89-631dbcbb559e",
 				"a85757f2-244c-78da-93a8-836ffc51b4f6",
 				"483e32cc-af88-aa69-1f68-1d92a9600f62",
 				"e375c0f0-c5b3-19fe-d588-f796a1323399",
 				"2b613d7b-18c9-ad48-2bc1-c29ac635de4f",
 				"43e8b934-df06-ab87-db5d-df2682adb1ba",
-				"2759812e-2097-6e6c-035f-8b33c2d7a8ad"
+				"2759812e-2097-6e6c-035f-8b33c2d7a8ad",
+				"ce986aac-16be-d6fd-94f7-c747337d8489",
+				"f0982b49-d18f-315a-0a53-2f3e437badd9",
+				"80e3b6ee-d1b9-e5d1-1f80-c83aed965189"
 			],
-			"collection_name": "ODL BGP",
-			"collection_owner": "39325",
-			"collection_id": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
-			"collection": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"owner": "39325",
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af"
 		},
@@ -35,7 +32,6 @@
 			"id": "cd24129f-b2c2-e07b-4807-1ac42c09693b",
 			"name": "BGP Setup",
 			"description": "",
-			"write": true,
 			"order": [
 				"65774015-62f0-34c1-8c26-aad758f00620",
 				"a6de7527-2eaa-a947-3358-4e62883c0758",
@@ -47,10 +43,6 @@
 				"b0ae9da2-3837-5d00-0577-fcb8e8909366",
 				"371e0efb-2104-4bd7-6977-effff695f40c"
 			],
-			"collection_name": "ODL BGP",
-			"collection_owner": "39325",
-			"collection_id": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
-			"collection": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"owner": "39325",
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af"
 		},
@@ -58,45 +50,30 @@
 			"id": "c5e5bca7-f033-5bd0-9575-4f88858e4ce5",
 			"name": "IPv4",
 			"description": "",
-			"write": true,
 			"order": [
 				"e7ab6aa5-6c1d-1fb9-723e-84561e70bd56",
 				"f07590b6-9201-c1ba-262f-b6d3d5984991"
 			],
-			"collection_name": "ODL BGP",
-			"collection_owner": "39325",
-			"collection_id": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
-			"collection": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"owner": "39325"
 		},
 		{
 			"id": "eee43418-3409-e033-563a-269ac9e56904",
 			"name": "IPv6",
 			"description": "",
-			"write": true,
 			"order": [
 				"6f433dae-3360-6438-6e32-210e2655bf9e",
 				"5669fff4-ca9d-43e0-a1fe-21d093f180db"
 			],
-			"collection_name": "ODL BGP",
-			"collection_owner": "39325",
-			"collection_id": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
-			"collection": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"owner": "39325"
 		},
 		{
 			"id": "fc47f1b6-e59b-4d19-35e9-f55470ec50e6",
 			"name": "Linkstate",
 			"description": "",
-			"write": true,
 			"order": [
 				"5a14ce45-6442-8485-3559-0aacce0c6985",
 				"9377e67d-297a-cd7e-da4e-92d91017a2a9"
 			],
-			"collection_name": "ODL BGP",
-			"collection_owner": "39325",
-			"collection_id": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
-			"collection": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"owner": "39325"
 		}
 	],
@@ -167,7 +144,7 @@
 		{
 			"id": "2b613d7b-18c9-ad48-2bc1-c29ac635de4f",
 			"headers": "Accept: application/json\nContent-Type: application/xml\nAuthorization: {{authorization}}\n",
-			"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-flowspec:flowspec-subsequent-address-family/flowspec-routes/flowspec-route/foo",
+			"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-flowspec:flowspec-subsequent-address-family/flowspec-routes/flowspec-route/bar",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "PUT",
@@ -177,12 +154,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1440670336421,
+			"time": 1446075800887,
 			"name": "PUT flowspec route",
 			"description": "",
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"responses": [],
-			"rawModeData": "<flowspec-route xmlns=\"urn:opendaylight:params:xml:ns:yang:bgp-flowspec\">\n    <route-key>foo</route-key>\n    <flowspec>\n        <destination-ports>\n           <op>equals</op>\n           <value>8080</value>\n       </destination-ports>\n   </flowspec>\n   <attributes>\n    <origin>\n     <value>igp</value>\n    </origin>\n    <ipv4-next-hop>\n        <global>172.23.29.110</global>\n    </ipv4-next-hop>\n    <as-path/>\n    <local-pref>\n        <pref>100</pref>\n    </local-pref>\n    <extended-communities>\n        <comm-type>128</comm-type>\n        <comm-sub-type>7</comm-sub-type>\n    </extended-communities>\n   </attributes>\n </flowspec-route>\n"
+			"rawModeData": "<flowspec-route xmlns=\"urn:opendaylight:params:xml:ns:yang:bgp-flowspec\">\n    <route-key>bar</route-key>\n    <flowspec>\n        <destination-ports>\n           <op>equals</op>\n           <value>8080</value>\n       </destination-ports>\n    </flowspec>\n    <flowspec>\n        <destination-prefix>192.168.0.1/32</destination-prefix>\n        <component-type>destination-prefix</component-type>\n    </flowspec>\n    <attributes>\n        <origin>\n            <value>igp</value>\n        </origin>\n        <as-path/>\n        <local-pref>\n            <pref>100</pref>\n        </local-pref>\n        <extended-communities>\n            <comm-type>128</comm-type>\n            <comm-sub-type>7</comm-sub-type>\n            <traffic-action-extended-community>\n                <sample>true</sample>\n                <terminal-action>false</terminal-action>\n            </traffic-action-extended-community>\n        </extended-communities>\n    </attributes>\n</flowspec-route>\n"
 		},
 		{
 			"id": "371e0efb-2104-4bd7-6977-effff695f40c",
@@ -454,26 +431,6 @@
 			"rawModeData": "<module xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:config\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:rib-impl</type>\n  <name>example-bgp-rib</name>\n  <bgp-rib-id xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">172.23.29.120</bgp-rib-id>\n  <local-as xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">65504</local-as>\n</module>"
 		},
 		{
-			"id": "69071619-71a3-6c1e-c827-c8805e100209",
-			"headers": "Accept: application/json\nContent-Type: application/xml\nAuthorization: {{authorization}}\n",
-			"url": "{{cfg}}/{{ctrl}}/config:modules/",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": "",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1438204638063,
-			"name": "Post App Peer",
-			"description": "",
-			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
-			"responses": [],
-			"rawModeData": " <module xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:config\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-application-peer</type>\n  <name>example-bgp-peer-app</name>\n  <bgp-peer-id xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">172.23.29.111</bgp-peer-id> \n  <target-rib xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n   <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:rib-instance</type>\n   <name>example-bgp-rib</name>\n   </target-rib>\n  <application-rib-id xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">example-app-rib</application-rib-id>\n  <data-broker xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n   <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:dom\">x:dom-async-data-broker</type>\n   <name>pingpong-broker</name>\n  </data-broker>\n </module>"
-		},
-		{
 			"id": "6f433dae-3360-6438-6e32-210e2655bf9e",
 			"headers": "Authorization: {{authorization}}\n",
 			"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-types:ipv6-address-family/bgp-types:unicast-subsequent-address-family/ipv6-routes",
@@ -511,6 +468,28 @@
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"responses": [],
 			"rawModeData": "<module xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:config\">\n <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-peer</type>\n <name>example-bgp-peer</name>\n <host xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">172.23.29.116</host>\n <holdtimer xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">180</holdtimer>\n <rib xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:cfg\">x:rib</type>\n  <name>example-bgp-rib</name>\n </rib>\n <peer-registry xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-peer-registry</type>\n  <name>global-bgp-peer-registry</name>\n </peer-registry>\n <advertized-table xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-table-type</type>\n  <name>ipv4-unicast</name>\n </advertized-table>\n <advertized-table xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-table-type</type>\n  <name>ipv6-unicast</name>\n </advertized-table>\n <advertized-table xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-table-type</type>\n  <name>linkstate</name>\n </advertized-table>\n</module>"
+		},
+		{
+			"id": "80e3b6ee-d1b9-e5d1-1f80-c83aed965189",
+			"headers": "Accept: application/json\nContent-Type: application/xml\nAuthorization: {{authorization}}\n",
+			"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-flowspec:flowspec-subsequent-address-family",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST flowspec route",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1446559091955,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "2c3ca95b-b345-143d-9188-be011277ad68",
+			"rawModeData": "  <flowspec-routes xmlns=\"urn:opendaylight:params:xml:ns:yang:bgp-flowspec\">\n    <flowspec-route>\n      <route-key>bar</route-key>\n      <flowspec>\n        <destination-prefix>192.168.0.1/32</destination-prefix>\n        <component-type>destination-prefix</component-type>\n      </flowspec>\n      <flowspec>\n        <source-prefix>10.0.0.1/32</source-prefix>\n        <component-type>source-prefix</component-type>\n      </flowspec>\n      <flowspec>\n        <protocol-ips>\n          <op>equals end-of-list</op>\n          <value>6</value>              \n        </protocol-ips>\n        <component-type>protocol-ip</component-type>\n      </flowspec>\n      <flowspec>\n        <ports>\n          <op>equals end-of-list</op>\n          <value>80</value>\n        </ports>\n        <component-type>port</component-type>\n      </flowspec>\n      <flowspec>\n        <destination-ports>\n          <op>greater-than</op>\n          <value>8080</value>\n        </destination-ports>\n        <destination-ports>\n          <op>and-bit less-than end-of-list</op>\n          <value>8088</value>\n        </destination-ports>\n        <component-type>destination-port</component-type>\n      </flowspec>\n      <flowspec>\n        <source-ports>\n          <op>greater-than end-of-list</op>\n          <value>1024</value>\n        </source-ports>\n        <component-type>source-port</component-type>\n      </flowspec>\n      <flowspec>\n        <types>\n          <op>equals end-of-list</op>\n          <value>0</value>\n        </types>\n        <component-type>icmp-type</component-type>\n      </flowspec>\n        <flowspec>\n        <codes>\n          <op>equals end-of-list</op>\n          <value>0</value>\n        </codes>\n        <component-type>icmp-code</component-type>\n      </flowspec>\n      <flowspec>\n        <tcp-flags>\n          <op>match end-of-list</op>\n          <value>32</value>\n        </tcp-flags>\n        <component-type>tcp-flags</component-type>\n      </flowspec>\n      <flowspec>\n        <packet-lengths>\n          <op>greater-than</op>\n          <value>400</value>\n        </packet-lengths>\n        <packet-lengths>\n          <op>and-bit less-than end-of-list</op>\n           <value>500</value>\n        </packet-lengths>\n        <component-type>packet-length</component-type>\n      </flowspec>\n      <flowspec>\n        <dscps>\n          <op>equals end-of-list</op>\n          <value>20</value>\n        </dscps>\n        <component-type>dscp</component-type>\n      </flowspec>\n      <flowspec>\n        <fragments>\n          <op>match end-of-list</op>\n          <value>first</value>\n        </fragments>\n        <component-type>fragment</component-type>\n      </flowspec>\n      <attributes>\n        <origin>\n          <value>igp</value>\n        </origin>\n        <as-path/>\n        <local-pref>\n          <pref>100</pref>\n        </local-pref>\n        <extended-communities>\n          <comm-type>128</comm-type>\n          <comm-sub-type>7</comm-sub-type>\n          <traffic-action-extended-community>\n            <sample>true</sample>\n            <terminal-action>false</terminal-action>\n          </traffic-action-extended-community>\n        </extended-communities>\n      </attributes>\n    </flowspec-route>\n  </flowspec-routes>"
 		},
 		{
 			"id": "9377e67d-297a-cd7e-da4e-92d91017a2a9",
@@ -650,6 +629,28 @@
 			"responses": []
 		},
 		{
+			"id": "ce986aac-16be-d6fd-94f7-c747337d8489",
+			"headers": "Content-Type: application/json\nAuthorization: {{authorization}}\n",
+			"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.144.0%2F24",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
+			"data": [],
+			"dataMode": "raw",
+			"name": "PUT APP route extended",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1443134451641,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "2c3ca95b-b345-143d-9188-be011277ad68",
+			"rawModeData": "{\n  \"bgp-inet:ipv4-route\": [\n    {\n      \"prefix\": \"192.168.144.0/24\",\n      \"attributes\": {\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"as-path\": {},\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"atomic-aggregate\" : {},\n        \"aggregator\" : {\n            \"as-number\" : 123,\n            \"network-address\" : \"1.2.3.4\"\n        },\n        \"aigp\" : {\n            \"aigp-tlv\" : {\n                \"metric\" : 123456\n            }\n        },\n        \"communities\" : [\n            {\"as-number\" : 123, \"semantics\" : 123}\n        ],\n        \"extended-communities\" : [\n            {\"comm-type\" : 0, \"comm-sub-type\" : 0, \"as-specific-extended-community\" : { \"transitive\" : \"true\", \"global-administrator\" : \"123\", \"local-administrator\" : \"MDAwMA==\" }}\n        ],\n        \"ipv4-next-hop\": {\n          \"global\": \"172.23.29.97\"\n        }\n      }\n    }\n  ]\n}"
+		},
+		{
 			"id": "e375c0f0-c5b3-19fe-d588-f796a1323399",
 			"headers": "Content-Type: application/xml\nAuthorization: {{authorization}}\n",
 			"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/bgp-inet:ipv4-routes/ipv4-route/192.168.144.0%2F24",
@@ -705,6 +706,26 @@
 			"description": "",
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"responses": []
+		},
+		{
+			"id": "f0982b49-d18f-315a-0a53-2f3e437badd9",
+			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{authorization}}\n",
+			"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-application-peer/example-bgp-peer-app",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1445280985912,
+			"name": "Put App Peer",
+			"description": "",
+			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
+			"responses": [],
+			"rawModeData": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:bgp-application-peer\",\n            \"name\": \"example-bgp-peer-app\",\n            \"odl-bgp-rib-impl-cfg:data-broker\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-async-data-broker\",\n                \"name\": \"pingpong-broker\"\n            },\n            \"odl-bgp-rib-impl-cfg:target-rib\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:rib-instance\",\n                \"name\": \"example-bgp-rib\"\n            },\n            \"odl-bgp-rib-impl-cfg:bgp-peer-id\": \"172.23.29.111\",\n            \"odl-bgp-rib-impl-cfg:application-rib-id\": \"example-app-rib\"\n        }\n    ]\n}"
 		}
 	]
 }
