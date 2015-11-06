@@ -2,12 +2,9 @@
 
 """
 post-nodes
-
 adds a set of nodes to ODL
-
 parameter:
 * ODL IP address
-
 uses HTTP POST with XML payload
 """
 

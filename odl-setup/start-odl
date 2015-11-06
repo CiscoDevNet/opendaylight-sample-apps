@@ -1,0 +1,28 @@
+#!/bin/bash
+
+export DISTRO=distribution-karaf-0.3.3-SNAPSHOT
+rm -rf $DISTRO/data
+rm -rf $DISTRO/etc/opendaylight/current
+rm -rf $DISTRO/cache
+rm -rf $DISTRO/journal
+rm -rf $DISTRO/snapshots
+rm -rf $DISTRO/instances
+mkdir -p $DISTRO/etc/opendaylight/karaf
+cp org.ops4j.pax.logging.cfg $DISTRO/etc
+cp org.apache.karaf.features.cfg $DISTRO/etc
+source $DISTRO/bin/setenv
+$DISTRO/bin/start
+
+while true;
+do
+	up=$(netstat -an | grep 127.0.0.1:1830 | wc -l)
+	if [ $up == 2 ]
+	then
+		echo "ODL is up"
+		exit 0
+	else
+		echo "Waiting for ODL to start"
+		sleep 5
+	fi 
+done
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# != 2 ]
+then
+	echo "usage $0 username password"
+	exit 1
+fi
+
+echo cisco123 | sudo 
+echo $2 | sudo openconnect -u $1 --passwd-on-stdin https://dcloud-rtp-anyconnect.cisco.com &
+

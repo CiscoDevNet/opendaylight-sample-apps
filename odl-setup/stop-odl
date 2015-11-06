@@ -1,0 +1,17 @@
+#!/bin/bash
+export DISTRO=distribution-karaf-0.3.3-SNAPSHOT
+$DISTRO/bin/stop
+
+while true;
+do
+        up=$(/bin/ps -ef | grep karaf | wc -l)
+        if [ $up == 1 ]
+        then
+                echo "ODL has stopped"
+                exit 0
+        else
+                echo "waiting for ODL to stop"
+                sleep 5
+        fi
+done
+

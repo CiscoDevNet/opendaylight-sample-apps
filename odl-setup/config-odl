@@ -1,0 +1,40 @@
+#!/bin/bash
+
+ip=$(/sbin/ifconfig tun0 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
+
+if [ $ip ]
+then
+	echo "using VPN"
+else
+	echo "using Ethernet"
+	ip=$(/sbin/ifconfig eth0 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
+fi
+	
+echo $ip
+
+# mount nodes using NETCONF
+./post-nodes.py $ip
+
+# configure ODL BGP RIB
+./put-bgp-rib.py $ip
+./put-app-rib.py $ip 1.2.3.4 
+
+# wait for BGP peer to be mounted by NETCONF
+while true;
+do
+	./is-node-connected.py $ip sjc 
+	if [ $? -eq 0 ]
+	then
+  		echo "NETCONF node up"
+		break
+	else
+		echo "Waiting for NETCONF"
+		sleep 5
+	fi
+done
+
+# configure BGP peer to talk to ODL
+./put-bgp-neighbor.py $ip sjc
+
+# configure ODL to talk to BGP peer
+./put-bgp-peer.py $ip 198.18.1.37
