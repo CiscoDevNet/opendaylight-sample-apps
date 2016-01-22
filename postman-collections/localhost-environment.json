@@ -87,13 +87,6 @@
 			"enabled": true
 		},
 		{
-			"key": "router-port",
-			"value": "830",
-			"type": "text",
-			"name": "router-port",
-			"enabled": true
-		},
-		{
 			"key": "ctrl",
 			"value": "{{node}}/controller-config/{{mount}}",
 			"type": "text",
@@ -122,7 +115,7 @@
 			"enabled": true
 		}
 	],
-	"timestamp": 1453444438021,
+	"timestamp": 1453445954955,
 	"synced": false,
 	"syncedFilename": ""
 }

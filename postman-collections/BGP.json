@@ -41,7 +41,9 @@
 				"bc4ce024-5b45-5350-c57c-da33ea3ed6ab",
 				"59272212-a843-a829-a5e8-e7f34a0ee5d4",
 				"b0ae9da2-3837-5d00-0577-fcb8e8909366",
-				"371e0efb-2104-4bd7-6977-effff695f40c"
+				"371e0efb-2104-4bd7-6977-effff695f40c",
+				"1e662582-b239-34cf-7bfa-aff32e858b8e",
+				"4adc6796-9b0c-03a7-666a-fe8d0ac2f164"
 			],
 			"owner": "39325",
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af"
@@ -120,6 +122,28 @@
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"responses": [],
 			"rawModeData": ""
+		},
+		{
+			"id": "1e662582-b239-34cf-7bfa-aff32e858b8e",
+			"headers": "Content-Type: application/json\nAuthorization: {{authorization}}\n",
+			"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Put BGP RIB - Beryllium",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1450193981926,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "cd24129f-b2c2-e07b-4807-1ac42c09693b",
+			"rawModeData": "{\n  \"module\": [\n    {\n      \"name\": \"example-bgp-rib\",\n      \"type\": \"odl-bgp-rib-impl-cfg:rib-impl\",\n      \"odl-bgp-rib-impl-cfg:bgp-rib-id\": \"172.23.29.120\",\n      \"odl-bgp-rib-impl-cfg:bgp-dispatcher\": {\n        \"type\": \"odl-bgp-rib-impl-cfg:bgp-dispatcher\",\n        \"name\": \"global-bgp-dispatcher\"\n      },\n      \"odl-bgp-rib-impl-cfg:extensions\": {\n        \"type\": \"odl-bgp-rib-spi-cfg:extensions\",\n        \"name\": \"global-rib-extensions\"\n      },\n      \"odl-bgp-rib-impl-cfg:openconfig-provider\": {\n        \"type\": \"odl-bgp-openconfig-spi-cfg:bgp-openconfig-provider\",\n        \"name\": \"openconfig-bgp\"\n      },\n      \"odl-bgp-rib-impl-cfg:tcp-reconnect-strategy\": {\n        \"type\": \"protocol-framework:reconnect-strategy-factory\",\n        \"name\": \"example-reconnect-strategy-factory\"\n      },\n      \"odl-bgp-rib-impl-cfg:rib-id\": \"example-bgp-rib\",\n      \"odl-bgp-rib-impl-cfg:session-reconnect-strategy\": {\n        \"type\": \"protocol-framework:reconnect-strategy-factory\",\n        \"name\": \"example-reconnect-strategy-factory\"\n      },\n      \"odl-bgp-rib-impl-cfg:local-table\": [\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"ipv4-unicast\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"ipv6-unicast\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"linkstate\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"ipv4-flowspec\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"ipv6-flowspec\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"labeled-unicast\"\n        }\n      ],\n      \"odl-bgp-rib-impl-cfg:dom-data-provider\": {\n        \"type\": \"opendaylight-md-sal-dom:dom-async-data-broker\",\n        \"name\": \"inmemory-data-broker\"\n      },\n      \"odl-bgp-rib-impl-cfg:data-provider\": {\n        \"type\": \"opendaylight-md-sal-binding:binding-async-data-broker\",\n        \"name\": \"pingpong-binding-data-broker\"\n      },\n      \"odl-bgp-rib-impl-cfg:codec-tree-factory\": {\n        \"type\": \"opendaylight-md-sal-binding:binding-codec-tree-factory\",\n        \"name\": \"runtime-mapping-singleton\"\n      },\n      \"odl-bgp-rib-impl-cfg:local-as\": 65504\n    }\n  ]\n}"
 		},
 		{
 			"id": "2759812e-2097-6e6c-035f-8b33c2d7a8ad",
@@ -311,6 +335,28 @@
 			"description": "",
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"responses": []
+		},
+		{
+			"id": "4adc6796-9b0c-03a7-666a-fe8d0ac2f164",
+			"headers": "Content-Type: application/json\nAuthorization: {{authorization}}\n",
+			"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Put BGP Peer - Beryllium",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1450194014320,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "cd24129f-b2c2-e07b-4807-1ac42c09693b",
+			"rawModeData": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer\",\n            \"name\": \"example-bgp-peer\",\n            \"odl-bgp-rib-impl-cfg:host\":\"172.23.29.104\",\n            \"odl-bgp-rib-impl-cfg:peer-role\":\"ebgp\",\n            \"odl-bgp-rib-impl-cfg:remote-as\":\"65504\",\n            \"odl-bgp-rib-impl-cfg:initiate-connection\": true,\n            \"odl-bgp-rib-impl-cfg:rib\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:rib-instance\",\n                \"name\": \"example-bgp-rib\"\n            },\n            \"odl-bgp-rib-impl-cfg:peer-registry\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer-registry\",\n                \"name\": \"global-bgp-peer-registry\"\n            },\n            \"odl-bgp-rib-impl-cfg:advertized-table\": [\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"linkstate\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-flowspec\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-unicast\"\n                }\n            ]\n        }\n    ]\n}"
 		},
 		{
 			"id": "5669fff4-ca9d-43e0-a1fe-21d093f180db",
@@ -582,12 +628,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1442266935815,
+			"time": 1452602562363,
 			"name": "Put BGP Peer",
 			"description": "",
 			"collectionId": "af6a2278-8861-9d5d-9143-cb43c1e3a4af",
 			"responses": [],
-			"rawModeData": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer\",\n            \"name\": \"example-bgp-peer\",\n            \"odl-bgp-rib-impl-cfg:host\":\"172.23.29.104\",\n            \"odl-bgp-rib-impl-cfg:peer-role\":\"ebgp\",\n            \"odl-bgp-rib-impl-cfg:remote-as\":\"65504\",\n            \"odl-bgp-rib-impl-cfg:initiate-connection\": true,\n            \"odl-bgp-rib-impl-cfg:rib\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:rib-instance\",\n                \"name\": \"example-bgp-rib\"\n            },\n            \"odl-bgp-rib-impl-cfg:peer-registry\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer-registry\",\n                \"name\": \"global-bgp-peer-registry\"\n            },\n            \"odl-bgp-rib-impl-cfg:advertized-table\": [\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"linkstate\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"flowspec\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-unicast\"\n                }\n            ]\n        }\n    ]\n}"
+			"rawModeData": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer\",\n            \"name\": \"example-bgp-peer\",\n            \"odl-bgp-rib-impl-cfg:host\":\"172.23.29.116\",\n            \"odl-bgp-rib-impl-cfg:remote-as\":\"65504\",\n            \"odl-bgp-rib-impl-cfg:initiate-connection\": true,\n            \"odl-bgp-rib-impl-cfg:rib\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:rib-instance\",\n                \"name\": \"example-bgp-rib\"\n            },\n            \"odl-bgp-rib-impl-cfg:peer-registry\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer-registry\",\n                \"name\": \"global-bgp-peer-registry\"\n            },\n            \"odl-bgp-rib-impl-cfg:advertized-table\": [\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"linkstate\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"flowspec\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-unicast\"\n                }\n            ]\n        }\n    ]\n}"
 		},
 		{
 			"id": "bc4ce024-5b45-5350-c57c-da33ea3ed6ab",

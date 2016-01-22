@@ -9,7 +9,8 @@
 		"bba35de7-b6e1-3483-949a-049e58c64a59",
 		"6ef5e8ad-66dc-9a8b-8606-6518252ff002",
 		"ce6c3fa0-4f8a-facd-e7f7-7b212dff9f72",
-		"60aa1980-0f98-4a54-ec62-728e4e0cf0ac"
+		"60aa1980-0f98-4a54-ec62-728e4e0cf0ac",
+		"ea9e36ad-0ce2-6427-b64d-7ea32e3161e5"
 	],
 	"folders": [],
 	"timestamp": 1430516363129,
@@ -155,6 +156,26 @@
 			"collectionId": "a638e9af-70ec-4db2-2d8d-35f6803c90a0",
 			"responses": [],
 			"rawModeData": "<input>\n    <node>pcc://192.168.100.1</node>\n    <name>cisco</name>\n    <arguments>\n        <lsp xmlns:stateful=\"urn:opendaylight:params:xml:ns:yang:pcep:ietf:stateful\">\n            <delegate>true</delegate>\n            <administrative>true</administrative>\n            <tlvs>\n                <vendor-information-tlv>\n                    <enterprise-number>9</enterprise-number>\n                    <igp-auto-route xmlns:cisco=\"urn:opendaylight:params:xml:ns:yang:pcep:cisco\"/>\n                </vendor-information-tlv>\n            </tlvs>\n        </lsp>\n        <endpoints-obj>\n            <ipv4>\n                <source-ipv4-address>192.168.100.1</source-ipv4-address>\n                <destination-ipv4-address>192.168.100.4</destination-ipv4-address>\n            </ipv4>\n        </endpoints-obj>\n        <ero>\n            <subobject>\n                <loose>false</loose>\n                <ip-prefix><ip-prefix>192.168.101.2/32</ip-prefix></ip-prefix>\n            </subobject>\n            <subobject>\n                <loose>false</loose>\n                <ip-prefix><ip-prefix>192.168.105.2/32</ip-prefix></ip-prefix>\n            </subobject>\n            <subobject>\n                <loose>false</loose>\n                <ip-prefix><ip-prefix>192.168.100.4/32</ip-prefix></ip-prefix>\n            </subobject>\n        </ero>\n    </arguments>\n    <network-topology-ref xmlns:topo=\"urn:TBD:params:xml:ns:yang:network-topology\">/topo:network-topology/topo:topology[topo:topology-id=\"pcep-topology\"]</network-topology-ref>\n</input>"
+		},
+		{
+			"id": "ea9e36ad-0ce2-6427-b64d-7ea32e3161e5",
+			"headers": "Content-Type: Application/json\nAuthorization: {{authorization}}\n",
+			"url": "{{rpc}}/network-topology-pcep:update-lsp",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1453442415234,
+			"name": "Update LSP dCloud",
+			"description": "",
+			"collectionId": "a638e9af-70ec-4db2-2d8d-35f6803c90a0",
+			"responses": [],
+			"rawModeData": "{\n    \"input\" : {\n        \"node\" : \"pcc://198.19.1.24\",\n        \"name\" : \"LSPtoDC\",\n        \"network-topology-ref\": \"/network-topology:network-topology/network-topology:topology[network-topology:topology-id=\\\"pcep-topology\\\"]\",\n        \"arguments\": {\n            \"pcep-ietf-stateful:lsp\": {\n                \"administrative\": \"true\",\n                \"delegate\": \"true\"\n            },\n            \"ero\" : {\n                \"subobject\" : [\n                    {\n                        \"loose\" : \"false\",\n                        \"ip-prefix\" : { \"ip-prefix\" : \"57.0.0.30/32\" }\n                    },\n                    {\n                        \"loose\" : \"false\",\n                        \"ip-prefix\" : { \"ip-prefix\" : \"56.0.0.29/32\" }\n                    },\n                    {\n                        \"loose\" : \"false\",\n                        \"ip-prefix\" : { \"ip-prefix\" : \"198.19.1.29/32\" }\n                    }\n                ]\n            }\n        }\n    }\n}"
 		}
 	]
 }
