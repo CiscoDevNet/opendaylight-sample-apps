@@ -66,6 +66,34 @@
 			"enabled": true
 		},
 		{
+			"key": "router-ip",
+			"value": "192.168.0.1",
+			"type": "text",
+			"name": "router-ip",
+			"enabled": true
+		},
+		{
+			"key": "router-user",
+			"value": "xrvr",
+			"type": "text",
+			"name": "router-user",
+			"enabled": true
+		},
+		{
+			"key": "router-password",
+			"value": "welcome",
+			"type": "text",
+			"name": "router-password",
+			"enabled": true
+		},
+		{
+			"key": "router-port",
+			"value": "830",
+			"type": "text",
+			"name": "router-port",
+			"enabled": true
+		},
+		{
 			"key": "ctrl",
 			"value": "{{node}}/controller-config/{{mount}}",
 			"type": "text",
@@ -94,7 +122,7 @@
 			"enabled": true
 		}
 	],
-	"timestamp": 1446672920810,
+	"timestamp": 1453444438021,
 	"synced": false,
 	"syncedFilename": ""
 }
