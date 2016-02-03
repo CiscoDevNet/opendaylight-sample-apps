@@ -26,7 +26,8 @@
 		"5b90cc65-8a96-c8af-3b52-20722d4ed471",
 		"42732082-9624-6469-046c-8a0880a717bb",
 		"6ab9b6a7-431e-3d24-2fef-0384a7e896a7",
-		"541fb799-d0e2-bf9e-c35b-07d1b78d6ebc"
+		"541fb799-d0e2-bf9e-c35b-07d1b78d6ebc",
+		"75bab53e-f507-64de-4ecd-05d61ba22d37"
 	],
 	"folders": [],
 	"timestamp": 1410097637559,
@@ -231,6 +232,26 @@
 			"collectionId": "dd7309ac-9beb-43bd-4116-d6390cbec1b9",
 			"responses": [],
 			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<flow xmlns=\"urn:opendaylight:flow:inventory\">\n    <priority>1</priority>\n    <flow-name>bar</flow-name>\n    <match>\n        <in-port>4</in-port>\n        <vlan-match>\n            <vlan-id>\n                <vlan-id-present>true</vlan-id-present>\n                <vlan-id>800</vlan-id>\n            </vlan-id>\n        </vlan-match>\n    </match>\n    <id>1</id>\n    <table_id>0</table_id>\n    <instructions>\n        <instruction>\n            <order>0</order>\n            <apply-actions>\n                <action>\n                   <order>1</order>\n                   <output-action>\n                       <output-node-connector>3</output-node-connector>\n                       <max-length>65535</max-length>\n                   </output-action>\n                </action>\n                <action>\n                    <order>0</order>\n                    <set-field>\n                        <vlan-match>\n                            <vlan-id>\n                                <vlan-id-present>true</vlan-id-present>\n                                <vlan-id>800</vlan-id>\n                            </vlan-id>\n                        </vlan-match>\n                    </set-field>\n                </action>\n            </apply-actions>\n        </instruction>\n    </instructions>\n</flow>"
+		},
+		{
+			"id": "75bab53e-f507-64de-4ecd-05d61ba22d37",
+			"headers": "Content-Type: application/xml\nAccept: application/xml\nAuthentication: null\nAuthorization: Basic YWRtaW46YWRtaW4=\n",
+			"url": "{{cfg}}/opendaylight-inventory:nodes/node/openflow:1/table/1/flow/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1453461395657,
+			"name": "Change DHCP request source port",
+			"description": "",
+			"collectionId": "dd7309ac-9beb-43bd-4116-d6390cbec1b9",
+			"responses": [],
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<flow xmlns=\"urn:opendaylight:flow:inventory\">\n    <priority>1</priority>\n    <flow-name>mod-dhcp-port</flow-name>\n    <match>\n        <ethernet-match>\n            <ethernet-type>\n                <type>0x800</type>\n            </ethernet-type>\n        </ethernet-match>\n        <ipv4-destination>255.255.255.255/32</ipv4-destination>\n        <ipv4-source>0.0.0.0/32</ipv4-source>\n        <ip-match>\n            <ip-protocol>17</ip-protocol>\n            <ip-proto>ipv4</ip-proto>\n        </ip-match>\n        <udp-source-port>68</udp-source-port>\n    </match>\n    <id>1</id>\n    <table_id>1</table_id>\n    <instructions>\n        <instruction>\n            <order>0</order>\n            <apply-actions>\n                <action>\n                   <order>0</order>\n                   <set-field>\n                        <udp-source-port>1234</udp-source-port>\n                   </set-field>\n                </action>\n            </apply-actions>\n        </instruction>\n    </instructions>\n</flow>"
 		},
 		{
 			"id": "7e820a1c-bbe2-e173-85f5-f3b1926a241c",
@@ -490,24 +511,23 @@
 		},
 		{
 			"id": "fd09340a-5de9-1e6f-8788-74cff03b7b7c",
-			"headers": "Content-Type: application/json\nAccept: application/json\nAuthentication: \n",
+			"headers": "Authorization: {{authorization}}\nContent-Type: application/json\n",
 			"url": "{{rpc}}/sal-flow:add-flow",
-			"pathVariables": {},
 			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "POST",
-			"collectionId": "dd7309ac-9beb-43bd-4116-d6390cbec1b9",
 			"data": [],
 			"dataMode": "raw",
-			"name": "Add Flow to Lithium with RPC",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1432840020243,
 			"version": 2,
-			"responses": [],
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"rawModeData": "{\n    \"input\": {   \n        \"transaction-uri\" : \"foo\",\n        \"flow-ref\" : \"/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:node-id=\\\"openflow:1\\\"]/opendaylight-inventory:table/0/opendaylight-inventory:flow/0\",\n        \"node\" : \"/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:node-id=\\\"openflow:1\\\"]\",\n        \"flow-table\" : \"/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:node-id=\\\"openflow:1\\\"]/opendaylight-inventory:table/0\",\n        \"flow\": {\n            \"match\": {\n                \"in-port\": \"openflow:1:1\",\n                \"ethernet-match\" : {\n                    \"ethernet-type\" : {\n                        \"type\" : 2048  \n                    }\n                },\n                \"ip-match\": {\n                    \"ip-protocol\" : 17\n                }\n            },\n            \"instructions\": {\n                \"instruction\": [    \n                    {\n                        \"order\": 0,\n                        \"apply-actions\": {\n                            \"action\": [\n                                {\n                                    \"order\": 0,\n                                    \"output-action\": {\n                                        \"output-node-connector\": \"2\",\n                                        \"max-length\": 65535\n                                    }\n                                },\n                                {\n                                    \"order\": 1,\n                                    \"output-action\": { \n                                        \"output-node-connector\": \"3\",\n                                        \"max-length\": 65535\n                                    }\n                                }\n                            ]\n                        }\n                    }\n                ]\n            },\n            \"priority\": 2,\n            \"idle-timeout\": 0,\n            \"hard-timeout\": 0,\n            \"cookie\": 3098476543630901223,\n            \"table_id\": 0,\n            \"flow-name\" : \"fork\"\n        }\n    }\n}"
+			"time": 1453467007352,
+			"name": "Add Flow to Lithium with RPC",
+			"description": "",
+			"collectionId": "dd7309ac-9beb-43bd-4116-d6390cbec1b9",
+			"responses": [],
+			"rawModeData": "{\n    \"input\": {   \n        \"transaction-uri\" : \"foo\",\n        \"node\" : \"/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:id=\\\"openflow:1\\\"]\",\n        \"flow-table\" : \"/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:id=\\\"openflow:1\\\"]/flow-node-inventory:table[flow-node-inventory:id=\\\"1\\\"]\",\n        \"flow-ref\" : \"/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:id=\\\"openflow:1\\\"]/flow-node-inventory:table[flow-node-inventory:id=\\\"1\\\"]/flow-node-inventory:flow[flow-node-inventory:id=\\\"1\\\"]\",\n        \"match\": {\n            \"ethernet-match\" : {\n                \"ethernet-type\" : {\n                    \"type\" : \"0x800\"\n                }\n            },\n            \"ip-match\": {\n                \"ip-protocol\" : 17,\n                \"ip-proto\" : \"ipv4\"\n            },\n            \"ipv4-source\" : \"0.0.0.0/32\",\n            \"ipv4-destination\" : \"255.255.255.255/32\",\n            \"udp-source-port\" : 68\n        },\n        \"instructions\": {\n            \"instruction\": [    \n                {\n                    \"order\": 0,\n                    \"apply-actions\": {\n                        \"action\": [\n                            {\n                                \"order\": 0,\n                                \"set-tp-src-action\" : { \n                                    \"port\" : 1234\n                                }\n                            },\n                            {\n                                \"order\": 1,\n                                \"output-action\": { \n                                    \"output-node-connector\": \"1\",\n                                    \"max-length\": 65535\n                                }\n                            }\n                        ]\n                    }\n                }\n            ]\n        },\n        \"priority\": 2,\n        \"idle-timeout\": 0,\n        \"hard-timeout\": 0,\n        \"cookie\": 123456,\n        \"flow-name\" : \"foo\"\n    }\n}"
 		}
 	]
 }
