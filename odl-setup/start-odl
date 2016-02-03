@@ -18,11 +18,23 @@ do
 	up=$(netstat -an | grep 127.0.0.1:1830 | wc -l)
 	if [ $up == 2 ]
 	then
-		echo "ODL is up"
-		exit 0
+		echo "ODL is nearly ready"
+		break
 	else
-		echo "Waiting for ODL to start"
+		echo "ODL is starting"
 		sleep 5
 	fi 
 done
 
+while true;
+do
+	ready=$(curl http://admin:admin@localhost:8181/restconf/operational/network-topology:network-topology/topology/topology-netconf/node/controller-config 2>&1)
+	if echo $ready | grep -q "connected";
+	then
+		echo "ODL is ready!"
+		exit 0
+	else
+		echo "ODL is almost ready"
+		sleep 5
+	fi
+done
