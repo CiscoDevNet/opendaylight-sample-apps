@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export DISTRO=distribution-karaf-0.3.3-SNAPSHOT
+DISTRO=$(<distro)
+cd OpenDaylight
 rm -rf $DISTRO/data
 rm -rf $DISTRO/etc/opendaylight/current
 rm -rf $DISTRO/cache
@@ -8,8 +9,18 @@ rm -rf $DISTRO/journal
 rm -rf $DISTRO/snapshots
 rm -rf $DISTRO/instances
 mkdir -p $DISTRO/etc/opendaylight/karaf
-cp org.ops4j.pax.logging.cfg $DISTRO/etc
-cp org.apache.karaf.features.cfg $DISTRO/etc
+
+if grep -q -v "10000MB" $DISTRO/etc/org.ops4j.pax.logging.cfg;
+then
+	sed -i 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
+	cat ../logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg 	
+fi
+
+if grep -q -v "bgpcep-bgp-all" $DISTRO/etc/org.apache.karaf.features.cfg;
+then
+	sed -i '/^featuresBoot=/ s/$/,odl-dlux-all,odl-netconf-all,odl-restconf-all,odl-netconf-mdsal,odl-bgpcep-bgp-all,odl-bgpcep-pcep-all,odl-netconf-connector-all/' $DISTRO/etc/org.apache.karaf.features.cfg
+fi
+
 source $DISTRO/bin/setenv
 $DISTRO/bin/start
 
@@ -38,3 +49,4 @@ do
 		sleep 5
 	fi
 done
+

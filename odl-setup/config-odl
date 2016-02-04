@@ -13,16 +13,21 @@ fi
 echo $ip
 
 # mount nodes using NETCONF
-./post-nodes.py $ip
+while read -r line
+do
+	addr=$(echo $line | cut -f1 -d" ")
+	name=$(echo $line | cut -f2 -d" ")
+	python/put-node.py localhost $addr $name
+done < nodes
 
 # configure ODL BGP RIB
-./put-bgp-rib.py $ip
-./put-app-rib.py $ip 1.2.3.4 
+python/put-bgp-rib.py $ip
+python/put-app-rib.py $ip 1.2.3.4 
 
 # wait for BGP peer to be mounted by NETCONF
 while true;
 do
-	./is-node-connected.py $ip sjc 
+	python/is-node-connected.py $ip sjc 
 	if [ $? -eq 0 ]
 	then
   		echo "NETCONF node up"
@@ -34,7 +39,12 @@ do
 done
 
 # configure BGP peer to talk to ODL
-./put-bgp-neighbor.py $ip sjc
+python/put-bgp-neighbor.py $ip sjc
 
 # configure ODL to talk to BGP peer
-./put-bgp-peer.py $ip 198.18.1.37
+python/put-bgp-peer.py $ip 198.19.1.30
+
+# configure PCE-P on the routers (only works for dCloud)
+req='{"request": [{"option": "addPCEP", "pcep_ip":"'$ip'"}]}'
+echo $req
+echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @- 

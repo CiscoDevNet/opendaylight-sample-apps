@@ -1,6 +1,7 @@
 #!/bin/bash
-export DISTRO=distribution-karaf-0.3.3-SNAPSHOT
-$DISTRO/bin/stop
+DISTRO=$(<distro)
+echo $DISTRO
+OpenDaylight/$DISTRO/bin/stop
 
 while true;
 do
