@@ -35,7 +35,7 @@ Within that directory create an "images" subdirectory and copy the appropriate O
 
 **logs** extra logs to run
 
-**nodes** list of NETCONF nodes
+**nodes** list of NETCONF nodes.  Last node in the list is the BGP neighbor.
 
 ### Python scripts are:
 
@@ -50,4 +50,3 @@ Within that directory create an "images" subdirectory and copy the appropriate O
 **put-bgp-peer.py** configures ODL's BGP peer (XR)
 
 **put-bgp-neighbor.py** configures XR with ODL as a BGP peer
-

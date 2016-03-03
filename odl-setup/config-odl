@@ -48,12 +48,15 @@ then
 
 	if grep -q "odl-netconf" features;
 	then
-		# configure BGP peer to talk to ODL
-		python/put-bgp-neighbor.py $ip sjc
+		if $dcloud;
+		then	
+			# configure BGP peer to talk to ODL
+			python/put-bgp-neighbor.py $ip $name 
+		fi
 	fi
 
 	# configure ODL to talk to BGP peer
-	python/put-bgp-peer.py $ip 198.19.1.30
+	python/put-bgp-peer.py $ip $addr
 fi
 
 if grep -q "odl-bgpcep-pcep" features;
