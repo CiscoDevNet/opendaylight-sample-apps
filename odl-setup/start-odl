@@ -1,7 +1,6 @@
 #!/bin/bash
 
 DISTRO=$(<distro)
-cd OpenDaylight
 rm -rf $DISTRO/data
 rm -rf $DISTRO/etc/opendaylight/current
 rm -rf $DISTRO/cache
@@ -12,10 +11,17 @@ mkdir -p $DISTRO/etc/opendaylight/karaf
 
 if grep -q "1MB" $DISTRO/etc/org.ops4j.pax.logging.cfg;
 then
+	echo "configuring logging and features"
 	sed -i 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
 	cat ../logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg 	
-	
-	sed -i '/^featuresBoot=/ s/$/,odl-dlux-all,odl-netconf-all,odl-restconf-all,odl-netconf-mdsal,odl-bgpcep-bgp-all,odl-bgpcep-pcep-all,odl-netconf-connector-all/' $DISTRO/etc/org.apache.karaf.features.cfg
+
+	# add features
+	while read -r line
+	do
+		feature=$(echo $line)
+		echo $feature
+		sed -i '/^featuresBoot=/ s/$/,'$feature'/' $DISTRO/etc/org.apache.karaf.features.cfg
+	done < features	
 fi
 
 source $DISTRO/bin/setenv
