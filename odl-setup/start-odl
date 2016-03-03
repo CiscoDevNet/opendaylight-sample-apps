@@ -7,22 +7,6 @@ rm -rf $DISTRO/cache
 rm -rf $DISTRO/journal
 rm -rf $DISTRO/snapshots
 rm -rf $DISTRO/instances
-mkdir -p $DISTRO/etc/opendaylight/karaf
-
-if grep -q "1MB" $DISTRO/etc/org.ops4j.pax.logging.cfg;
-then
-	echo "configuring logging and features"
-	sed -i 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
-	cat ../logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg 	
-
-	# add features
-	while read -r line
-	do
-		feature=$(echo $line)
-		echo $feature
-		sed -i '/^featuresBoot=/ s/$/,'$feature'/' $DISTRO/etc/org.apache.karaf.features.cfg
-	done < features	
-fi
 
 source $DISTRO/bin/setenv
 $DISTRO/bin/start
