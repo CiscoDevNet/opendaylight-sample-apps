@@ -6,7 +6,7 @@ attrib = attributes()
 route = app_route("172.23.29.120")
 
 attrib.set_communities("100:100")
-attrib.set_next_hop("4.3.2.1")
+attrib.set_next_hop("172.23.29.120")
 
 print attrib
 

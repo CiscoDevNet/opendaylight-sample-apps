@@ -10,14 +10,11 @@ rm -rf $DISTRO/snapshots
 rm -rf $DISTRO/instances
 mkdir -p $DISTRO/etc/opendaylight/karaf
 
-if grep -q -v "10000MB" $DISTRO/etc/org.ops4j.pax.logging.cfg;
+if grep -q "1MB" $DISTRO/etc/org.ops4j.pax.logging.cfg;
 then
 	sed -i 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
 	cat ../logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg 	
-fi
-
-if grep -q -v "bgpcep-bgp-all" $DISTRO/etc/org.apache.karaf.features.cfg;
-then
+	
 	sed -i '/^featuresBoot=/ s/$/,odl-dlux-all,odl-netconf-all,odl-restconf-all,odl-netconf-mdsal,odl-bgpcep-bgp-all,odl-bgpcep-pcep-all,odl-netconf-connector-all/' $DISTRO/etc/org.apache.karaf.features.cfg
 fi
 
