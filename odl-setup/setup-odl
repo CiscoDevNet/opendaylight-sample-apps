@@ -8,7 +8,7 @@ if grep -q "1MB" $DISTRO/etc/org.ops4j.pax.logging.cfg;
 then
 	echo "configuring logging and features"
 	sed -i 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
-	cat ../logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg 	
+	cat logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg 	
 
 	# add features
 	while read -r line
