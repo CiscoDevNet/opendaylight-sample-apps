@@ -1,13 +1,18 @@
 # odl-setup
 This directory contains setup scripts for ODL.
 
-Install these files into a directory (e.g. "ODL")
+Install these files into a directory (e.g. "ODL").
 
 Within that directory create an "images" subdirectory and copy the appropriate OpenDaylight distribution file (.tar.gz) there.
 
+So you will now have 2 subdirectories:
+
+* python
+* images
+
 ### Scripts are:
 
-**unpack-odl** unpacks the .tar.gz file
+**unpack-odl** unpacks the .tar.gz file.  Creates a new subdirectory for the ODL distro.
 
 **setup-odl** sets up logging/features for ODL
 
