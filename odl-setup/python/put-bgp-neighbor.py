@@ -14,7 +14,7 @@ request_template = '''
     {
       "neighbor-address": "%s",
       "session-open-mode": "passive-only",
-      "update-source-interface": "Loopback0",
+      "update-source-interface": "MgmtEth0/0/CPU0/0",
       "remote-as": {
         "as-xx": 0,
         "as-yy": %d
