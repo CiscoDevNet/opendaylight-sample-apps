@@ -187,22 +187,22 @@
 		{
 			"id": "8ee26c8d-344e-5cfc-bf7e-3e861f10047c",
 			"headers": "Content-Type: application/xml\nAccept: application/xml\nAuthorization: {{authorization}}\n",
-			"url": "{{cfg}}/opendaylight-inventory:nodes/node/openflow:{{openflow-node}}/table/0/flow/0",
+			"url": "{{cfg}}/opendaylight-inventory:nodes/node/openflow:{{openflow-node}}/table/0",
 			"preRequestScript": "",
 			"pathVariables": {},
-			"method": "PUT",
+			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1457991751407,
+			"time": 1457995697802,
 			"name": "set DSCP",
 			"description": "",
 			"collectionId": "dd7309ac-9beb-43bd-4116-d6390cbec1b9",
 			"responses": [],
-			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<flow xmlns=\"urn:opendaylight:flow:inventory\">\n    <priority>0</priority>\n    <flow-name>dscp-set</flow-name>\n    <match>\n        <in-port>7</in-port>\n        <ethernet-match>\n            <ethernet-type>\n                <type>0x800</type>\n            </ethernet-type>\n        </ethernet-match>\n        <ipv4-destination>2.2.2.2/32</ipv4-destination>\n    </match>\n    <id>0</id>\n    <table_id>0</table_id>\n    <instructions>\n        <instruction>\n            <order>0</order>\n            <apply-actions>\n                <action>\n                    <order>0</order>\n                    <set-field>\n                        <ip-match>\n                            <ip-dscp>46</ip-dscp>\n                        </ip-match>\n                    </set-field>\n                </action>\n                <action>\n                   <order>1</order>\n                   <output-action>\n                       <output-node-connector>/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:id='openflow:{{openflow-node}}']/opendaylight-inventory:node-connector[opendaylight-inventory:id='openflow:{{openflow-node}}:8']</output-node-connector>\n                       <max-length>65535</max-length>\n                   </output-action>\n                </action>\n            </apply-actions>\n        </instruction>\n    </instructions>\n</flow>"
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<flow xmlns=\"urn:opendaylight:flow:inventory\">\n    <priority>0</priority>\n    <flow-name>dscp-set</flow-name>\n    <match>\n        <in-port>7</in-port>\n        <ethernet-match>\n            <ethernet-type>\n                <type>0x800</type>\n            </ethernet-type>\n        </ethernet-match>\n        <ipv4-destination>2.2.2.2/32</ipv4-destination>\n    </match>\n    <id>0</id>\n    <table_id>0</table_id>\n    <instructions>\n        <instruction>\n            <order>0</order>\n            <apply-actions>\n                <action>\n                    <order>0</order>\n                    <set-field>\n                        <ip-match>\n                            <ip-dscp>46</ip-dscp>\n                        </ip-match>\n                    </set-field>\n                </action>\n                <action>\n                   <order>1</order>\n                   <output-action>\n                       <output-node-connector>8</output-node-connector>\n                       <max-length>65535</max-length>\n                   </output-action>\n                </action>\n            </apply-actions>\n        </instruction>\n    </instructions>\n</flow>"
 		},
 		{
 			"id": "aa0048fa-e631-6321-dd82-d521d71edd86",
