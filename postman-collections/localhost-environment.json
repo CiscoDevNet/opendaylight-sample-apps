@@ -60,14 +60,14 @@
 		},
 		{
 			"key": "router",
-			"value": "xrvr-1",
+			"value": "xrvr-a",
 			"type": "text",
 			"name": "router",
 			"enabled": true
 		},
 		{
 			"key": "router-ip",
-			"value": "192.168.0.1",
+			"value": "172.23.29.116",
 			"type": "text",
 			"name": "router-ip",
 			"enabled": true
@@ -113,9 +113,16 @@
 			"type": "text",
 			"name": "authorization",
 			"enabled": true
+		},
+		{
+			"key": "{{openflow-node}}",
+			"value": "1",
+			"type": "text",
+			"name": "{{openflow-node}}",
+			"enabled": true
 		}
 	],
-	"timestamp": 1453445954955,
+	"timestamp": 1457993015095,
 	"synced": false,
 	"syncedFilename": ""
 }
