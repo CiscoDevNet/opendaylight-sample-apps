@@ -33,7 +33,7 @@ class app_route(object):
 		self.base_url = 'http://%s:8181/restconf/config' % controller_ip
 
 	def _make_url(self, prefix):
-		return self.base_url + self.routes + '/ipv4-route/' + urllib.quote_plus(prefix)
+		return self.base_url + self.routes + '/ipv4-route/' + urllib.quote_plus(prefix) + '/0'
 
 	def _get_data(self, url):
 		return json.loads(requests.get(url, headers=self.base_hdr).text)
@@ -51,5 +51,5 @@ class app_route(object):
 		return self._del_data(self._make_url(prefix))
 
 	def put_app_route(self, prefix, attributes):
-		self._put_data(self._make_url(prefix), {"bgp-inet:ipv4-route":[{"prefix":prefix, "attributes":attributes}]})
+		self._put_data(self._make_url(prefix), {"bgp-inet:ipv4-route":[{"path-id":0, "prefix":prefix, "attributes":attributes}]})
 

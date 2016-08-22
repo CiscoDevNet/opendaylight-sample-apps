@@ -10,4 +10,4 @@ attrib.set_next_hop("172.23.29.120")
 
 print attrib
 
-route.put_app_route("1.2.3.4/32", attrib.get())
+route.put_app_route("192.168.1.0/24", attrib.get())
