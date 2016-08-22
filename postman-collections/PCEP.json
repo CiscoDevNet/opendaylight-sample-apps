@@ -10,7 +10,8 @@
 		"dea35984-cbf8-8d30-02bd-020eb6c56736",
 		"21bba99a-0573-f813-cba9-fcdd4cfd8847",
 		"a02e6cab-9f8b-ad9f-4036-8af8983a6b27",
-		"0db0271e-06a8-d6f3-d03e-a9c6505e6b19"
+		"0db0271e-06a8-d6f3-d03e-a9c6505e6b19",
+		"71541fcb-e3df-e8fc-c364-c26cded93ddb"
 	],
 	"folders": [],
 	"timestamp": 1430516363129,
@@ -97,6 +98,26 @@
 			"collectionId": "abc9cb9d-9ab8-0314-f529-8e76be263f85",
 			"responses": [],
 			"rawModeData": "{\n    \"input\" : { \n        \"node\" : \"pcc://192.168.100.1\",\n        \"name\" : \"foo\",\n        \"network-topology-ref\": \"/network-topology:network-topology/network-topology:topology[network-topology:topology-id=\\\"pcep-topology\\\"]\"\n    }\n}    \n"
+		},
+		{
+			"id": "71541fcb-e3df-e8fc-c364-c26cded93ddb",
+			"headers": "Content-Type: Application/json\nAuthorization: {{authorization}}\nAccept: application/json\n",
+			"url": "{{rpc}}/network-topology-pcep:add-lsp",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1471878312942,
+			"name": "Add SR LSP",
+			"description": "",
+			"collectionId": "abc9cb9d-9ab8-0314-f529-8e76be263f85",
+			"responses": [],
+			"rawModeData": "{\n    \"input\": {\n        \"node\": \"pcc://192.168.100.1\",\n        \"name\": \"bar\",\n        \"network-topology-ref\": \"/network-topology:network-topology/network-topology:topology[network-topology:topology-id=\\\"pcep-topology\\\"]\",\n        \"arguments\": {\n            \"odl-pcep-ietf-stateful07:lsp\" : {\n                \"delegate\" : \"true\",\n                \"administrative\" : \"true\"\n            },\n            \"endpoints-obj\": {\n                \"ipv4\": {\n                    \"source-ipv4-address\": \"192.168.100.1\",\n                    \"destination-ipv4-address\": \"192.168.100.4\"\n                }\n            },\n            \"path-setup-type\" : {\n                \"pst\" : 1\n            },\n            \"ero\" : {\n                \"subobject\" : [\n                    {\n                        \"loose\" : \"false\",\n                        \"sid-type\" : \"ipv4-node-id\",\n                        \"m-flag\" : \"true\",\n                        \"sid\" : \"16001\",\n                        \"ip-address\" : 192.168.100.2\n                    },\n                    {\n                        \"loose\" : \"false\",\n                        \"sid-type\" : \"ipv4-node-id\",\n                        \"m-flag\" : \"true\",\n                        \"sid\" : \"16003\",\n                        \"ip-address\" : \"192.168.100.4\"\n                    }\n                ]\n            }\n        }\n    }\n}"
 		},
 		{
 			"id": "a02e6cab-9f8b-ad9f-4036-8af8983a6b27",
