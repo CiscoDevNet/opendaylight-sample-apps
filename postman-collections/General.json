@@ -10,7 +10,8 @@
 		"ee9c727e-e7c9-addd-62ba-77c1561768d4",
 		"23387d99-d76e-c7d1-3d12-60b51c9393c5",
 		"75d0842b-ace3-7fe6-0864-1628777f18aa",
-		"37f10cd2-fda0-be46-2bda-a8059c36116d"
+		"37f10cd2-fda0-be46-2bda-a8059c36116d",
+		"ad2905da-4559-f987-d5d6-eabb08f004cc"
 	],
 	"folders": [],
 	"timestamp": 1431804815584,
@@ -128,6 +129,25 @@
 			"helperAttributes": {},
 			"time": 1470849702068,
 			"name": "Config Modules",
+			"description": "",
+			"collectionId": "a2b73773-722e-b305-698f-a6b269862970",
+			"responses": []
+		},
+		{
+			"id": "ad2905da-4559-f987-d5d6-eabb08f004cc",
+			"headers": "Authorization: {{authorization}}\n",
+			"url": "{{restconf}}/modules/module/network-topology/2013-07-12/schema",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1471884584195,
+			"name": "Get yin schema for network-topology",
 			"description": "",
 			"collectionId": "a2b73773-722e-b305-698f-a6b269862970",
 			"responses": []
