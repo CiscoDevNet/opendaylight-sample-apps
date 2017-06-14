@@ -1,0 +1,311 @@
+{
+	"variables": [],
+	"info": {
+		"name": "OVSDB",
+		"_postman_id": "6fd8ec43-d01c-0a64-c46c-4586e4914e30",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get H/W VTEP cfg topo",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"odl\",\n            \"odl-sal-netconf-connector-cfg:address\": \"localhost\",\n            \"odl-sal-netconf-connector-cfg:port\": 2830,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add H/W VTEP by IP/port",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"network-topology:node\": [\n       {\n           \"node-id\": \"hwvtep://10.23.236.204:6640\",\n           \"hwvtep:connection-info\":\n           {\n               \"hwvtep:remote-port\": 6640,\n               \"hwvtep:remote-ip\": \"10.23.236.204\"\n           }\n       }\n   ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get H/W VTEP oper topo",
+			"request": {
+				"url": "{{oper}}/{{topo}}/hwvtep:1/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"odl\",\n            \"odl-sal-netconf-connector-cfg:address\": \"localhost\",\n            \"odl-sal-netconf-connector-cfg:port\": 2830,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add H/W VTEP by UUID",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"network-topology:node\": [\n       {\n           \"node-id\": \"hwvtep://uuid/ccba2157-0b9d-4e04-bdf8-6e3e21003965\",\n           \"hwvtep:connection-info\":\n           {\n               \"hwvtep:remote-port\": 6640,\n               \"hwvtep:remote-ip\": \"hwvtep://uuid/ccba2157-0b9d-4e04-bdf8-6e3e21003965\"\n           }\n       }\n   ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create logical switch",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/node/hwvtep:%2F%2Fuuid%2F3cf35383-ebf0-4d1f-b046-67166df6e302",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"logical-switches\": [\n       {\n           \"hwvtep-node-name\": \"ls0\",\n           \"hwvtep-node-description\": \"\",\n           \"tunnel-key\": \"10000\"\n        }\n   ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create Mcast MAC Entry",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/node/hwvtep:%2F%2Fuuid%2F63b08ea2-baf5-4420-adeb-aaa6af1a085e",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"remote-mcast-macs\": [\n       {\n           \"mac-entry-key\": \"00:00:00:00:00:00\",\n           \"logical-switch-ref\": \"/network-topology:network-topology/network-topology:topology[network-topology:topology-id='hwvtep:1']/network-topology:node[network-topology:node-id='hwvtep://uuid/63b08ea2-baf5-4420-adeb-aaa6af1a085e']/hwvtep:logical-switches[hwvtep:hwvtep-node-name='ls0']\",\n              \"locator-set\": [\n                {\n                  \"locator-ref\": \"/network-topology:network-topology/network-topology:topology[network-topology:topology-id='hwvtep:1']/network-topology:node[network-topology:node-id='hwvtep://uuid/63b08ea2-baf5-4420-adeb-aaa6af1a085e']/network-topology:termination-point[network-topology:tp-id='vxlan_over_ipv4:1.1.1.1']\"\n                }\n            ]\n       }\n   ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create VTEP TP",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/node/hwvtep:%2F%2Fuuid%2Fd9bd2b46-e81f-4592-ac98-5938f1a6236b",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"termination-point\": [\n            {\n              \"tp-id\": \"vxlan_over_ipv4:1.1.1.1\",\n              \"hwvtep:encapsulation-type\": \"hwvtep:encapsulation-type-vxlan-over-ipv4\",\n              \"hwvtep:dst-ip\": \"1.1.1.1\"\n            }\n     ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create physical port TP",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/node/hwvtep:%2F%2Fuuid%2F61c2b2cf-607b-46e4-ac1c-4d6090b556bb%2Fphysicalswitch%2Fovsdb-plugin/termination-point/eth1%2F7%2F1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"network-topology:termination-point\": [\n       {\n           \"tp-id\": \"eth1/7/1\",\n           \"hwvtep-node-name\": \"eth1/7/1\",\n           \"hwvtep-node-description\": \"\",\n           \"vlan-bindings\": [\n               {\n                 \"vlan-id-key\": \"100\",\n                 \"logical-switch-ref\": \"/network-topology:network-topology/network-topology:topology[network-topology:topology-id='hwvtep:1']/network-topology:node[network-topology:node-id='hwvtep://uuid/61c2b2cf-607b-46e4-ac1c-4d6090b556bb']/hwvtep:logical-switches[hwvtep:hwvtep-node-name='ls0']\"\n               }\n         ]\n       }\n   ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete H/W VTEP by UUID",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/node/hwvtep:%2F%2Fuuid%2Fc979b0aa-9fb9-4466-974d-63edf3d741c9%2Fphysicalswitch%2FSB-DEV-NODE2",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"odl\",\n            \"odl-sal-netconf-connector-cfg:address\": \"localhost\",\n            \"odl-sal-netconf-connector-cfg:port\": 2830,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create remote ucast MAC",
+			"request": {
+				"url": "{{cfg}}/{{topo}}/hwvtep:1/node/hwvtep:%2F%2Fuuid%2F83cc2599-c2ce-40c8-b41b-e7f8d3ea48c5",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"remote-ucast-macs\": [\n       {\n            \"mac-entry-key\": \"74:26:AC:EC:3B:4F\",\n            \"logical-switch-ref\": \"/network-topology:network-topology/network-topology:topology[network-topology:topology-id='hwvtep:1']/network-topology:node[network-topology:node-id='hwvtep://uuid/83cc2599-c2ce-40c8-b41b-e7f8d3ea48c5']/hwvtep:logical-switches[hwvtep:hwvtep-node-name='ls0']\",\n        \t\"locator-ref\": \"/network-topology:network-topology/network-topology:topology[network-topology:topology-id='hwvtep:1']/network-topology:node[network-topology:node-id='hwvtep://uuid/83cc2599-c2ce-40c8-b41b-e7f8d3ea48c5']/network-topology:termination-point[network-topology:tp-id='vxlan_over_ipv4:']\"\n       }\n   ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
