@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-from route_attributes import attributes
-from v4_uni_app_route import app_route
+import v4_uni_app_route
+import route_attributes
 import sys
 
 if __name__ == "__main__":
@@ -13,14 +13,14 @@ if __name__ == "__main__":
     prefix = sys.argv[2]
 
     # initialise route object
-    route = app_route(controller)
+    route = v4_uni_app_route(controller)
 
     # set route attributes
-    attrib = attributes()
+    attrib = route_attributes()
     attrib.set_communities("100:100")
     attrib.set_next_hop(controller)
 
     # advertise route
-    route.put_app_route(prefix, attrib.get())
+    route.put_route(prefix, attrib.get())
 
     print "%s advertised" % sys.argv[2]

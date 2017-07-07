@@ -4,13 +4,13 @@
 
 API:
 
-get_app_route - gets one specific app route
+get_route - gets one specific app route
 parameter: IPv4 prefix
 
-del_app_route - deletes one specific app route
+del_route - deletes one specific app route
 parameter: IPv4 prefix
 
-put_app_route - adds an app route
+put_route - adds an app route
 parameters: IPv4 prefix, attributes
 """
 #!/usr/bin/env python
@@ -19,7 +19,7 @@ import json
 import requests
 import urllib
 
-class app_route(object):
+class v4_uni_app_route(object):
 	base_hdr = {	'Authorization' : 'Basic YWRtaW46YWRtaW4=',
 					'Content-Type' : 'application/json' }
 	routes = 	'/bgp-rib:application-rib/example-app-rib' \
@@ -44,12 +44,12 @@ class app_route(object):
 	def _put_data(self, url, data):
 		return requests.put(url, data=json.dumps(data), headers=self.base_hdr)
 
-	def get_app_route(self, prefix):
+	def get_route(self, prefix):
 		return self._get_data(self._make_url(prefix))
 
-	def del_app_route(self, prefix):
+	def del_route(self, prefix):
 		return self._del_data(self._make_url(prefix))
 
-	def put_app_route(self, prefix, attributes):
+	def put_route(self, prefix, attributes):
 		self._put_data(self._make_url(prefix), {"bgp-inet:ipv4-route":[{"path-id":0, "prefix":prefix, "attributes":attributes}]})
 

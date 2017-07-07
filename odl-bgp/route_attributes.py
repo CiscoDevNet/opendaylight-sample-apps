@@ -43,7 +43,7 @@ parameter: IPv4 address for cluster
 
 import json
 
-class attributes(object):
+class route_attributes(object):
 
 	def __init__(self):
 		self.attributes = {}
