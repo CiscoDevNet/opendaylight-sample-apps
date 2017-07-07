@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import v4_uni_app_route
-import route_attributes
+from v4_uni_app_route import v4_uni_app_route
+from route_attributes import route_attributes
 import sys
 
 if __name__ == "__main__":

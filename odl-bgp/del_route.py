@@ -1,12 +1,18 @@
 #!/usr/bin/env python
-import v4_uni_app_route
+from v4_uni_app_route import v4_uni_app_route
 import sys
 
-controller = sys.argv[1]
-prefix = sys.argv[2]
+if __name__ == "__main__":
+    # check args length
+    if (len(sys.argv) != 3):
+        print "usage %s ODL_IP_address IP_Prefix" % sys.argv[0]
+        sys.exit(1)
 
-# initialise route
-route = v4_uni_app_route(controller)
+    controller = sys.argv[1]
+    prefix = sys.argv[2]
 
-# delete route
-route.del_route(prefix)
+    # initialise route
+    route = v4_uni_app_route(controller)
+
+    # delete route
+    route.del_route(prefix)
