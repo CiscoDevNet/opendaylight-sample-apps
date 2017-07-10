@@ -1,0 +1,280 @@
+{
+	"variables": [],
+	"info": {
+		"name": "OpenConfig BGP",
+		"_postman_id": "a5841281-4986-4665-7703-a88d4a9466ca",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "OpenConfig Oper",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Local RIB Info",
+					"request": {
+						"url": "{{oper}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Peers",
+					"request": {
+						"url": "{{oper}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp/neighbors",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Peer",
+					"request": {
+						"url": "{{oper}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp/neighbors/neighbor/{{router-ip}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OpenConfig Setup",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Network Instances",
+					"request": {
+						"url": "{{cfg}}/openconfig-network-instance:network-instances",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get RIB config",
+					"request": {
+						"url": "{{cfg}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Configure local RIB",
+					"request": {
+						"url": "{{cfg}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp/global",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"bgp-openconfig-extensions:global\": {\n    \t\"config\": {\n    \t\t\"as\": {{asn}},\n    \t\t\"router-id\": \"{{controller-ip}}\"\n    \t},\n    \t\"afi-safis\": {\n            \"afi-safi\": [\n            \t{\n                    \"afi-safi-name\": \"openconfig-bgp-types:IPV4-LABELLED-UNICAST\"\n                },\n                {\n                    \"afi-safi-name\": \"bgp-openconfig-extensions:IPV6-L3VPN-FLOW\"\n                },\n                {\n                    \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n                },\n                {\n                    \"afi-safi-name\": \"bgp-openconfig-extensions:IPV4-L3VPN-FLOW\"\n                },\n                {\n                    \"afi-safi-name\": \"openconfig-bgp-types:L3VPN-IPV6-UNICAST\"\n                },\n                {\n                    \"afi-safi-name\": \"bgp-openconfig-extensions:IPV6-FLOW\"\n                },\n                {\n                    \"afi-safi-name\": \"openconfig-bgp-types:L3VPN-IPV4-UNICAST\"\n                },\n                {\n                    \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n                },\n                {\n                    \"afi-safi-name\": \"openconfig-bgp-types:IPV6-LABELLED-UNICAST\"\n                },\n                {\n                    \"afi-safi-name\": \"openconfig-bgp-types:L2VPN-EVPN\"\n                },\n                {\n                \t\"afi-safi-name\": \"bgp-openconfig-extensions:LINKSTATE\"\n                },\n                {\n                    \"afi-safi-name\": \"bgp-openconfig-extensions:IPV4-FLOW\"\n                }\n            ]\n        }\n    }\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Configure local router-ID/ASN",
+					"request": {
+						"url": "{{cfg}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp/global/config",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"bgp-openconfig-extensions:config\": {\n    \t\"as\": {{asn}},\n    \t\"router-id\": \"{{controller-ip}}\"\n\t}\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Peers",
+					"request": {
+						"url": "{{cfg}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp/neighbors",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Peer",
+					"request": {
+						"url": "{{cfg}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp/neighbors",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:neighbor\": [\n    {\n      \"neighbor-address\": \"{{router-ip}}\",\n      \"timers\": {\n        \"config\": {\n          \"connect-retry\": 10,\n          \"keepalive-interval\": 30,\n          \"hold-time\": 180,\n          \"minimum-advertisement-interval\": 30\n        }\n      },\n      \"afi-safis\": {\n        \"afi-safi\": [\n          {\n            \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n          },\n          {\n            \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n          }\n        ]\n      },\n      \"route-reflector\": {\n        \"config\": {\n          \"route-reflector-client\": false\n        }\n      },\n      \"transport\": {\n        \"config\": {\n          \"remote-port\": 179,\n          \"mtu-discovery\": false,\n          \"passive-mode\": false\n        }\n      },\n      \"config\": {\n        \"send-community\": \"NONE\",\n        \"peer-as\": {{asn}},\n        \"route-flap-damping\": false,\n        \"peer-type\": \"INTERNAL\"\n      }\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add App Peer",
+					"request": {
+						"url": "{{cfg}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp/neighbors",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:neighbor\": [\n    {\n      \"neighbor-address\": \"1.2.3.4\",\n      \"config\": {\n        \"peer-group\": \"application-peers\"\n      }\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Peer",
+					"request": {
+						"url": "{{cfg}}/openconfig-network-instance:network-instances/network-instance/global-bgp/protocols/protocol/openconfig-policy-types:BGP/example-bgp-rib/bgp-openconfig-extensions:bgp/neighbors/neighbor/192.0.2.6",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

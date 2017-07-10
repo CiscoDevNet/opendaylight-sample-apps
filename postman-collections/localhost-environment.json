@@ -1,141 +1,130 @@
 {
-	"id": "1aae0e0d-9eed-1bb3-04a3-97a961e491b1",
-	"name": "OpenDaylight Localhost",
-	"values": [
-		{
-			"key": "controller-ip",
-			"value": "127.0.0.1",
-			"type": "text",
-			"enabled": true
-		},
-		{
-			"key": "restconf-port",
-			"value": "8181",
-			"type": "text",
-			"enabled": true
-		},
-		{
-			"enabled": true,
-			"key": "controller",
-			"name": "controller",
-			"type": "text",
-			"value": "http://{{controller-ip}}:{{restconf-port}}"
-		},
-		{
-			"enabled": true,
-			"key": "restconf",
-			"name": "restconf",
-			"type": "text",
-			"value": "{{controller}}/restconf"
-		},
-		{
-			"enabled": true,
-			"key": "cfg",
-			"name": "cfg",
-			"type": "text",
-			"value": "{{restconf}}/config"
-		},
-		{
-			"enabled": true,
-			"key": "oper",
-			"name": "oper",
-			"type": "text",
-			"value": "{{restconf}}/operational"
-		},
-		{
-			"enabled": true,
-			"key": "rpc",
-			"name": "rpc",
-			"type": "text",
-			"value": "{{restconf}}/operations"
-		},
-		{
-			"enabled": true,
-			"key": "topo",
-			"name": "topo",
-			"type": "text",
-			"value": "network-topology:network-topology/topology"
-		},
-		{
-			"enabled": true,
-			"key": "node",
-			"name": "node",
-			"type": "text",
-			"value": "{{topo}}/topology-netconf/node"
-		},
-		{
-			"enabled": true,
-			"key": "mount",
-			"name": "mount",
-			"type": "text",
-			"value": "yang-ext:mount"
-		},
-		{
-			"enabled": true,
-			"key": "router",
-			"name": "router",
-			"type": "text",
-			"value": "xrvr-a"
-		},
-		{
-			"enabled": true,
-			"key": "router-ip",
-			"name": "router-ip",
-			"type": "text",
-			"value": "172.23.29.116"
-		},
-		{
-			"enabled": true,
-			"key": "router-user",
-			"name": "router-user",
-			"type": "text",
-			"value": "cisco"
-		},
-		{
-			"enabled": true,
-			"key": "router-pass",
-			"name": "router-password",
-			"type": "text",
-			"value": "cisco"
-		},
-		{
-			"enabled": true,
-			"key": "router-port",
-			"type": "text",
-			"value": "830"
-		},
-		{
-			"enabled": true,
-			"key": "ctrl",
-			"name": "ctrl",
-			"type": "text",
-			"value": "{{node}}/controller-config/{{mount}}"
-		},
-		{
-			"enabled": true,
-			"key": "rtr",
-			"name": "rtr",
-			"type": "text",
-			"value": "{{node}}/{{router}}/{{mount}}"
-		},
-		{
-			"enabled": true,
-			"key": "/",
-			"name": "/",
-			"type": "text",
-			"value": "%2F"
-		},
-		{
-			"enabled": true,
-			"key": "authorization",
-			"name": "authorization",
-			"type": "text",
-			"value": "Basic YWRtaW46YWRtaW4="
-		}
-	],
-	"timestamp": 1471884108067,
-	"synced": false,
-	"syncedFilename": "",
-	"team": null,
-	"isDeleted": false
+  "id": "1aae0e0d-9eed-1bb3-04a3-97a961e491b1",
+  "name": "OpenDaylight Localhost",
+  "values": [
+    {
+      "enabled": true,
+      "key": "controller-ip",
+      "value": "127.0.0.1",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "restconf-port",
+      "value": "8181",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "controller",
+      "value": "http://{{controller-ip}}:{{restconf-port}}",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "restconf",
+      "value": "{{controller}}/restconf",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "cfg",
+      "value": "{{restconf}}/config",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "oper",
+      "value": "{{restconf}}/operational",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "rpc",
+      "value": "{{restconf}}/operations",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "topo",
+      "value": "network-topology:network-topology/topology",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "node",
+      "value": "{{topo}}/topology-netconf/node",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "mount",
+      "value": "yang-ext:mount",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "router",
+      "value": "xr9kv",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "router-ip",
+      "value": "4.3.2.1",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "router-user",
+      "value": "cisco",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "router-pass",
+      "value": "cisco",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "router-port",
+      "value": "830",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "ctrl",
+      "value": "{{node}}/controller-config/{{mount}}",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "rtr",
+      "value": "{{node}}/{{router}}/{{mount}}",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "/",
+      "value": "%2F",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "authorization",
+      "value": "Basic YWRtaW46YWRtaW4=",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "asn",
+      "value": "65504",
+      "type": "text"
+    }
+  ],
+  "timestamp": 1499708825795,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2017-07-10T17:47:12.835Z",
+  "_postman_exported_using": "Postman/5.0.2"
 }
