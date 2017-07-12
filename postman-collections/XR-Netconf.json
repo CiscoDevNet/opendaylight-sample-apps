@@ -8,6 +8,154 @@
 	},
 	"item": [
 		{
+			"name": "(pre-Carbon) Setup",
+			"description": "",
+			"item": [
+				{
+					"name": "Add NCS to ODL",
+					"request": {
+						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/nso",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"nso\",\n            \"odl-sal-netconf-connector-cfg:address\": \"127.0.0.1\",\n            \"odl-sal-netconf-connector-cfg:port\": 2022,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\":\"nso\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put XR node JSON",
+					"request": {
+						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:address\": \"{{router-ip}}\",\n            \"odl-sal-netconf-connector-cfg:port\": \"{{router-port}}\",\n            \"odl-sal-netconf-connector-cfg:username\": \"{{router-user}}\",\n            \"odl-sal-netconf-connector-cfg:password\": \"{{router-pass}}\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\":\"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete XR node",
+					"request": {
+						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET XR node config",
+					"request": {
+						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT XR node config sideload",
+					"request": {
+						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/asr9k1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"asr9k1\",\n            \"odl-sal-netconf-connector-cfg:address\": \"172.23.29.104\",\n            \"odl-sal-netconf-connector-cfg:port\": 830,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"i2ssfail\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:yang-module-capabilities\": {\n                \"capability\" : [\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub1&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub2&amp;revision=2015-07-30\",                  \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub3&amp;revision=2015-07-30\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub4&amp;revision=2015-07-30\",                  \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub5&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-crypto-ssh-oper?module=Cisco-IOS-XR-crypto-ssh-oper&amp;revision=2015-06-02\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-crypto-ssh-oper?module=Cisco-IOS-XR-crypto-ssh-oper-sub1&amp;revision=2015-06-02\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub1&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub2&amp;revision=2015-10-08\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub3&amp;revision=2015-10-08\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub4&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub5&amp;revision=2015-10-08\"\n                ]\n            },\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put XR node cache XR",
+					"request": {
+						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:address\": \"{{router-ip}}\",\n            \"odl-sal-netconf-connector-cfg:port\": 830,\n            \"odl-sal-netconf-connector-cfg:username\": \"{{router-user}}\",\n            \"odl-sal-netconf-connector-cfg:password\": \"{{router-pass}}\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\" : \"XR\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "ACL/ACE",
 			"description": "",
 			"item": [
@@ -452,7 +600,7 @@
 					},
 					"response": [
 						{
-							"id": "2ff33bcf-0a3e-4b06-8609-58c8f030ddd9",
+							"id": "2b90f12a-9eb9-42e8-96cf-e3a412f98110",
 							"name": "linkstate-topology",
 							"originalRequest": {
 								"url": "http://172.23.29.120:8181/restconf/operational/network-topology:network-topology/topology/example-linkstate-topology",
@@ -508,7 +656,7 @@
 							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
 						},
 						{
-							"id": "6d6e5dab-8a60-4e1a-abbd-fcebc1187901",
+							"id": "5f1cbcf7-b028-4207-b26e-eb46961e501a",
 							"name": "response",
 							"originalRequest": {
 								"url": "http://172.23.29.120:8181/restconf/operational/network-topology:network-topology/topology/example-linkstate-topology",
@@ -564,7 +712,7 @@
 							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286726&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286725&ipv4-iface=192.168.96.1&ipv4-neigh=192.168.96.2\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286725&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286726&ipv4-iface=192.168.96.2&ipv4-neigh=192.168.96.1\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.5/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.6/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
 						},
 						{
-							"id": "4c6b4d08-179f-4932-8a52-0eed3b4dcac0",
+							"id": "90d80e8f-c671-458c-9a42-920c856ab663",
 							"name": "multidomain.json",
 							"originalRequest": {
 								"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
@@ -1027,79 +1175,9 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Add NCS to ODL",
+					"name": "Get configured topology",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/nso",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"nso\",\n            \"odl-sal-netconf-connector-cfg:address\": \"127.0.0.1\",\n            \"odl-sal-netconf-connector-cfg:port\": 2022,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\":\"nso\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Put XR node JSON",
-					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:address\": \"{{router-ip}}\",\n            \"odl-sal-netconf-connector-cfg:port\": \"{{router-port}}\",\n            \"odl-sal-netconf-connector-cfg:username\": \"{{router-user}}\",\n            \"odl-sal-netconf-connector-cfg:password\": \"{{router-pass}}\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\":\"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Delete XR node",
-					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get Netconf Topology",
-					"request": {
-						"url": "{{oper}}/{{topo}}/topology-netconf/",
+						"url": "{{cfg}}/network-topology:network-topology/topology/topology-netconf",
 						"method": "GET",
 						"header": [
 							{
@@ -1119,19 +1197,19 @@
 					"response": []
 				},
 				{
-					"name": "GET XR node config",
+					"name": "Get operational topology",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+						"url": "{{oper}}/network-topology:network-topology/topology/topology-netconf",
 						"method": "GET",
 						"header": [
 							{
-								"key": "Accept",
-								"value": "application/json",
+								"key": "Authorization",
+								"value": "{{authorization}}",
 								"description": ""
 							},
 							{
-								"key": "Authorization",
-								"value": "{{authorization}}",
+								"key": "Accept",
+								"value": "application/json",
 								"description": ""
 							}
 						],
@@ -1141,57 +1219,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT XR node config sideload",
-					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/asr9k1",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"asr9k1\",\n            \"odl-sal-netconf-connector-cfg:address\": \"172.23.29.104\",\n            \"odl-sal-netconf-connector-cfg:port\": 830,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"i2ssfail\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:yang-module-capabilities\": {\n                \"capability\" : [\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub1&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub2&amp;revision=2015-07-30\",                  \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub3&amp;revision=2015-07-30\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub4&amp;revision=2015-07-30\",                  \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub5&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-crypto-ssh-oper?module=Cisco-IOS-XR-crypto-ssh-oper&amp;revision=2015-06-02\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-crypto-ssh-oper?module=Cisco-IOS-XR-crypto-ssh-oper-sub1&amp;revision=2015-06-02\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub1&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub2&amp;revision=2015-10-08\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub3&amp;revision=2015-10-08\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub4&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub5&amp;revision=2015-10-08\"\n                ]\n            },\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Put XR node cache XR",
-					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:address\": \"{{router-ip}}\",\n            \"odl-sal-netconf-connector-cfg:port\": 830,\n            \"odl-sal-netconf-connector-cfg:username\": \"{{router-user}}\",\n            \"odl-sal-netconf-connector-cfg:password\": \"{{router-pass}}\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\" : \"XR\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Add XR node via Topo",
+					"name": "Add XR node with XR cache directory",
 					"request": {
 						"url": "{{cfg}}/{{node}}/{{router}}",
 						"method": "PUT",
@@ -1209,14 +1237,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"network-topology:node\": {\n        \"node-id\": \"{{router}}\",\n        \"host\": \"{{router-ip}}\",\n        \"port\": \"{{router-port}}\",\n        \"username\": \"{{router-user}}\",\n        \"password\": \"{{router-pass}}\",\n        \"tcp-only\": false,\n        \"keepalive-delay\": 0\n    }\n}"
+							"raw": "{\n    \"network-topology:node\": {\n        \"node-id\": \"{{router}}\",\n        \"host\": \"{{router-ip}}\",\n        \"port\": \"{{router-port}}\",\n        \"username\": \"{{router-user}}\",\n        \"password\": \"{{router-pass}}\",\n        \"tcp-only\": false,\n        \"keepalive-delay\": 0,\n        \"schema-cache-directory\": \"XR\"\n    }\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Get XR node via Topo",
+					"name": "Get configured node",
 					"request": {
 						"url": "{{cfg}}/{{node}}/{{router}}",
 						"method": "GET",
@@ -1241,32 +1269,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete XR node via Topo",
-					"request": {
-						"url": "{{cfg}}/{{node}}/{{router}}",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"network-topology:node\": {\n        \"node-id\": \"{{router}}\",\n        \"host\": \"{{router-ip}}\",\n        \"port\": \"{{router-port}}\",\n        \"username\": \"{{router-user}}\",\n        \"password\": \"{{router-pass}}\",\n        \"tcp-only\": false,\n        \"schemaless\": true,\n        \"keepalive-delay\": 0\n    }\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get oper XR node via Topo",
+					"name": "Get operational node",
 					"request": {
 						"url": "{{oper}}/{{node}}/{{router}}",
 						"method": "GET",
@@ -1285,6 +1288,26 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"network-topology:node\": {\n        \"node-id\": \"{{router}}\",\n        \"host\": \"{{router-ip}}\",\n        \"port\": \"{{router-port}}\",\n        \"username\": \"{{router-user}}\",\n        \"password\": \"{{router-pass}}\",\n        \"tcp-only\": false,\n        \"schemaless\": true,\n        \"keepalive-delay\": 0\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete node",
+					"request": {
+						"url": "{{cfg}}/{{node}}/{{router}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": ""
 					},
@@ -1408,28 +1431,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Get NETCONF operational",
-			"request": {
-				"url": "{{oper}}/{{rtr}}/Cisco-IOS-XR-man-xml-ttyagent-oper:netconf",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "{{authorization}}",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
 		}
 	]
 }
