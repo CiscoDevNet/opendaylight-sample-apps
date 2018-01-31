@@ -1,10 +1,9 @@
 {
-	"variables": [],
 	"info": {
 		"name": "ODL XR Netconf",
 		"_postman_id": "f0da3722-3edf-0cfd-d402-a86ead970f38",
 		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -14,23 +13,33 @@
 				{
 					"name": "Add NCS to ODL",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/nso",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"nso\",\n            \"odl-sal-netconf-connector-cfg:address\": \"127.0.0.1\",\n            \"odl-sal-netconf-connector-cfg:port\": 2022,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\":\"nso\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/nso",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
+								"nso"
+							]
 						},
 						"description": ""
 					},
@@ -39,23 +48,33 @@
 				{
 					"name": "Put XR node JSON",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:address\": \"{{router-ip}}\",\n            \"odl-sal-netconf-connector-cfg:port\": \"{{router-port}}\",\n            \"odl-sal-netconf-connector-cfg:username\": \"{{router-user}}\",\n            \"odl-sal-netconf-connector-cfg:password\": \"{{router-pass}}\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\":\"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
+								"{{router}}"
+							]
 						},
 						"description": ""
 					},
@@ -64,18 +83,29 @@
 				{
 					"name": "Delete XR node",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
+								"{{router}}"
+							]
 						},
 						"description": ""
 					},
@@ -84,21 +114,31 @@
 				{
 					"name": "GET XR node config",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
+								"{{router}}"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -106,23 +146,33 @@
 				{
 					"name": "PUT XR node config sideload",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/asr9k1",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"asr9k1\",\n            \"odl-sal-netconf-connector-cfg:address\": \"172.23.29.104\",\n            \"odl-sal-netconf-connector-cfg:port\": 830,\n            \"odl-sal-netconf-connector-cfg:username\": \"admin\",\n            \"odl-sal-netconf-connector-cfg:password\": \"i2ssfail\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:yang-module-capabilities\": {\n                \"capability\" : [\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub1&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub2&amp;revision=2015-07-30\",                  \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub3&amp;revision=2015-07-30\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub4&amp;revision=2015-07-30\",                  \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-tty-server-oper?module=Cisco-IOS-XR-tty-server-oper-sub5&amp;revision=2015-07-30\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-crypto-ssh-oper?module=Cisco-IOS-XR-crypto-ssh-oper&amp;revision=2015-06-02\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-crypto-ssh-oper?module=Cisco-IOS-XR-crypto-ssh-oper-sub1&amp;revision=2015-06-02\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub1&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub2&amp;revision=2015-10-08\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub3&amp;revision=2015-10-08\", \n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub4&amp;revision=2015-10-08\",\n                    \"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-oper?module=Cisco-IOS-XR-snmp-agent-oper-sub5&amp;revision=2015-10-08\"\n                ]\n            },\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/asr9k1",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
+								"asr9k1"
+							]
 						},
 						"description": ""
 					},
@@ -131,23 +181,33 @@
 				{
 					"name": "Put XR node cache XR",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"module\": [\n        {\n            \"type\": \"odl-sal-netconf-connector-cfg:sal-netconf-connector\",\n            \"name\": \"{{router}}\",\n            \"odl-sal-netconf-connector-cfg:address\": \"{{router-ip}}\",\n            \"odl-sal-netconf-connector-cfg:port\": 830,\n            \"odl-sal-netconf-connector-cfg:username\": \"{{router-user}}\",\n            \"odl-sal-netconf-connector-cfg:password\": \"{{router-pass}}\",\n            \"odl-sal-netconf-connector-cfg:schema-cache-directory\" : \"XR\",\n            \"odl-sal-netconf-connector-cfg:tcp-only\": false,\n            \"odl-sal-netconf-connector-cfg:binding-registry\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-broker-osgi-registry\",\n                \"name\": \"binding-osgi-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:between-attempts-timeout-millis\": 2000,\n            \"odl-sal-netconf-connector-cfg:processing-executor\": {\n                \"type\": \"threadpool:threadpool\",\n                \"name\": \"global-netconf-processing-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:max-connection-attempts\": 0,\n            \"odl-sal-netconf-connector-cfg:sleep-factor\": 1.5,\n            \"odl-sal-netconf-connector-cfg:client-dispatcher\": {\n                \"type\": \"odl-netconf-cfg:netconf-client-dispatcher\",\n                \"name\": \"global-netconf-dispatcher\"\n            },\n            \"odl-sal-netconf-connector-cfg:dom-registry\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-broker-osgi-registry\",\n                \"name\": \"dom-broker\"\n            },\n            \"odl-sal-netconf-connector-cfg:event-executor\": {\n                \"type\": \"netty:netty-event-executor\",\n                \"name\": \"global-event-executor\"\n            },\n            \"odl-sal-netconf-connector-cfg:connection-timeout-millis\": 20000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-sal-netconf-connector-cfg:sal-netconf-connector/{{router}}",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
+								"{{router}}"
+							]
 						},
 						"description": ""
 					},
@@ -162,21 +222,29 @@
 				{
 					"name": "Get ACLs",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -184,21 +252,31 @@
 				{
 					"name": "Get ACL",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/foo",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/foo",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses",
+								"access",
+								"foo"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -206,21 +284,34 @@
 				{
 					"name": "Get ACE",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/foo/access-list-entries/access-list-entry/10",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/foo/access-list-entries/access-list-entry/10",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses",
+								"access",
+								"foo",
+								"access-list-entries",
+								"access-list-entry",
+								"10"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -228,21 +319,35 @@
 				{
 					"name": "Get ACE dest port",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/foo/access-list-entries/access-list-entry/10/destination-port",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/foo/access-list-entries/access-list-entry/10/destination-port",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses",
+								"access",
+								"foo",
+								"access-list-entries",
+								"access-list-entry",
+								"10",
+								"destination-port"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -250,23 +355,37 @@
 				{
 					"name": "Change Dest Port",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/foo/access-list-entries/access-list-entry/10/destination-port",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"destination-port\": {\n        \"destination-operator\": \"equal\",\n        \"first-destination-port\": \"ftp\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/foo/access-list-entries/access-list-entry/10/destination-port",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses",
+								"access",
+								"foo",
+								"access-list-entries",
+								"access-list-entry",
+								"10",
+								"destination-port"
+							]
 						},
 						"description": ""
 					},
@@ -275,21 +394,29 @@
 				{
 					"name": "Get ACLs Oper",
 					"request": {
-						"url": "{{oper}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list/access-list-manager",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list/access-list-manager",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list",
+								"access-list-manager"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -297,21 +424,32 @@
 				{
 					"name": "Get ACL Oper",
 					"request": {
-						"url": "{{oper}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list/access-list-manager/accesses/access/foo",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list/access-list-manager/accesses/access/foo",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list",
+								"access-list-manager",
+								"accesses",
+								"access",
+								"foo"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -319,21 +457,35 @@
 				{
 					"name": "Get ACE Oper",
 					"request": {
-						"url": "{{oper}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list/access-list-manager/accesses/access/foo/access-list-sequences/access-list-sequence/10",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list/access-list-manager/accesses/access/foo/access-list-sequences/access-list-sequence/10",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list",
+								"access-list-manager",
+								"accesses",
+								"access",
+								"foo",
+								"access-list-sequences",
+								"access-list-sequence",
+								"10"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -341,23 +493,31 @@
 				{
 					"name": "Create ACL",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic YWRtaW46YWRtaW4=",
-								"description": ""
+								"value": "Basic YWRtaW46YWRtaW4="
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"Cisco-IOS-XR-ipv4-acl-cfg:access\":\n    [\n        {\n            \"access-list-name\": \"test-grant\",\n            \"access-list-entries\": {\n                \"access-list-entry\": [\n                    {\n                        \"sequence-number\": 10,\n                        \"grant\": \"permit\",\n                        \"protocol\": \"igmp\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses"
+							]
 						},
 						"description": ""
 					},
@@ -366,23 +526,33 @@
 				{
 					"name": "Put ACL",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/test-deny",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{   \"access\":\n    [\n        {   \"access-list-entries\":\n            {    \"access-list-entry\":\n                [\n                    {   \"source-network\": {\"source-address\":\"0.0.0.0\",\"source-wild-card-bits\":\"0.0.0.0\"},\n                        \"grant\":\"deny\",\n                        \"destination-network\": {\"destination-wild-card-bits\":\"0.0.0.0\",\"destination-address\":\"0.0.0.0\"},\n                        \"sequence-number\":10\n                    }\n                ]\n            },\n            \"access-list-name\":\"test-deny\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/test-deny",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses",
+								"access",
+								"test-deny"
+							]
 						},
 						"description": ""
 					},
@@ -391,23 +561,32 @@
 				{
 					"name": "POST ACL",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{   \"Cisco-IOS-XR-ipv4-acl-cfg:access\":\n    [\n        {   \"access-list-entries\":\n            {    \"access-list-entry\":\n                [\n                    {   \"source-network\": {\"source-address\":\"0.0.0.0\",\"source-wild-card-bits\":\"0.0.0.0\"},\n                        \"grant\":\"permit\",\n                        \"destination-network\": {\"destination-wild-card-bits\":\"0.0.0.0\",\"destination-address\":\"0.0.0.0\"},\n                        \"sequence-number\":10\n                    }\n                ]\n            },\n            \"access-list-name\":\"test-permit\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses",
+								""
+							]
 						},
 						"description": ""
 					},
@@ -416,16 +595,27 @@
 				{
 					"name": "Delete ACL",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/test-grant",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list/accesses/access/test-grant",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
+								"accesses",
+								"access",
+								"test-grant"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -439,21 +629,40 @@
 				{
 					"name": "Get IPv4 BGP network statements",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/global/global-afs/global-af/ipv4-unicast/sourced-networks",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/global/global-afs/global-af/ipv4-unicast/sourced-networks",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-bgp-cfg:bgp",
+								"instance",
+								"default",
+								"instance-as",
+								"0",
+								"four-byte-as",
+								"65504",
+								"default-vrf",
+								"global",
+								"global-afs",
+								"global-af",
+								"ipv4-unicast",
+								"sourced-networks"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -461,16 +670,39 @@
 				{
 					"name": "Delete  IPv4 BGP network statement",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/global/global-afs/global-af/ipv4-unicast/sourced-networks/sourced-network/192.168.144.0/24",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/global/global-afs/global-af/ipv4-unicast/sourced-networks/sourced-network/192.168.144.0/24",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-bgp-cfg:bgp",
+								"instance",
+								"default",
+								"instance-as",
+								"0",
+								"four-byte-as",
+								"65504",
+								"default-vrf",
+								"global",
+								"global-afs",
+								"global-af",
+								"ipv4-unicast",
+								"sourced-networks",
+								"sourced-network",
+								"192.168.144.0",
+								"24"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -478,23 +710,42 @@
 				{
 					"name": "Add IPv4 BGP network statement",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/global/global-afs/global-af/ipv4-unicast/sourced-networks",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"sourced-network\": [\n      {\n        \"network-addr\": \"192.168.144.0\",\n        \"network-prefix\": 24\n      }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/global/global-afs/global-af/ipv4-unicast/sourced-networks",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-bgp-cfg:bgp",
+								"instance",
+								"default",
+								"instance-as",
+								"0",
+								"four-byte-as",
+								"65504",
+								"default-vrf",
+								"global",
+								"global-afs",
+								"global-af",
+								"ipv4-unicast",
+								"sourced-networks"
+							]
 						},
 						"description": ""
 					},
@@ -503,21 +754,39 @@
 				{
 					"name": "Get BGP Neighbor",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/bgp-entity/neighbors/neighbor/172.23.29.120",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/bgp-entity/neighbors/neighbor/172.23.29.120",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-bgp-cfg:bgp",
+								"instance",
+								"default",
+								"instance-as",
+								"0",
+								"four-byte-as",
+								"65504",
+								"default-vrf",
+								"bgp-entity",
+								"neighbors",
+								"neighbor",
+								"172.23.29.120"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -525,21 +794,37 @@
 				{
 					"name": "Get BGP Attributes",
 					"request": {
-						"url": "{{oper}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-oper:bgp/instances/instance/default/instance-active/default-vrf/afs/af/ipv4-unicast/attributes",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-oper:bgp/instances/instance/default/instance-active/default-vrf/afs/af/ipv4-unicast/attributes",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-bgp-oper:bgp",
+								"instances",
+								"instance",
+								"default",
+								"instance-active",
+								"default-vrf",
+								"afs",
+								"af",
+								"ipv4-unicast",
+								"attributes"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -553,21 +838,34 @@
 				{
 					"name": "Get CDP Operational Status",
 					"request": {
-						"url": "{{oper}}/{{rtr}}/Cisco-IOS-XR-cdp-oper:cdp/nodes/node/0%2F0%2FCPU0/neighbors/details/",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-cdp-oper:cdp/nodes/node/0%2F0%2FCPU0/neighbors/details/",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-cdp-oper:cdp",
+								"nodes",
+								"node",
+								"0%2F0%2FCPU0",
+								"neighbors",
+								"details",
+								""
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -581,38 +879,62 @@
 				{
 					"name": "Get Interfaces",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+								""
+							]
+						},
 						"description": ""
 					},
 					"response": [
 						{
-							"id": "2b90f12a-9eb9-42e8-96cf-e3a412f98110",
+							"id": "ff200066-a0ce-4044-b0f6-d3db037bb7cc",
 							"name": "linkstate-topology",
 							"originalRequest": {
-								"url": "http://172.23.29.120:8181/restconf/operational/network-topology:network-topology/topology/example-linkstate-topology",
 								"method": "GET",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{authorization}}",
-										"description": ""
+										"value": "{{authorization}}"
 									}
 								],
 								"body": {},
+								"url": {
+									"raw": "http://172.23.29.120:8181/restconf/operational/network-topology:network-topology/topology/example-linkstate-topology",
+									"protocol": "http",
+									"host": [
+										"172",
+										"23",
+										"29",
+										"120"
+									],
+									"port": "8181",
+									"path": [
+										"restconf",
+										"operational",
+										"network-topology:network-topology",
+										"topology",
+										"example-linkstate-topology"
+									]
+								},
 								"description": ""
 							},
 							"status": "OK",
@@ -656,19 +978,35 @@
 							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
 						},
 						{
-							"id": "5f1cbcf7-b028-4207-b26e-eb46961e501a",
+							"id": "9f661813-2b46-4be6-9431-7c1133680efa",
 							"name": "response",
 							"originalRequest": {
-								"url": "http://172.23.29.120:8181/restconf/operational/network-topology:network-topology/topology/example-linkstate-topology",
 								"method": "GET",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{authorization}}",
-										"description": ""
+										"value": "{{authorization}}"
 									}
 								],
 								"body": {},
+								"url": {
+									"raw": "http://172.23.29.120:8181/restconf/operational/network-topology:network-topology/topology/example-linkstate-topology",
+									"protocol": "http",
+									"host": [
+										"172",
+										"23",
+										"29",
+										"120"
+									],
+									"port": "8181",
+									"path": [
+										"restconf",
+										"operational",
+										"network-topology:network-topology",
+										"topology",
+										"example-linkstate-topology"
+									]
+								},
 								"description": ""
 							},
 							"status": "OK",
@@ -712,19 +1050,28 @@
 							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286726&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286725&ipv4-iface=192.168.96.1&ipv4-neigh=192.168.96.2\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286725&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286726&ipv4-iface=192.168.96.2&ipv4-neigh=192.168.96.1\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.5/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.6/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
 						},
 						{
-							"id": "90d80e8f-c671-458c-9a42-920c856ab663",
+							"id": "79f69b1f-81ca-4e3f-98de-3bb416e8e530",
 							"name": "multidomain.json",
 							"originalRequest": {
-								"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
 								"method": "GET",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{authorization}}",
-										"description": ""
+										"value": "{{authorization}}"
 									}
 								],
 								"body": {},
+								"url": {
+									"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
+									"host": [
+										"{{cfg}}"
+									],
+									"path": [
+										"{{rtr}}",
+										"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+										""
+									]
+								},
 								"description": ""
 							},
 							"status": "OK",
@@ -772,21 +1119,31 @@
 				{
 					"name": "Get Loopback0",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+								"interface-configuration",
+								"act",
+								"Loopback0"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -794,21 +1151,32 @@
 				{
 					"name": "Get Loopback0 IPv4",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+								"interface-configuration",
+								"act",
+								"Loopback0",
+								"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -816,21 +1184,33 @@
 				{
 					"name": "Get Loopback0 IPv4 addresses",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network/addresses",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network/addresses",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+								"interface-configuration",
+								"act",
+								"Loopback0",
+								"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network",
+								"addresses"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -838,21 +1218,34 @@
 				{
 					"name": "Get Loopback0 primary IPv4 address",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network/addresses/primary",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network/addresses/primary",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+								"interface-configuration",
+								"act",
+								"Loopback0",
+								"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network",
+								"addresses",
+								"primary"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -860,23 +1253,36 @@
 				{
 					"name": "Change Loopback0 IPv4 address",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network/addresses/primary",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"primary\" :  {\n        \"address\": \"192.168.200.5\",\n        \"netmask\": \"255.255.255.255\"\n    }\n}\n"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0/Cisco-IOS-XR-ipv4-io-cfg:ipv4-network/addresses/primary",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+								"interface-configuration",
+								"act",
+								"Loopback0",
+								"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network",
+								"addresses",
+								"primary"
+							]
 						},
 						"description": ""
 					},
@@ -885,21 +1291,31 @@
 				{
 					"name": "Get Interface Stats",
 					"request": {
-						"url": "{{oper}}/{{rtr}}/Cisco-IOS-XR-drivers-media-eth-oper:ethernet-interface/statistics/statistic/GigabitEthernet0%2F0%2F0%2F0",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-drivers-media-eth-oper:ethernet-interface/statistics/statistic/GigabitEthernet0%2F0%2F0%2F0",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-drivers-media-eth-oper:ethernet-interface",
+								"statistics",
+								"statistic",
+								"GigabitEthernet0%2F0%2F0%2F0"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -907,23 +1323,33 @@
 				{
 					"name": "Put Loopback0",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"interface-configuration\": [\n    {\n      \"active\": \"act\",\n      \"interface-name\": \"Loopback0\",\n      \"description\": \"foobar\",\n      \"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network\": {\n        \"addresses\": {\n          \"primary\": {\n            \"address\": \"192.168.100.1\",\n            \"netmask\": \"255.255.255.255\"\n          }\n        }\n      },\n      \"interface-virtual\": [\n        null\n      ]\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/interface-configuration/act/Loopback0",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+								"interface-configuration",
+								"act",
+								"Loopback0"
+							]
 						},
 						"description": ""
 					},
@@ -932,23 +1358,31 @@
 				{
 					"name": "POST interface",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"interface-configuration\": [\n    {\n      \"active\": \"act\",\n      \"interface-name\": \"Loopback3\",\n      \"description\": \"foobarred\",\n      \"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network\": {\n        \"addresses\": {\n          \"primary\": {\n            \"address\": \"192.168.122.1\",\n            \"netmask\": \"255.255.255.255\"\n          }\n        }\n      },\n      \"interface-virtual\": [\n        null\n      ]\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+								""
+							]
 						},
 						"description": ""
 					},
@@ -957,23 +1391,39 @@
 				{
 					"name": "Patch in new Loopback - XML",
 					"request": {
-						"url": "http://localhost:8181/restconf/config/network-topology:network-topology/topology/topology-netconf/node/asr9k1/yang-ext:mount/Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/yang.patch+xml",
-								"description": ""
+								"value": "application/yang.patch+xml"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<yang-patch xmlns=\"urn:ietf:params:xml:ns:yang:ietf-yang-patch\">\n<patch-id>example-patch</patch-id>\n<comment>This is example patch</comment>\n<edit>\n  <edit-id>edit1</edit-id>\n  <operation>create</operation>\n  <target>/interface-configuration</target>\n  <value>\n    <interface-configuration xmlns=\"http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg\">\n      <active>act</active>\n      <interface-name>Loopback44</interface-name>\n      <description>foobar</description>\n    </interface-configuration>\n  </value>\n</edit>\n</yang-patch>"
+						},
+						"url": {
+							"raw": "http://localhost:8181/restconf/config/network-topology:network-topology/topology/topology-netconf/node/asr9k1/yang-ext:mount/Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"restconf",
+								"config",
+								"network-topology:network-topology",
+								"topology",
+								"topology-netconf",
+								"node",
+								"asr9k1",
+								"yang-ext:mount",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations"
+							]
 						},
 						"description": ""
 					},
@@ -982,23 +1432,30 @@
 				{
 					"name": "Merge interface using JSON patch",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/yang.patch+json",
-								"description": ""
+								"value": "application/yang.patch+json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"ietf-yang-patch:yang-patch\": {\n\t\t\"patch-id\": \"Test merge operation\",\n    \t\"comment\": \"This is a test patch\",\n    \t\"edit\": [\n    \t\t{\n        \t\t\"edit-id\": \"edit1\",\n        \t\t\"operation\": \"merge\",\n        \t\t\"target\": \"/Cisco-IOS-XR-ifmgr-cfg:interface-configuration[Cisco-IOS-XR-ifmgr-cfg:active='act'][Cisco-IOS-XR-ifmgr-cfg:interface-name='Loopback47']\",\n        \t\t\"value\": {\n    \t\t\t\t\"Cisco-IOS-XR-ifmgr-cfg:interface-configuration\": [\n    \t\t\t\t\t{\n    \t\t\t\t\t\t\"active\": \"act\",\n      \t\t\t\t\t\t\"interface-name\": \"Loopback47\",\n      \t\t\t\t\t\t\"description\": \"foobarred\"\n        \t\t\t\t}\n        \t\t\t]\n    \t\t\t}\n\t\t\t}\n\t\t]\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations"
+							]
 						},
 						"description": ""
 					},
@@ -1013,23 +1470,30 @@
 				{
 					"name": "Get BGP Config",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/openconfig-bgp:bgp",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"bgp-openconfig-extensions:afi-safis\": {\n    \"afi-safi\": [\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n      },\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-bgp:bgp",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-bgp:bgp"
+							]
 						},
 						"description": ""
 					},
@@ -1038,23 +1502,31 @@
 				{
 					"name": "Add BGP Neighbor",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/openconfig-bgp:bgp/neighbors",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"neighbor\": [\n    \t{\n      \t\t\"neighbor-address\": \"{{controller-ip}}\",\n        \t\"config\": {\n          \t\t\"peer-as\": {{asn}}\n        \t},\n        \t\"afi-safis\": {\n          \t\t\"afi-safi\": [\n            \t\t{\n              \t\t\t\"afi-safi-name\": \"openconfig-bgp-types:ipv4-unicast\"\n            \t\t},\n            \t\t{\n              \t\t\t\"afi-safi-name\": \"openconfig-bgp-types:ipv6-unicast\"\n            \t\t}\n          \t\t]\n        \t}\n    \t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-bgp:bgp/neighbors",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-bgp:bgp",
+								"neighbors"
+							]
 						},
 						"description": ""
 					},
@@ -1063,23 +1535,31 @@
 				{
 					"name": "Create BGP RIB Config",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/openconfig-bgp:bgp/global",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"global\": {\n    \t\"config\": {\n        \t\"as\": {{asn}},\n        \t\"router-id\": \"{{router-ip}}\"\n    \t },\n    \t\"afi-safis\": {\n        \t\"afi-safi\": [\n          \t\t{\n            \t\t\"afi-safi-name\": \"openconfig-bgp-types:ipv4-unicast\"\n          \t\t},\n          \t\t{\n            \t\t\"afi-safi-name\": \"openconfig-bgp-types:ipv6-unicast\"\n          \t\t}\n        \t]\n      \t}\n    }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-bgp:bgp/global",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-bgp:bgp",
+								"global"
+							]
 						},
 						"description": ""
 					},
@@ -1094,21 +1574,28 @@
 				{
 					"name": "Get configured routing policy",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-policy-repository-cfg:routing-policy",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-policy-repository-cfg:routing-policy",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-policy-repository-cfg:routing-policy"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -1116,28 +1603,34 @@
 				{
 					"name": "Put Route policy",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-policy-repository-cfg:routing-policy",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic YWRtaW46YWRtaW4=",
-								"description": ""
+								"value": "Basic YWRtaW46YWRtaW4="
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"Cisco-IOS-XR-policy-repository-cfg:routing-policy\": {\n    \"route-policies\": {\n      \"route-policy\": [\n        {\n          \"route-policy-name\": \"MARK-BGP-INTERNAL\",\n          \"rpl-route-policy\": \"route-policy MARK-BGP-INTERNAL\\n  set community (no-export)\\nend-policy\"\n        },\n        {\n          \"route-policy-name\": \"VAR-A\",\n          \"rpl-route-policy\": \"route-policy VAR-A\\n  if destination in VAR-A then\\n    done\\n  else\\n    drop\\n  endif\\nend-policy\"\n        },\n        {\n          \"route-policy-name\": \"UT\",\n          \"rpl-route-policy\": \"route-policy UT\\n  if destination in UT then\\n    done\\n  else\\n    drop\\n  endif\\nend-policy\"\n        }\n      ]\n    },\n    \"sets\": {\n      \"prefix-sets\": {\n        \"prefix-set\": [\n          {\n            \"set-name\": \"UT\",\n            \"rpl-prefix-set\": \"prefix-set UT\\n  10.0.0.0/8 le 32\\nend-set\"\n          },\n          {\n            \"set-name\": \"VAR-A\",\n            \"rpl-prefix-set\": \"prefix-set VAR-A\\n  172.16.0.0/12\\nend-set\"\n          }\n        ]\n      },\n      \"policy-global-set-table\": {\n        \"policy-global-set\": \"policy-global\\nend-global\"\n      }\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-policy-repository-cfg:routing-policy",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-policy-repository-cfg:routing-policy"
+							]
 						},
 						"description": ""
 					},
@@ -1146,23 +1639,30 @@
 				{
 					"name": "Add policy using XML YANG Patch",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-policy-repository-cfg:routing-policy",
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/yang.patch+xml",
-								"description": ""
+								"value": "application/yang.patch+xml"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<yang-patch xmlns=\"urn:ietf:params:xml:ns:yang:ietf-yang-patch\">\n<patch-id>example-patch</patch-id>\n<comment>This is an example patch</comment>\n<edit>\n\t<edit-id>edit1</edit-id>\n\t<operation>create</operation>\n\t<target>/route-policies/route-policy</target>\n\t<value>\n\t\t<route-policy xmlns=\"http://cisco.com/ns/yang/Cisco-IOS-XR-policy-repository-cfg\">\n\t\t\t<route-policy-name>static-2bgp</route-policy-name>\n\t\t\t<rpl-route-policy>route-policy static-2bgp\nend-policy</rpl-route-policy>\n\t\t</route-policy>\n\t</value>\n</edit>\n</yang-patch>\n\n\n"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-policy-repository-cfg:routing-policy",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-policy-repository-cfg:routing-policy"
+							]
 						},
 						"description": ""
 					},
@@ -1177,21 +1677,29 @@
 				{
 					"name": "Get configured topology",
 					"request": {
-						"url": "{{cfg}}/network-topology:network-topology/topology/topology-netconf",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/network-topology:network-topology/topology/topology-netconf",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"network-topology:network-topology",
+								"topology",
+								"topology-netconf"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -1199,21 +1707,29 @@
 				{
 					"name": "Get operational topology",
 					"request": {
-						"url": "{{oper}}/network-topology:network-topology/topology/topology-netconf",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{oper}}/network-topology:network-topology/topology/topology-netconf",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"network-topology:network-topology",
+								"topology",
+								"topology-netconf"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -1221,23 +1737,30 @@
 				{
 					"name": "Add XR node with XR cache directory",
 					"request": {
-						"url": "{{cfg}}/{{node}}/{{router}}",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"network-topology:node\": {\n        \"node-id\": \"{{router}}\",\n        \"host\": \"{{router-ip}}\",\n        \"port\": \"{{router-port}}\",\n        \"username\": \"{{router-user}}\",\n        \"password\": \"{{router-pass}}\",\n        \"tcp-only\": false,\n        \"keepalive-delay\": 0,\n        \"schema-cache-directory\": \"XR\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{node}}/{{router}}",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{node}}",
+								"{{router}}"
+							]
 						},
 						"description": ""
 					},
@@ -1246,23 +1769,30 @@
 				{
 					"name": "Get configured node",
 					"request": {
-						"url": "{{cfg}}/{{node}}/{{router}}",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"network-topology:node\": {\n        \"node-id\": \"{{router}}\",\n        \"host\": \"{{router-ip}}\",\n        \"port\": \"{{router-port}}\",\n        \"username\": \"{{router-user}}\",\n        \"password\": \"{{router-pass}}\",\n        \"tcp-only\": false,\n        \"schemaless\": true,\n        \"keepalive-delay\": 0\n    }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{node}}/{{router}}",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{node}}",
+								"{{router}}"
+							]
 						},
 						"description": ""
 					},
@@ -1271,23 +1801,30 @@
 				{
 					"name": "Get operational node",
 					"request": {
-						"url": "{{oper}}/{{node}}/{{router}}",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"network-topology:node\": {\n        \"node-id\": \"{{router}}\",\n        \"host\": \"{{router-ip}}\",\n        \"port\": \"{{router-port}}\",\n        \"username\": \"{{router-user}}\",\n        \"password\": \"{{router-pass}}\",\n        \"tcp-only\": false,\n        \"schemaless\": true,\n        \"keepalive-delay\": 0\n    }\n}"
+						},
+						"url": {
+							"raw": "{{oper}}/{{node}}/{{router}}",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{node}}",
+								"{{router}}"
+							]
 						},
 						"description": ""
 					},
@@ -1296,18 +1833,26 @@
 				{
 					"name": "Delete node",
 					"request": {
-						"url": "{{cfg}}/{{node}}/{{router}}",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{cfg}}/{{node}}/{{router}}",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{node}}",
+								"{{router}}"
+							]
 						},
 						"description": ""
 					},
@@ -1322,21 +1867,33 @@
 				{
 					"name": "Get static routes",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ip-static-cfg:router-static",
+								"default-vrf",
+								"address-family",
+								"vrfipv4",
+								"vrf-unicast",
+								"vrf-prefixes"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -1344,23 +1901,36 @@
 				{
 					"name": "Add static route",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"Cisco-IOS-XR-ip-static-cfg:vrf-prefix\": [\n        {\n            \"prefix\": \"192.168.204.0\",\n            \"prefix-length\": 23,\n            \"vrf-route\": {\n        \t\t\"vrf-next-hop-table\": {\n            \t\t\"vrf-next-hop-interface-name\": [\n            \t\t{\n                \t\t\"interface-name\": \"tunnel-te101\"\n            \t\t}\n            \t\t]\n        \t\t}\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ip-static-cfg:router-static",
+								"default-vrf",
+								"address-family",
+								"vrfipv4",
+								"vrf-unicast",
+								"vrf-prefixes",
+								""
+							]
 						},
 						"description": ""
 					},
@@ -1369,21 +1939,36 @@
 				{
 					"name": "Get static route",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes/vrf-prefix/192.168.144.0/24",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes/vrf-prefix/192.168.144.0/24",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ip-static-cfg:router-static",
+								"default-vrf",
+								"address-family",
+								"vrfipv4",
+								"vrf-unicast",
+								"vrf-prefixes",
+								"vrf-prefix",
+								"192.168.144.0",
+								"24"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -1391,16 +1976,32 @@
 				{
 					"name": "Delete static route",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes/vrf-prefix/192.168.144.0/24",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes/vrf-prefix/192.168.144.0/24",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ip-static-cfg:router-static",
+								"default-vrf",
+								"address-family",
+								"vrfipv4",
+								"vrf-unicast",
+								"vrf-prefixes",
+								"vrf-prefix",
+								"192.168.144.0",
+								"24"
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -1408,23 +2009,30 @@
 				{
 					"name": "Add static route using XML YANG Patch",
 					"request": {
-						"url": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static",
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/yang.patch+xml",
-								"description": ""
+								"value": "application/yang.patch+xml"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<yang-patch xmlns=\"urn:ietf:params:xml:ns:yang:ietf-yang-patch\">\n<patch-id>add-static-route</patch-id>\n<comment>Add a single static route</comment>\n<edit>\n\t<edit-id>edit1</edit-id>\n\t<operation>create</operation>\n\t<target>/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes/vrf-prefix</target>\n\t<value>\n\t\t<vrf-prefix xmlns=\"http://cisco.com/ns/yang/Cisco-IOS-XR-ip-static-cfg\">\n    \t\t<prefix-length>24</prefix-length>\n    \t\t<prefix>192.168.1.0</prefix>\n    \t\t<vrf-route>\n        \t\t<vrf-next-hop-table>\n            \t\t<vrf-next-hop-next-hop-address>\n                \t<next-hop-address>10.195.94.1</next-hop-address>\n            \t</vrf-next-hop-next-hop-address>\n        \t</vrf-next-hop-table>\n    \t</vrf-route>\n\t</vrf-prefix>\n\t</value>\n</edit>\n</yang-patch>\n\n\n"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ip-static-cfg:router-static",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ip-static-cfg:router-static"
+							]
 						},
 						"description": ""
 					},
