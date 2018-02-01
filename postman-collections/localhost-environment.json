@@ -65,13 +65,13 @@
     {
       "enabled": true,
       "key": "router",
-      "value": "xr9kv",
+      "value": "kcy",
       "type": "text"
     },
     {
       "enabled": true,
       "key": "router-ip",
-      "value": "4.3.2.1",
+      "value": "198.18.1.30",
       "type": "text"
     },
     {
@@ -123,8 +123,8 @@
       "type": "text"
     }
   ],
-  "timestamp": 1499708825795,
+  "timestamp": 1517489773486,
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2017-07-10T17:47:12.835Z",
-  "_postman_exported_using": "Postman/5.0.2"
+  "_postman_exported_at": "2018-02-01T12:56:15.575Z",
+  "_postman_exported_using": "Postman/5.5.2"
 }
