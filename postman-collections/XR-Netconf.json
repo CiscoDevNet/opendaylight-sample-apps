@@ -1,8 +1,7 @@
 {
 	"info": {
-		"name": "ODL XR Netconf",
 		"_postman_id": "f0da3722-3edf-0cfd-d402-a86ead970f38",
-		"description": "",
+		"name": "ODL XR Netconf",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -40,8 +39,7 @@
 								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
 								"nso"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -75,8 +73,7 @@
 								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
 								"{{router}}"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -106,8 +103,7 @@
 								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
 								"{{router}}"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -138,8 +134,7 @@
 								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
 								"{{router}}"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -173,8 +168,7 @@
 								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
 								"asr9k1"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -208,8 +202,7 @@
 								"odl-sal-netconf-connector-cfg:sal-netconf-connector",
 								"{{router}}"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -244,8 +237,7 @@
 								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
 								"accesses"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -276,8 +268,7 @@
 								"access",
 								"foo"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -311,8 +302,7 @@
 								"access-list-entry",
 								"10"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -347,8 +337,7 @@
 								"10",
 								"destination-port"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -386,8 +375,7 @@
 								"10",
 								"destination-port"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -416,8 +404,7 @@
 								"Cisco-IOS-XR-ipv4-acl-oper:ipv4-acl-and-prefix-list",
 								"access-list-manager"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -449,8 +436,7 @@
 								"access",
 								"foo"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -485,8 +471,7 @@
 								"access-list-sequence",
 								"10"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -518,8 +503,7 @@
 								"Cisco-IOS-XR-ipv4-acl-cfg:ipv4-acl-and-prefix-list",
 								"accesses"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -553,8 +537,7 @@
 								"access",
 								"test-deny"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -587,8 +570,7 @@
 								"accesses",
 								""
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -615,8 +597,7 @@
 								"access",
 								"test-grant"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -662,8 +643,7 @@
 								"ipv4-unicast",
 								"sourced-networks"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -702,8 +682,7 @@
 								"192.168.144.0",
 								"24"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -746,8 +725,7 @@
 								"ipv4-unicast",
 								"sourced-networks"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -786,8 +764,7 @@
 								"neighbor",
 								"172.23.29.120"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -824,8 +801,46 @@
 								"ipv4-unicast",
 								"attributes"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Merge BGP using JSON patch",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/yang.patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"ietf-yang-patch:yang-patch\": {\n\"patch-id\": \"Test merge operation\",\n\"comment\": \"This is a test patch\",\n\"edit\": [\n{\n\"edit-id\": \"edit1\",\n\"operation\": \"merge\",\n\"target\": \"/Cisco-IOS-XR-ipv4-bgp-cfg:global\",\n\"value\": {\n\"Cisco-IOS-XR-ipv4-bgp-cfg:global\" : \n{\n\"router-id\": \"192.168.100.2\"\n}\n}\n}\n]\n}\n}\n"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/instance/default/instance-as/0/four-byte-as/65504/default-vrf/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-ipv4-bgp-cfg:bgp",
+								"instance",
+								"default",
+								"instance-as",
+								"0",
+								"four-byte-as",
+								"65504",
+								"default-vrf",
+								""
+							]
+						}
 					},
 					"response": []
 				}
@@ -865,8 +880,7 @@
 								"details",
 								""
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -901,156 +915,11 @@
 								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
 								""
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": [
 						{
-							"id": "ff200066-a0ce-4044-b0f6-d3db037bb7cc",
-							"name": "linkstate-topology",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{authorization}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "http://172.23.29.120:8181/restconf/operational/network-topology:network-topology/topology/example-linkstate-topology",
-									"protocol": "http",
-									"host": [
-										"172",
-										"23",
-										"29",
-										"120"
-									],
-									"port": "8181",
-									"path": [
-										"restconf",
-										"operational",
-										"network-topology:network-topology",
-										"topology",
-										"example-linkstate-topology"
-									]
-								},
-								"description": ""
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "javascript",
-							"_postman_previewtype": "html",
-							"header": [
-								{
-									"name": "Content-Encoding",
-									"key": "Content-Encoding",
-									"value": "gzip",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"name": "Content-Type",
-									"key": "Content-Type",
-									"value": "application/yang.data+json",
-									"description": "The mime type of this content"
-								},
-								{
-									"name": "Server",
-									"key": "Server",
-									"value": "Jetty(8.1.15.v20140411)",
-									"description": "A name for the server"
-								},
-								{
-									"name": "Transfer-Encoding",
-									"key": "Transfer-Encoding",
-									"value": "chunked",
-									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-								},
-								{
-									"name": "Vary",
-									"key": "Vary",
-									"value": "Accept-Encoding, User-Agent",
-									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-								}
-							],
-							"cookie": [],
-							"responseTime": 236,
-							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
-						},
-						{
-							"id": "9f661813-2b46-4be6-9431-7c1133680efa",
-							"name": "response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{authorization}}"
-									}
-								],
-								"body": {},
-								"url": {
-									"raw": "http://172.23.29.120:8181/restconf/operational/network-topology:network-topology/topology/example-linkstate-topology",
-									"protocol": "http",
-									"host": [
-										"172",
-										"23",
-										"29",
-										"120"
-									],
-									"port": "8181",
-									"path": [
-										"restconf",
-										"operational",
-										"network-topology:network-topology",
-										"topology",
-										"example-linkstate-topology"
-									]
-								},
-								"description": ""
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "javascript",
-							"_postman_previewtype": "html",
-							"header": [
-								{
-									"name": "Content-Encoding",
-									"key": "Content-Encoding",
-									"value": "gzip",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"name": "Content-Type",
-									"key": "Content-Type",
-									"value": "application/yang.data+json",
-									"description": "The mime type of this content"
-								},
-								{
-									"name": "Server",
-									"key": "Server",
-									"value": "Jetty(8.1.15.v20140411)",
-									"description": "A name for the server"
-								},
-								{
-									"name": "Transfer-Encoding",
-									"key": "Transfer-Encoding",
-									"value": "chunked",
-									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-								},
-								{
-									"name": "Vary",
-									"key": "Vary",
-									"value": "Accept-Encoding, User-Agent",
-									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-								}
-							],
-							"cookie": [],
-							"responseTime": 633,
-							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286726&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286725&ipv4-iface=192.168.96.1&ipv4-neigh=192.168.96.2\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286725&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286726&ipv4-iface=192.168.96.2&ipv4-neigh=192.168.96.1\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.5/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.6/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
-						},
-						{
-							"id": "79f69b1f-81ca-4e3f-98de-3bb416e8e530",
+							"id": "7f3a3950-6b41-4302-afb6-a5a98a25535e",
 							"name": "multidomain.json",
 							"originalRequest": {
 								"method": "GET",
@@ -1058,6 +927,10 @@
 									{
 										"key": "Authorization",
 										"value": "{{authorization}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
 									}
 								],
 								"body": {},
@@ -1071,13 +944,11 @@
 										"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
 										""
 									]
-								},
-								"description": ""
+								}
 							},
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "javascript",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"name": "Content-Encoding",
@@ -1111,8 +982,139 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": 633,
 							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286726&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286725&ipv4-iface=192.168.96.1&ipv4-neigh=192.168.96.2\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286725&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286726&ipv4-iface=192.168.96.2&ipv4-neigh=192.168.96.1\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.5/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.6/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
+						},
+						{
+							"id": "b63d0e31-5a3f-4d9a-a30a-3e2efe8afe59",
+							"name": "response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authorization}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
+									"host": [
+										"{{cfg}}"
+									],
+									"path": [
+										"{{rtr}}",
+										"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "javascript",
+							"header": [
+								{
+									"name": "Content-Encoding",
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"name": "Content-Type",
+									"key": "Content-Type",
+									"value": "application/yang.data+json",
+									"description": "The mime type of this content"
+								},
+								{
+									"name": "Server",
+									"key": "Server",
+									"value": "Jetty(8.1.15.v20140411)",
+									"description": "A name for the server"
+								},
+								{
+									"name": "Transfer-Encoding",
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"name": "Vary",
+									"key": "Vary",
+									"value": "Accept-Encoding, User-Agent",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								}
+							],
+							"cookie": [],
+							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286726&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286725&ipv4-iface=192.168.96.1&ipv4-neigh=192.168.96.2\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://Ospf:0/type=link&local-as=65505&local-domain=2887196029&local-area=0&local-router=3232286725&remote-as=65505&remote-domain=2887196029&remote-area=0&remote-router=3232286726&ipv4-iface=192.168.96.2&ipv4-neigh=192.168.96.1\",\"source\":{\"source-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"source-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"ospf-topology:ospf-link-attributes\":{\"ted\":{}}},\"destination\":{\"dest-node\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"dest-tp\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286725\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.5/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://Ospf:0/type=node&as=65505&domain=2887196029&area=0&router=3232286726\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"ospf-topology:ospf-node-attributes\":{\"ted\":{}},\"prefix\":[{\"prefix\":\"192.168.96.0/24\"},{\"prefix\":\"192.168.200.6/32\"}]},\"termination-point\":[{\"tp-id\":\"bgpls://Ospf:0/type=tp&ipv4=192.168.96.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
+						},
+						{
+							"id": "087212ef-f3a5-485c-8814-8bc6872280df",
+							"name": "linkstate-topology",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authorization}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-ifmgr-cfg:interface-configurations/",
+									"host": [
+										"{{cfg}}"
+									],
+									"path": [
+										"{{rtr}}",
+										"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "javascript",
+							"header": [
+								{
+									"name": "Content-Encoding",
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"name": "Content-Type",
+									"key": "Content-Type",
+									"value": "application/yang.data+json",
+									"description": "The mime type of this content"
+								},
+								{
+									"name": "Server",
+									"key": "Server",
+									"value": "Jetty(8.1.15.v20140411)",
+									"description": "A name for the server"
+								},
+								{
+									"name": "Transfer-Encoding",
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"name": "Vary",
+									"key": "Vary",
+									"value": "Accept-Encoding, User-Agent",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								}
+							],
+							"cookie": [],
+							"body": "{\"topology\":[{\"topology-id\":\"example-linkstate-topology\",\"link\":[{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.104.1&ipv4-neigh=192.168.104.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.105.2&ipv4-neigh=192.168.105.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.101.1&ipv4-neigh=192.168.101.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.103.1&ipv4-neigh=192.168.103.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.102.2&ipv4-neigh=192.168.102.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0004&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.103.2&ipv4-neigh=192.168.103.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0004&ipv4-iface=192.168.105.1&ipv4-neigh=192.168.105.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0002&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0001&ipv4-iface=192.168.101.2&ipv4-neigh=192.168.101.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":5,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8,\"srlg\":{\"srlg-values\":[{\"srlg-value\":1}]}}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0003&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0002&ipv4-iface=192.168.104.2&ipv4-neigh=192.168.104.1\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\"}},{\"link-id\":\"bgpls://IsisLevel2:0/type=link&local-as=65504&local-domain=2887196020&local-router=00a8.0084.0001&remote-as=65504&remote-domain=2887196020&remote-router=00a8.0084.0003&ipv4-iface=192.168.102.1&ipv4-neigh=192.168.102.2\",\"source\":{\"source-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"source-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\"},\"l3-unicast-igp-topology:igp-link-attributes\":{\"metric\":10,\"isis-topology:isis-link-attributes\":{\"ted\":{\"unreserved-bandwidth\":[{\"priority\":6,\"bandwidth\":1.25E+8},{\"priority\":7,\"bandwidth\":1.25E+8},{\"priority\":4,\"bandwidth\":1.25E+8},{\"priority\":5,\"bandwidth\":1.25E+8},{\"priority\":2,\"bandwidth\":1.25E+8},{\"priority\":3,\"bandwidth\":1.25E+8},{\"priority\":0,\"bandwidth\":1.25E+8},{\"priority\":1,\"bandwidth\":1.25E+8}],\"te-default-metric\":10,\"color\":0,\"max-resv-link-bandwidth\":1.25E+8,\"max-link-bandwidth\":1.25E+8}}},\"destination\":{\"dest-node\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"dest-tp\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\"}}],\"topology-types\":{},\"node\":[{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0004\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.114.1/32\",\"metric\":0},{\"prefix\":\"192.168.98.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.2/32\",\"metric\":0},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.100.4/32\",\"metric\":1},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-d\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.4\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0004\"}},\"router-id\":[\"192.168.100.4\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0003\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.3/32\",\"metric\":1},{\"prefix\":\"192.168.110.1/32\",\"metric\":0},{\"prefix\":\"192.168.96.0/24\",\"metric\":0},{\"prefix\":\"192.168.95.1/32\",\"metric\":0},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.97.0/24\",\"metric\":0},{\"prefix\":\"172.23.29.96/27\",\"metric\":0}],\"name\":\"xrvr-c\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.3\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0003\"}},\"router-id\":[\"192.168.100.3\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0001\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.103.0/24\",\"metric\":10},{\"prefix\":\"192.168.102.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.1/32\",\"metric\":1}],\"name\":\"xrvr-a\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.1\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0001\"}},\"router-id\":[\"192.168.100.1\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.103.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.102.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]},{\"node-id\":\"bgpls://IsisLevel2:0/type=node&as=65504&domain=2887196020&router=00a8.0084.0002\",\"l3-unicast-igp-topology:igp-node-attributes\":{\"prefix\":[{\"prefix\":\"192.168.104.0/24\",\"metric\":10},{\"prefix\":\"192.168.100.2/32\",\"metric\":1},{\"prefix\":\"192.168.105.0/24\",\"metric\":10},{\"prefix\":\"192.168.99.0/24\",\"metric\":10},{\"prefix\":\"192.168.101.0/24\",\"metric\":10}],\"name\":\"xrvr-b\",\"isis-topology:isis-node-attributes\":{\"ted\":{\"te-router-id-ipv4\":\"192.168.100.2\"},\"iso\":{\"iso-system-id\":\"00a8.0084.0002\"}},\"router-id\":[\"192.168.100.2\"]},\"termination-point\":[{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.105.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.101.2\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}},{\"tp-id\":\"bgpls://IsisLevel2:0/type=tp&ipv4=192.168.104.1\",\"l3-unicast-igp-topology:igp-termination-point-attributes\":{}}]}],\"server-provided\":true}]}"
 						}
 					]
 				},
@@ -1143,8 +1145,7 @@
 								"act",
 								"Loopback0"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1176,8 +1177,7 @@
 								"Loopback0",
 								"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1210,8 +1210,7 @@
 								"Cisco-IOS-XR-ipv4-io-cfg:ipv4-network",
 								"addresses"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1245,8 +1244,7 @@
 								"addresses",
 								"primary"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1283,8 +1281,7 @@
 								"addresses",
 								"primary"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1315,8 +1312,7 @@
 								"statistic",
 								"GigabitEthernet0%2F0%2F0%2F0"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1350,8 +1346,7 @@
 								"act",
 								"Loopback0"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1383,8 +1378,7 @@
 								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations",
 								""
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1424,8 +1418,7 @@
 								"yang-ext:mount",
 								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1456,8 +1449,7 @@
 								"{{rtr}}",
 								"Cisco-IOS-XR-ifmgr-cfg:interface-configurations"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -1494,8 +1486,7 @@
 								"{{rtr}}",
 								"openconfig-bgp:bgp"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1527,8 +1518,7 @@
 								"openconfig-bgp:bgp",
 								"neighbors"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1560,8 +1550,7 @@
 								"openconfig-bgp:bgp",
 								"global"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -1595,8 +1584,7 @@
 								"{{rtr}}",
 								"Cisco-IOS-XR-policy-repository-cfg:routing-policy"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1631,8 +1619,7 @@
 								"{{rtr}}",
 								"Cisco-IOS-XR-policy-repository-cfg:routing-policy"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1663,8 +1650,7 @@
 								"{{rtr}}",
 								"Cisco-IOS-XR-policy-repository-cfg:routing-policy"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -1690,17 +1676,15 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "{{cfg}}/network-topology:network-topology/topology/topology-netconf",
+							"raw": "{{cfg}}/{{topo}}/topology-netconf",
 							"host": [
 								"{{cfg}}"
 							],
 							"path": [
-								"network-topology:network-topology",
-								"topology",
+								"{{topo}}",
 								"topology-netconf"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1718,19 +1702,21 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": "<input xmlns=\"http://cisco.com/ns/yang/Cisco-IOS-XR-infra-syslog-oper\">\n\t<filters>\n\t\t<start-time>2018-03-08T07:12:49Z</start-time>\n\t\t<end-time>2018-03-08T07:13:51Z</end-time>\n\t</filters> \n</input>"
+						},
 						"url": {
-							"raw": "{{oper}}/network-topology:network-topology/topology/topology-netconf",
+							"raw": "{{oper}}/{{topo}}/topology-netconf/",
 							"host": [
 								"{{oper}}"
 							],
 							"path": [
-								"network-topology:network-topology",
-								"topology",
-								"topology-netconf"
+								"{{topo}}",
+								"topology-netconf",
+								""
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1761,8 +1747,7 @@
 								"{{node}}",
 								"{{router}}"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1793,8 +1778,7 @@
 								"{{node}}",
 								"{{router}}"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1825,8 +1809,7 @@
 								"{{node}}",
 								"{{router}}"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1853,8 +1836,7 @@
 								"{{node}}",
 								"{{router}}"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -1893,8 +1875,7 @@
 								"vrf-unicast",
 								"vrf-prefixes"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1931,8 +1912,7 @@
 								"vrf-prefixes",
 								""
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -1968,8 +1948,7 @@
 								"192.168.144.0",
 								"24"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -2001,8 +1980,7 @@
 								"192.168.144.0",
 								"24"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -2033,12 +2011,522 @@
 								"{{rtr}}",
 								"Cisco-IOS-XR-ip-static-cfg:router-static"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "LDP",
+			"description": "",
+			"item": [
+				{
+					"name": "Get LDP config",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add LDP Interface",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"interface\": [\n\t\t{\n\t\t\t\"interface-name\": \"tunnel-te3906\",\n\t\t\t\"enable\": [\n\t\t\t\tnull\n\t\t\t]\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp/default-vrf/interfaces/interface/tunnel-te3906",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp",
+								"default-vrf",
+								"interfaces",
+								"interface",
+								"tunnel-te3906"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch LDP Interface",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang.patch+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ietf-yang-patch:yang-patch\": {\n\t\t\"patch-id\": \"Test merge operation\",\n\t\t\"comment\": \"This is a test patch\",\n\t\t\"edit\": [\n\t\t\t{\n\t\t\t\t\"edit-id\": \"edit1\",\n\t\t\t\t\"operation\": \"merge\",\n\t\t\t\t\"target\": \"/Cisco-IOS-XR-mpls-ldp-cfg:interface[Cisco-IOS-XR-mpls-ldp-cfg:interface-name='tunnel-te1600']\",\n\t\t\t\t\"value\": {\n\t\t\t\t\t\"Cisco-IOS-XR-mpls-ldp-cfg:interface\" : [\n\t\t\t\t\t\t{\n        \t\t \t\t\t\"interface-name\": \"tunnel-te1600\",\n        \t\t \t\t\t\"enable\": [\n        \t\t \t\t\t\t\"null\"\n        \t\t \t\t\t]\n        \t\t\t\t}\n        \t\t\t]\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp/default-vrf/interfaces",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp",
+								"default-vrf",
+								"interfaces"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch LDP Interface XML",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang.patch+xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<yang-patch xmlns=\"urn:ietf:params:xml:ns:yang:ietf-yang-patch\">\n\t<patch-id>Test merge operation</patch-id>\n\t<comment>Test comment</comment>\n\t<edit>\n\t\t<edit-id>edit1</edit-id>\n\t\t<operation>merge</operation>\n\t\t<target xmlns=\"http://cisco.com/ns/yang/Cisco-IOS-XR-mpls-ldp-cfg\">/interface[interface-name='tunnel-te1600']</target>\n\t\t<value>\n\t\t\t<interface xmlns=\"http://cisco.com/ns/yang/Cisco-IOS-XR-mpls-ldp-cfg\">\n\t\t\t\t<interface-name>tunnel-te1600</interface-name>\n\t\t\t\t<enable/>\n\t\t\t</interface>\n\t\t</value>\n\t</edit>\n</yang-patch>\n"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp/default-vrf/interfaces",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp",
+								"default-vrf",
+								"interfaces"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ISIS",
+			"description": "",
+			"item": [
+				{
+					"name": "Merge ISIS using JSON patch",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/yang.patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ietf-yang-patch:yang-patch\": {\n\t\t\"patch-id\": \"Test merge operation\",\n\t\t\"comment\": \"This is a test patch\",\n\t\t\"edit\": [\n\t\t\t{\n\t\t\t\t\"edit-id\": \"edit1\",\n\t\t\t\t\"operation\": \"merge\",\n\t\t\t\t\"target\": \"/Cisco-IOS-XR-clns-isis-cfg:lsp-generation-interval[Cisco-IOS-XR-clns-isis-cfg:level='not-set']\",\n\t\t\t\t\"value\": {\n\t\t\t\t\t\"Cisco-IOS-XR-clns-isis-cfg:lsp-generation-interval\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"level\": \"not-set\",\n\t\t\t\t\t\t\t\"initial-wait\": \"12\",\n\t\t\t\t\t\t\t\"secondary-wait\": \"34\",\n\t\t\t\t\t\t\t\"maximum-wait\": \"56\"\n            \t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-clns-isis-cfg:isis/instances/instance/foo/lsp-generation-intervals",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-clns-isis-cfg:isis",
+								"instances",
+								"instance",
+								"foo",
+								"lsp-generation-intervals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST ISIS using JSON",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Cisco-IOS-XR-clns-isis-cfg:lsp-generation-interval\" : [\n\t\t{\n\t\t\t\"level\": \"not-set\",\n\t\t\t\"initial-wait\": 20,\n            \"maximum-wait\": 60,\n            \"secondary-wait\": 40\n        }\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-clns-isis-cfg:isis/instances/instance/bar/lsp-generation-intervals",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-clns-isis-cfg:isis",
+								"instances",
+								"instance",
+								"bar",
+								"lsp-generation-intervals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT ISIS interface using JSON",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"interface\": [\n        {\n            \"interface-name\": \"Bundle-Ether1.1\",\n            \"state\": \"suppressed\",\n            \"circuit-type\": \"level1\",\n            \"interface-afs\": {\n                \"interface-af\": [\n                    {\n                        \"af-name\": \"ipv6\",\n                        \"saf-name\": \"unicast\",\n                        \"interface-af-data\": {\n                            \"metrics\": {\n                                \"metric\": [\n                                    {\n                                        \"level\": \"level1\",\n                                        \"metric\": 200000\n                                    }\n                                ]\n                            },\n                            \"running\": [\n                                null\n                            ]\n                        }\n                    },\n                    {\n                        \"af-name\": \"ipv4\",\n                        \"saf-name\": \"unicast\",\n                        \"interface-af-data\": {\n                            \"metrics\": {\n                                \"metric\": [\n                                    {\n                                        \"level\": \"level1\",\n                                        \"metric\": 200000\n                                    }\n                                ]\n                            },\n                            \"running\": [\n                                null\n                            ]\n                        }\n                    }\n                ]\n            },\n            \"bfd\": {\n                \"enable-ipv4\": true,\n                \"interval\": 300,\n                \"detection-multiplier\": 3\n            },\n            \"point-to-point\": [\n                null\n            ],\n            \"running\": [\n                null\n            ],\n            \"hello-intervals\": {\n                \"hello-interval\": [\n                   {\n                        \"level\": \"not-set\",\n                        \"interval\": 30\n                    }\n                ]\n            }\n        }\n    ]\n}\n"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-clns-isis-cfg:isis/instances/instance/foo/interfaces/interface/Bundle-Ether1.1",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-clns-isis-cfg:isis",
+								"instances",
+								"instance",
+								"foo",
+								"interfaces",
+								"interface",
+								"Bundle-Ether1.1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ISIS interfaces ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"interface\": [\n        {\n            \"interface-name\": \"Bundle-Ether1.1\",\n            \"state\": \"suppressed\",\n            \"circuit-type\": \"level1\",\n            \"interface-afs\": {\n                \"interface-af\": [\n                    {\n                        \"af-name\": \"ipv6\",\n                        \"saf-name\": \"unicast\",\n                        \"interface-af-data\": {\n                            \"metrics\": {\n                                \"metric\": [\n                                    {\n                                        \"level\": \"level1\",\n                                        \"metric\": 200000\n                                    }\n                                ]\n                            },\n                            \"running\": [\n                                null\n                            ]\n                        }\n                    },\n                    {\n                        \"af-name\": \"ipv4\",\n                        \"saf-name\": \"unicast\",\n                        \"interface-af-data\": {\n                            \"metrics\": {\n                                \"metric\": [\n                                    {\n                                        \"level\": \"level1\",\n                                        \"metric\": 200000\n                                    }\n                                ]\n                            },\n                            \"running\": [\n                                null\n                            ]\n                        }\n                    }\n                ]\n            },\n            \"bfd\": {\n                \"enable-ipv4\": true,\n                \"interval\": 300,\n                \"detection-multiplier\": 3\n            },\n            \"point-to-point\": [\n                null\n            ],\n            \"running\": [\n                null\n            ],\n            \"hello-intervals\": {\n                \"hello-interval\": [\n                   {\n                        \"level\": \"not-set\",\n                        \"interval\": 30\n                    }\n                ]\n            }\n        }\n    ]\n}\n"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-clns-isis-cfg:isis/instances/instance/foo/interfaces/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-clns-isis-cfg:isis",
+								"instances",
+								"instance",
+								"foo",
+								"interfaces",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add ISIS interface using PATCH",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/yang.patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ietf-yang-patch:yang-patch\": {\n\t\t\"patch-id\": \"Test merge operation\",\n\t\t\"comment\": \"This is a test patch\",\n\t\t\"edit\": [\n\t\t\t{\n\t\t\t\t\"edit-id\": \"edit1\",\n\t\t\t\t\"operation\": \"merge\",\n\t\t\t\t\"target\": \"/Cisco-IOS-XR-clns-isis-cfg:interface[Cisco-IOS-XR-clns-isis-cfg:interface-name='Bundle-Ether1.1']\",\n\t\t\t\t\"value\": {\n\t\t\t\t\t\"Cisco-IOS-XR-clns-isis-cfg:interface\": [\n        \t\t\t\t{\n        \t\t\t\t\t\"interface-name\": \"Bundle-Ether1.1\",\n            \t\t\t\t\"state\": \"suppressed\",\n            \t\t\t\t\"circuit-type\": \"level1\",\n            \t\t\t\t\"interface-afs\": {\n                \t\t\t\t\"interface-af\": [\n                    \t\t\t\t{\n                        \t\t\t\t\"af-name\": \"ipv6\",\n                        \t\t\t\t\"saf-name\": \"unicast\",\n                        \t\t\t\t\"interface-af-data\": {\n                            \t\t\t\t\"metrics\": {\n                                \t\t\t\t\"metric\": [\n                                    \t\t\t\t{\n                                        \t\t\t\t\"level\": \"level1\",\n                                        \t\t\t\t\"metric\": \"200000\"\n                                    \t\t\t\t}\n                            \t\t\t\t\t]\n                            \t\t\t\t},\n                            \t\t\t\t\"running\": [\n                                \t\t\t\t\"null\"\n                            \t\t\t\t]\n                        \t\t\t\t}\n\t                    \t\t\t},\n                    \t\t\t\t{\n                        \t\t\t\t\"af-name\": \"ipv4\",\n                        \t\t\t\t\"saf-name\": \"unicast\",\n                        \t\t\t\t\"interface-af-data\": {\n                            \t\t\t\t\"metrics\": {\n                                \t\t\t\t\"metric\": [\n                                \t  \t\t\t\t{\n                                        \t\t\t\t\"level\": \"level1\",\n                                        \t\t\t\t\"metric\": \"200000\"\n                                    \t\t\t\t}\n                                \t\t\t\t]\n                            \t\t\t\t},\n                        \t\t\t\t\t\"running\": [\n                                \t\t\t\t\"null\"\n                            \t\t\t\t]\n                        \t\t\t\t}\n                    \t\t\t\t}\n                \t\t\t\t]\n            \t\t\t\t},\n            \t\t\t\t\"bfd\": {\n                \t\t\t\t\"enable-ipv4\": \"true\",\n                \t\t\t\t\"interval\": \"300\",\n                \t\t\t\t\"detection-multiplier\": \"3\"\n            \t\t\t\t},\n            \t\t\t\t\"point-to-point\": [\n                \t\t\t\t\"null\"\n            \t\t\t\t],\n            \t\t\t\t\"running\": [\n                \t\t\t\t\"null\"\n            \t\t\t\t],\n            \t\t\t\t\"hello-intervals\": {\n                \t\t\t\t\"hello-interval\": [\n                \t\t\t\t\t{\n                    \t \t\t\t\t\"level\": \"not-set\",\n                        \t\t\t\t\"interval\": \"30\"\n                    \t\t\t\t}\n                \t\t\t\t]\n            \t\t\t\t}\n        \t\t\t\t}\n    \t\t\t\t]\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-clns-isis-cfg:isis/instances/instance/foo/interfaces/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-clns-isis-cfg:isis",
+								"instances",
+								"instance",
+								"foo",
+								"interfaces",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Syslog",
+			"description": "",
+			"item": [
+				{
+					"name": "Get syslog",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-infra-syslog-oper:syslog",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-infra-syslog-oper:syslog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get logging",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-infra-syslog-oper:logging",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"Cisco-IOS-XR-infra-syslog-oper:logging"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get LDP cfg",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{cfg}}/{{rtr}}/Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp",
+					"host": [
+						"{{cfg}}"
+					],
+					"path": [
+						"{{rtr}}",
+						"Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "issue rollback RPC",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<roll-back-configuration xmlns=\"http://cisco.com/ns/yang/Cisco-IOS-XR-cfgmgr-rollback-act\">\n\t<commit-id>1000000065</commit-id>\n\t<force>false</force>\n\t<best-effort>false</best-effort>\n</roll-back-configuration>\n"
+				},
+				"url": {
+					"raw": "{{rpc}}/{{rtr}}/Cisco-IOS-XR-cfgmgr-rollback-act:roll-back-configuration",
+					"host": [
+						"{{rpc}}"
+					],
+					"path": [
+						"{{rtr}}",
+						"Cisco-IOS-XR-cfgmgr-rollback-act:roll-back-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "issue link down RPC",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<input xmlns=\"http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-test-trap-act\">\n\t<ifindex>1728</ifindex>\n</input>\n"
+				},
+				"url": {
+					"raw": "{{rpc}}/{{rtr}}/Cisco-IOS-XR-snmp-test-trap-act:interface-link-down",
+					"host": [
+						"{{rpc}}"
+					],
+					"path": [
+						"{{rtr}}",
+						"Cisco-IOS-XR-snmp-test-trap-act:interface-link-down"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get optics oper",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{oper}}/{{rtr}}/Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/Optics0%2F0%2F0%2F0",
+					"host": [
+						"{{oper}}"
+					],
+					"path": [
+						"{{rtr}}",
+						"Cisco-IOS-XR-controller-optics-oper:optics-oper",
+						"optics-ports",
+						"optics-port",
+						"Optics0%2F0%2F0%2F0"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
