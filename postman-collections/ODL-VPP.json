@@ -1,13 +1,12 @@
 {
 	"info": {
 		"name": "ODL-VPP",
-		"_postman_id": "903125d0-b54a-a329-ae37-a384c0f29350",
-		"description": "",
+		"_postman_id": "ff726250-892b-f5e2-7352-8e9584603f27",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Add VPP1",
+			"name": "add vpp1 - cfg",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -44,13 +43,12 @@
 						"node",
 						"vpp1"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get NETCONF Topology",
+			"name": "netconf-topology - cfg",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -82,8 +80,7 @@
 						"topology-netconf",
 						""
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -154,13 +151,12 @@
 						"ietf-interfaces:interfaces-state",
 						""
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "List ifcs host-gigabit-ethernet",
+			"name": "List ifc host-gigabit-ethernet",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -191,13 +187,12 @@
 						"interface",
 						"GigabitEthernet0%2F8%2F0"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Enable local0 interface - cfg",
+			"name": "Enable local0 ifc - cfg",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -228,13 +223,12 @@
 						"interface",
 						"local0"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Enable gigabit-ethernet interface - cfg",
+			"name": "Enable gigabit-ethernet ifc - cfg",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -265,8 +259,7 @@
 						"interface",
 						"GigabitEthernet0%2F8%2F0"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}

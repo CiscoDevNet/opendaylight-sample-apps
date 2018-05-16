@@ -1,6 +1,6 @@
 {
   "id": "3a011f43-5771-34fe-18ed-236be70bfdc3",
-  "name": "OpenDaylight with Honeycomb and VPP",
+  "name": "ODL VPP",
   "values": [
     {
       "enabled": true,
@@ -25,16 +25,10 @@
       "key": "odl_port",
       "value": "8181",
       "type": "text"
-    },
-    {
-      "enabled": true,
-      "key": "vpp2_address",
-      "value": "192.168.60.102",
-      "type": "text"
     }
   ],
-  "timestamp": 1517428280246,
+  "timestamp": 1518994895328,
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2018-01-31T20:41:19.681Z",
+  "_postman_exported_at": "2018-02-18T23:01:49.259Z",
   "_postman_exported_using": "Postman/5.5.2"
 }
