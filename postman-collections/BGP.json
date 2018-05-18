@@ -1,10 +1,8 @@
 {
-	"variables": [],
 	"info": {
-		"name": "ODL BGP",
 		"_postman_id": "e1538cde-7961-d46f-c316-11e58412b0a8",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"name": "ODL BGP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -14,284 +12,414 @@
 				{
 					"name": "Put App Peer",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-application-peer/example-bgp-peer-app",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:bgp-application-peer\",\n            \"name\": \"example-bgp-peer-app\",\n            \"odl-bgp-rib-impl-cfg:data-broker\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-async-data-broker\",\n                \"name\": \"pingpong-broker\"\n            },\n            \"odl-bgp-rib-impl-cfg:target-rib\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:rib-instance\",\n                \"name\": \"example-bgp-rib\"\n            },\n            \"odl-bgp-rib-impl-cfg:bgp-peer-id\": \"10.195.94.41\",\n            \"odl-bgp-rib-impl-cfg:application-rib-id\": \"example-app-rib\"\n        }\n    ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-application-peer/example-bgp-peer-app",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:bgp-application-peer",
+								"example-bgp-peer-app"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get APP Route",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/bgp-inet:ipv4-routes/ipv4-route/192.168.144.0%2F24",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/xml",
-								"description": ""
+								"value": "application/xml"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/bgp-inet:ipv4-routes/ipv4-route/192.168.144.0%2F24",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"bgp-inet:ipv4-routes",
+								"ipv4-route",
+								"192.168.144.0%2F24"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get APP Routes",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete APP Routes",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<ipv4-routes xmlns=\"urn:opendaylight:params:xml:ns:yang:bgp-rib\">\n <ipv4-route>\n   <prefix>10.4.0.0/16</prefix>\n  <attributes>\n   <ipv4-next-hop>\n    <global>172.23.29.120</global>\n   </ipv4-next-hop><as-path/>\n   <multi-exit-disc>\n    <med>0</med>\n   </multi-exit-disc>\n   <local-pref>\n    <pref>100</pref>\n   </local-pref>\n   <originator-id>\n    <originator>172.23.29.120</originator>\n   </originator-id>\n   <origin>\n    <value>igp</value>\n   </origin>\n   <cluster-id>\n    <cluster>172.23.29.120</cluster>\n   </cluster-id>\n  </attributes>\n </ipv4-route>\n</ipv4-routes>"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete APP Route",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.1.0%2F24/0",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.1.0%2F24/0",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv4-routes",
+								"ipv4-route",
+								"192.168.1.0%2F24",
+								"0"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "PUT APP route",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.1.0%2F24",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"bgp-inet:ipv4-route\": [\n    {\n      \"prefix\": \"192.168.1.0/24\",\n      \"attributes\": {\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"as-path\": {},\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"ipv4-next-hop\": {\n          \"global\": \"10.195.94.43\"\n        }\n      }\n    }\n  ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.1.0%2F24",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv4-routes",
+								"ipv4-route",
+								"192.168.1.0%2F24"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "POST APP route XML",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/xml",
-								"description": ""
+								"value": "application/xml"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<ipv4-route xmlns=\"urn:opendaylight:params:xml:ns:yang:bgp-inet\">\n    <prefix>1.1.1.0/24</prefix>\n    <attributes>\n        <ipv4-next-hop>\n            <global>172.23.29.126</global>\n        </ipv4-next-hop>\n        <multi-exit-disc>\n            <med>0</med>\n        </multi-exit-disc>\n        <local-pref>\n            <pref>100</pref>\n        </local-pref>\n        <as-path>\n            <segments>\n                <as-sequence>65504</as-sequence>\n            </segments>\n        </as-path>\n        <origin>\n            <value>igp</value>\n        </origin>\n    </attributes>\n</ipv4-route>"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv4-routes",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "PUT APP route extended",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.144.0%2F24",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"bgp-inet:ipv4-route\": [\n    {\n      \"prefix\": \"192.168.144.0/24\",\n      \"attributes\": {\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"as-path\": {},\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"atomic-aggregate\" : {},\n        \"aggregator\" : {\n            \"as-number\" : 123,\n            \"network-address\" : \"1.2.3.4\"\n        },\n        \"aigp\" : {\n            \"aigp-tlv\" : {\n                \"metric\" : 123456\n            }\n        },\n        \"communities\" : [\n            {\"as-number\" : 123, \"semantics\" : 123}\n        ],\n        \"extended-communities\" : [\n            {\"comm-type\" : 0, \"comm-sub-type\" : 0, \"as-specific-extended-community\" : { \"transitive\" : \"true\", \"global-administrator\" : \"123\", \"local-administrator\" : \"MDAwMA==\" }}\n        ],\n        \"ipv4-next-hop\": {\n          \"global\": \"172.23.29.97\"\n        }\n      }\n    }\n  ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.144.0%2F24",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv4-routes",
+								"ipv4-route",
+								"192.168.144.0%2F24"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "POST APP route",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"bgp-inet:ipv4-route\": [\n    {\n      \"prefix\": \"192.168.144.0/24\",\n      \"attributes\": {\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"as-path\": {},\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"ipv4-next-hop\": {\n          \"global\": \"172.23.29.97\"\n        }\n      }\n    }\n  ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv4-routes",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "POST flowspec route XML",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-flowspec:flowspec-subsequent-address-family",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/xml",
-								"description": ""
+								"value": "application/xml"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "  <flowspec-routes xmlns=\"urn:opendaylight:params:xml:ns:yang:bgp-flowspec\">\n    <flowspec-route>\n      <route-key>bar</route-key>\n      <flowspec>\n        <destination-prefix>192.168.0.1/32</destination-prefix>\n        <component-type>destination-prefix</component-type>\n      </flowspec>\n      <flowspec>\n        <source-prefix>10.0.0.1/32</source-prefix>\n        <component-type>source-prefix</component-type>\n      </flowspec>\n      <flowspec>\n        <protocol-ips>\n          <op>equals end-of-list</op>\n          <value>6</value>              \n        </protocol-ips>\n        <component-type>protocol-ip</component-type>\n      </flowspec>\n      <flowspec>\n        <ports>\n          <op>equals end-of-list</op>\n          <value>80</value>\n        </ports>\n        <component-type>port</component-type>\n      </flowspec>\n      <flowspec>\n        <destination-ports>\n          <op>greater-than</op>\n          <value>8080</value>\n        </destination-ports>\n        <destination-ports>\n          <op>and-bit less-than end-of-list</op>\n          <value>8088</value>\n        </destination-ports>\n        <component-type>destination-port</component-type>\n      </flowspec>\n      <flowspec>\n        <source-ports>\n          <op>greater-than end-of-list</op>\n          <value>1024</value>\n        </source-ports>\n        <component-type>source-port</component-type>\n      </flowspec>\n      <flowspec>\n        <types>\n          <op>equals end-of-list</op>\n          <value>0</value>\n        </types>\n        <component-type>icmp-type</component-type>\n      </flowspec>\n        <flowspec>\n        <codes>\n          <op>equals end-of-list</op>\n          <value>0</value>\n        </codes>\n        <component-type>icmp-code</component-type>\n      </flowspec>\n      <flowspec>\n        <tcp-flags>\n          <op>match end-of-list</op>\n          <value>32</value>\n        </tcp-flags>\n        <component-type>tcp-flags</component-type>\n      </flowspec>\n      <flowspec>\n        <packet-lengths>\n          <op>greater-than</op>\n          <value>400</value>\n        </packet-lengths>\n        <packet-lengths>\n          <op>and-bit less-than end-of-list</op>\n           <value>500</value>\n        </packet-lengths>\n        <component-type>packet-length</component-type>\n      </flowspec>\n      <flowspec>\n        <dscps>\n          <op>equals end-of-list</op>\n          <value>20</value>\n        </dscps>\n        <component-type>dscp</component-type>\n      </flowspec>\n      <flowspec>\n        <fragments>\n          <op>match end-of-list</op>\n          <value>first</value>\n        </fragments>\n        <component-type>fragment</component-type>\n      </flowspec>\n      <attributes>\n        <origin>\n          <value>igp</value>\n        </origin>\n        <as-path/>\n        <local-pref>\n          <pref>100</pref>\n        </local-pref>\n        <extended-communities>\n          <comm-type>128</comm-type>\n          <comm-sub-type>7</comm-sub-type>\n          <traffic-action-extended-community>\n            <sample>true</sample>\n            <terminal-action>false</terminal-action>\n          </traffic-action-extended-community>\n        </extended-communities>\n      </attributes>\n    </flowspec-route>\n  </flowspec-routes>"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-flowspec:flowspec-subsequent-address-family",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-flowspec:flowspec-subsequent-address-family"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "PUT flowspec route XML",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-flowspec:flowspec-subsequent-address-family/flowspec-routes/flowspec-route/bar",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/xml",
-								"description": ""
+								"value": "application/xml"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<flowspec-route xmlns=\"urn:opendaylight:params:xml:ns:yang:bgp-flowspec\">\n    <route-key>bar</route-key>\n    <flowspec>\n        <destination-ports>\n           <op>equals</op>\n           <value>8080</value>\n       </destination-ports>\n    </flowspec>\n    <flowspec>\n        <destination-prefix>192.168.0.1/32</destination-prefix>\n        <component-type>destination-prefix</component-type>\n    </flowspec>\n    <attributes>\n        <origin>\n            <value>igp</value>\n        </origin>\n        <as-path/>\n        <local-pref>\n            <pref>100</pref>\n        </local-pref>\n        <extended-communities>\n            <comm-type>128</comm-type>\n            <comm-sub-type>7</comm-sub-type>\n            <traffic-action-extended-community>\n                <sample>true</sample>\n                <terminal-action>false</terminal-action>\n            </traffic-action-extended-community>\n        </extended-communities>\n    </attributes>\n</flowspec-route>\n"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-flowspec:flowspec-subsequent-address-family/flowspec-routes/flowspec-route/bar",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-flowspec:flowspec-subsequent-address-family",
+								"flowspec-routes",
+								"flowspec-route",
+								"bar"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "PUT APP route Boron",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.1.0%2F24/0",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"bgp-inet:ipv4-route\": [\n    {\n      \"path-id\": 0,\n      \"prefix\": \"192.168.1.0/24\",\n      \"attributes\": {\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"as-path\": {},\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"ipv4-next-hop\": {\n          \"global\": \"172.23.29.126\"\n        }\n      }\n    }\n  ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/ipv4-route/192.168.1.0%2F24/0",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv4-routes",
+								"ipv4-route",
+								"192.168.1.0%2F24",
+								"0"
+							]
+						}
 					},
 					"response": []
 				}
@@ -304,333 +432,414 @@
 				{
 					"name": "Post BGP RIB Helium XML",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/xml",
-								"description": ""
+								"value": "application/xml"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<module xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:config\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:rib-impl</type>\n  <name>example-bgp-rib</name>\n  <bgp-rib-id xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">172.23.29.120</bgp-rib-id>\n  <local-as xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">65504</local-as>\n</module>"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Post LS Attributes Helium XML",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/xml",
-								"description": ""
+								"value": "application/xml"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{Authorization}}",
-								"description": ""
+								"value": "{{Authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<module xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:config\">\n <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:linkstate\">x:bgp-linkstate</type>\n <name>bgp-linkstate</name>\n <iana-linkstate-attribute-type xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:linkstate\">true</iana-linkstate-attribute-type>\n</module>"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Post BGP Peer Helium XML",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/xml",
-								"description": ""
+								"value": "application/xml"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{Authorization}}",
-								"description": ""
+								"value": "{{Authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "<module xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:config\">\n <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-peer</type>\n <name>example-bgp-peer</name>\n <host xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">172.23.29.116</host>\n <holdtimer xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">180</holdtimer>\n <rib xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:cfg\">x:rib</type>\n  <name>example-bgp-rib</name>\n </rib>\n <peer-registry xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-peer-registry</type>\n  <name>global-bgp-peer-registry</name>\n </peer-registry>\n <advertized-table xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-table-type</type>\n  <name>ipv4-unicast</name>\n </advertized-table>\n <advertized-table xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-table-type</type>\n  <name>ipv6-unicast</name>\n </advertized-table>\n <advertized-table xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">\n  <type xmlns:x=\"urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl\">x:bgp-table-type</type>\n  <name>linkstate</name>\n </advertized-table>\n</module>"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete RIB",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:rib-impl",
+								"example-bgp-rib"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete peer",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:bgp-peer",
+								"example-bgp-peer"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete LS attribute",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-linkstate-cfg:bgp-linkstate/bgp-linkstate",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-linkstate-cfg:bgp-linkstate/bgp-linkstate",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-linkstate-cfg:bgp-linkstate",
+								"bgp-linkstate"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Put BGP RIB - Lithium",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:rib-impl\",\n            \"name\": \"example-bgp-rib\",\n            \"odl-bgp-rib-impl-cfg:bgp-rib-id\": \"172.23.29.120\",\n            \"odl-bgp-rib-impl-cfg:bgp-dispatcher\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:bgp-dispatcher\",\n                \"name\": \"global-bgp-dispatcher\"\n            },\n            \"odl-bgp-rib-impl-cfg:extensions\": {\n                \"type\": \"odl-bgp-rib-spi-cfg:extensions\",\n                \"name\": \"global-rib-extensions\"\n            },\n            \"odl-bgp-rib-impl-cfg:tcp-reconnect-strategy\": {\n                \"type\": \"protocol-framework:reconnect-strategy-factory\",\n                \"name\": \"example-reconnect-strategy-factory\"\n            },\n            \"odl-bgp-rib-impl-cfg:rib-id\": \"example-bgp-rib\",\n            \"odl-bgp-rib-impl-cfg:session-reconnect-strategy\": {\n                \"type\": \"protocol-framework:reconnect-strategy-factory\",\n                \"name\": \"example-reconnect-strategy-factory\"\n            },\n            \"odl-bgp-rib-impl-cfg:local-table\": [\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"linkstate\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"flowspec\"\n                }\n            ],\n            \"odl-bgp-rib-impl-cfg:data-provider\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-async-data-broker\",\n                \"name\": \"pingpong-binding-data-broker\"\n            },\n            \"odl-bgp-rib-impl-cfg:dom-data-provider\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-async-data-broker\",\n                \"name\": \"pingpong-broker\"\n            },\n            \"odl-bgp-rib-impl-cfg:codec-tree-factory\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-codec-tree-factory\",\n                \"name\": \"runtime-mapping-singleton\"\n            },\n            \"odl-bgp-rib-impl-cfg:local-as\": 65504\n        }\n    ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:rib-impl",
+								"example-bgp-rib"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Put BGP Peer - Lithium",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer\",\n            \"name\": \"example-bgp-peer\",\n            \"odl-bgp-rib-impl-cfg:host\":\"172.23.29.116\",\n            \"odl-bgp-rib-impl-cfg:remote-as\":\"65504\",\n            \"odl-bgp-rib-impl-cfg:initiate-connection\": true,\n            \"odl-bgp-rib-impl-cfg:rib\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:rib-instance\",\n                \"name\": \"example-bgp-rib\"\n            },\n            \"odl-bgp-rib-impl-cfg:peer-registry\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer-registry\",\n                \"name\": \"global-bgp-peer-registry\"\n            },\n            \"odl-bgp-rib-impl-cfg:advertized-table\": [\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"linkstate\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"flowspec\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-unicast\"\n                }\n            ]\n        }\n    ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:bgp-peer",
+								"example-bgp-peer"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get BGP Peer",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:bgp-peer",
+								"example-bgp-peer"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Put BGP RIB - Beryllium",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"module\": [\n    {\n      \"name\": \"example-bgp-rib\",\n      \"type\": \"odl-bgp-rib-impl-cfg:rib-impl\",\n      \"odl-bgp-rib-impl-cfg:bgp-rib-id\": \"10.195.94.43\",\n      \"odl-bgp-rib-impl-cfg:bgp-dispatcher\": {\n        \"type\": \"odl-bgp-rib-impl-cfg:bgp-dispatcher\",\n        \"name\": \"global-bgp-dispatcher\"\n      },\n      \"odl-bgp-rib-impl-cfg:extensions\": {\n        \"type\": \"odl-bgp-rib-spi-cfg:extensions\",\n        \"name\": \"global-rib-extensions\"\n      },\n      \"odl-bgp-rib-impl-cfg:openconfig-provider\": {\n        \"type\": \"odl-bgp-openconfig-spi-cfg:bgp-openconfig-provider\",\n        \"name\": \"openconfig-bgp\"\n      },\n      \"odl-bgp-rib-impl-cfg:tcp-reconnect-strategy\": {\n        \"type\": \"protocol-framework:reconnect-strategy-factory\",\n        \"name\": \"example-reconnect-strategy-factory\"\n      },\n      \"odl-bgp-rib-impl-cfg:rib-id\": \"example-bgp-rib\",\n      \"odl-bgp-rib-impl-cfg:session-reconnect-strategy\": {\n        \"type\": \"protocol-framework:reconnect-strategy-factory\",\n        \"name\": \"example-reconnect-strategy-factory\"\n      },\n      \"odl-bgp-rib-impl-cfg:local-table\": [\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"ipv4-unicast\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"ipv6-unicast\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"linkstate\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"ipv4-flowspec\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"ipv6-flowspec\"\n        },\n        {\n          \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n          \"name\": \"labeled-unicast\"\n        }\n      ],\n      \"odl-bgp-rib-impl-cfg:dom-data-provider\": {\n        \"type\": \"opendaylight-md-sal-dom:dom-async-data-broker\",\n        \"name\": \"inmemory-data-broker\"\n      },\n      \"odl-bgp-rib-impl-cfg:data-provider\": {\n        \"type\": \"opendaylight-md-sal-binding:binding-async-data-broker\",\n        \"name\": \"pingpong-binding-data-broker\"\n      },\n      \"odl-bgp-rib-impl-cfg:codec-tree-factory\": {\n        \"type\": \"opendaylight-md-sal-binding:binding-codec-tree-factory\",\n        \"name\": \"runtime-mapping-singleton\"\n      },\n      \"odl-bgp-rib-impl-cfg:local-as\": 65504\n    }\n  ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:rib-impl",
+								"example-bgp-rib"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Put BGP Peer - Beryllium",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer\",\n            \"name\": \"example-bgp-peer\",\n            \"odl-bgp-rib-impl-cfg:host\":\"10.195.94.67\",\n            \"odl-bgp-rib-impl-cfg:remote-as\":\"65504\",\n            \"odl-bgp-rib-impl-cfg:initiate-connection\": true,\n            \"odl-bgp-rib-impl-cfg:rib\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:rib-instance\",\n                \"name\": \"example-bgp-rib\"\n            },\n            \"odl-bgp-rib-impl-cfg:peer-registry\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer-registry\",\n                \"name\": \"global-bgp-peer-registry\"\n            },\n            \"odl-bgp-rib-impl-cfg:advertized-table\": [\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"linkstate\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-flowspec\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-unicast\"\n                }\n            ]\n        }\n    ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:bgp-peer",
+								"example-bgp-peer"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Put BGP RIB - Boron",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:rib-impl\",\n            \"name\": \"example-bgp-rib\",\n            \"odl-bgp-rib-impl-cfg:bgp-rib-id\": \"10.195.94.43\",\n            \"odl-bgp-rib-impl-cfg:bgp-dispatcher\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:bgp-dispatcher\",\n                \"name\": \"global-bgp-dispatcher\"\n            },\n            \"odl-bgp-rib-impl-cfg:extensions\": {\n                \"type\": \"odl-bgp-rib-spi-cfg:extensions\",\n                \"name\": \"global-rib-extensions\"\n            },\n            \"odl-bgp-rib-impl-cfg:rib-id\": \"example-bgp-rib\",\n            \"odl-bgp-rib-impl-cfg:local-table\": [\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-unicast\"\n                },                \n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-unicast\"\n                },\n\t\t\t\t{\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-labeled-unicast\"\n                },                \n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-labeled-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-flowspec\"\n                },                \n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv6-flowspec\"\n                },\n\t\t\t\t{\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"evpn\"\n                },\n\t\t\t\t{\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-l3vpn\"\n                },   \n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"linkstate\"\n                }\n            ],\n            \"odl-bgp-rib-impl-cfg:data-provider\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-async-data-broker\",\n                \"name\": \"pingpong-binding-data-broker\"\n            },\n            \"odl-bgp-rib-impl-cfg:dom-data-provider\": {\n                \"type\": \"opendaylight-md-sal-dom:dom-async-data-broker\",\n                \"name\": \"pingpong-broker\"\n            },\n            \"odl-bgp-rib-impl-cfg:codec-tree-factory\": {\n                \"type\": \"opendaylight-md-sal-binding:binding-codec-tree-factory\",\n                \"name\": \"runtime-mapping-singleton\"\n            },\n            \"odl-bgp-rib-impl-cfg:local-as\": 65504\n        }\n    ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:rib-impl",
+								"example-bgp-rib"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Put BGP Peer - Boron",
 					"request": {
-						"url": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"module\" : [\n        {\n            \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer\",\n            \"name\": \"example-bgp-peer\",\n            \"odl-bgp-rib-impl-cfg:host\":\"10.195.94.67\",\n            \"odl-bgp-rib-impl-cfg:remote-as\":\"65504\",\n            \"odl-bgp-rib-impl-cfg:initiate-connection\": true,\n            \"odl-bgp-rib-impl-cfg:rib\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:rib-instance\",\n                \"name\": \"example-bgp-rib\"\n            },\n            \"odl-bgp-rib-impl-cfg:peer-registry\": {\n                \"type\": \"odl-bgp-rib-impl-cfg:bgp-peer-registry\",\n                \"name\": \"global-bgp-peer-registry\"\n            },\n            \"odl-bgp-rib-impl-cfg:advertized-table\": [\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"ipv4-unicast\"\n                },\n                {\n                    \"type\": \"odl-bgp-rib-impl-cfg:bgp-table-type\",\n                    \"name\": \"linkstate\"\n                }\n            ]\n        }\n    ]\n}"
 						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "App RIB",
-			"description": "",
-			"item": [
-				{
-					"name": "Add APP route",
-					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/10.195.94.40/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"bgp-inet:ipv4-route\": [\n    {\n      \"path-id\": 0,\n      \"prefix\": \"192.168.1.0/24\",\n      \"attributes\": {\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"as-path\": {},\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"ipv4-next-hop\": {\n          \"global\": \"{{controller-ip}}\"\n        }\n      }\n    }\n  ]\n}"
-						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/{{ctrl}}/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{ctrl}}",
+								"config:modules",
+								"module",
+								"odl-bgp-rib-impl-cfg:bgp-peer",
+								"example-bgp-peer"
+							]
+						}
 					},
 					"response": []
 				}
@@ -643,17 +852,23 @@
 				{
 					"name": "Get BMP info",
 					"request": {
-						"url": "{{oper}}/bmp-monitor:bmp-monitor",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bmp-monitor:bmp-monitor",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bmp-monitor:bmp-monitor"
+							]
+						}
 					},
 					"response": []
 				}
@@ -666,144 +881,213 @@
 				{
 					"name": "Get EVPN Routes",
 					"request": {
-						"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"loc-rib",
+								"tables",
+								"odl-bgp-evpn:l2vpn-address-family",
+								"odl-bgp-evpn:evpn-subsequent-address-family"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "POST EVPN IMET and MAC route",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"bgp-evpn:evpn-route\": [\n    {\n      \"route-key\":\"1001\",\n      \"attributes\": {\n        \"as-path\": {},\n        \"extended-communities\": [\n            {\n                \"transitive\": true,\n                \"route-target-extended-community\": {\n                    \"local-administrator\": \"AAAQAA==\",\n                    \"global-administrator\": 65504\n                }\n            },\n            {\n                \"transitive\": true,\n                \"encapsulation-extended-community\": {\n                    \"tunnel-type\": \"vxlan\"\n                }\n            }\n        ],\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"unrecognized-attributes\": [\n          {\n            \"type\": 22,\n            \"transitive\": true,\n            \"partial\": false,\n            \"value\": \"AAYAAADAqAH+\"\n          }\n        ],\n        \"ipv4-next-hop\": {\n          \"global\": \"192.168.1.254\"\n        }\n      },\n      \"route-distinguisher\": \"192.168.1.254:36817\",\n      \"inc-multi-ethernet-tag-res\": {\n        \"orig-route-ip\": \"192.168.1.254\",\n        \"ethernet-tag-id\": {\n            \"vlan-id\": 0\n        }\n      }\n    },\n        {\n      \"route-key\":\"1002\",\n      \"attributes\": {\n        \"as-path\": {},\n        \"extended-communities\": [\n            {\n                \"transitive\": true,\n                \"route-target-extended-community\": {\n                    \"local-administrator\": \"AAAQAA==\",\n                    \"global-administrator\": 65504\n                }\n            },\n            {\n                \"transitive\": true,\n                \"encapsulation-extended-community\": {\n                    \"tunnel-type\": \"vxlan\"\n                }\n            }\n        ],\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"ipv4-next-hop\": {\n          \"global\": \"192.168.1.254\"\n        }\n      },\n      \"route-distinguisher\": \"192.168.1.254:36817\",\n        \"mac-ip-adv-route\": {\n            \"arbitrary\": {\n                \"arbitrary\": \"AAAAAAAAAAAA\"\n              },\n              \"mpls-label1\": 4096,\n              \"mac-address\": \"9a:5e:db:7a:41:c8\",\n              \"ethernet-tag-id\": {\n                \"vlan-id\": 0\n              }\n            }\n    }\n  ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"odl-bgp-evpn:l2vpn-address-family",
+								"odl-bgp-evpn:evpn-subsequent-address-family",
+								"evpn-routes"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "POST EVPN MAC route - no PMSI",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"bgp-evpn:evpn-route\": [\n   {\n      \"route-key\":\"1000\",\n      \"attributes\": {\n        \"as-path\": {},\n        \"extended-communities\": [\n            {\n                \"transitive\": true,\n                \"route-target-extended-community\": {\n                    \"local-administrator\": \"AAAQAA==\",\n                    \"global-administrator\": 65504\n                }\n            },\n            {\n                \"transitive\": true,\n                \"encapsulation-extended-community\": {\n                    \"tunnel-type\": \"vxlan\"\n                }\n            }\n        ],\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"ipv4-next-hop\": {\n          \"global\": \"192.168.1.254\"\n        }\n      },\n      \"route-distinguisher\": \"192.168.1.254:36817\",\n        \"mac-ip-adv-route\": {\n            \"arbitrary\": {\n                \"arbitrary\": \"AAAAAAAAAAAA\"\n              },\n              \"mpls-label1\": 4096,\n              \"mac-address\": \"9a:5e:db:7a:41:c8\",\n              \"ethernet-tag-id\": {\n                \"vlan-id\": 0\n              }\n            }\n    }\n  ]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"odl-bgp-evpn:l2vpn-address-family",
+								"odl-bgp-evpn:evpn-subsequent-address-family",
+								"evpn-routes"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "PUT VAR1 EVPN Route",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes/evpn-route/AhQAAQsABG8D6QAAAAAwABI0AAAEAA==",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"bgp-evpn:evpn-route\": [\n\t\t{\n  \t    \t\"route-key\": \"AhQAAQsABG8D6QAAAAAwABI0AAAEAA==\",\n            \"attributes\": {\n            \t\"as-path\": {},\n            \t\"extended-communities\": [\n            \t\t{\n                \t\t\"transitive\": true,\n                \t\t\"route-target-extended-community\": {\n                \t\t\t\"local-administrator\": \"AAAD6Q==\",\n                \t\t\t\"global-administrator\": 65504\n               \t\t\t}\n            \t\t}\n            \t],\n            \t\"origin\": {\n                \t\"value\": \"igp\"\n            \t},\n            \t\"local-pref\": {\n                \t\"pref\": 100\n            \t},\n            \t\"ipv4-next-hop\": {\n            \t\t\"global\": \"11.0.4.111\"\n            \t}\n            },\n            \"route-distinguisher\": \"11.0.4.111:1001\",\n            \"mac-ip-adv-route\": {\n            \t\"arbitrary\": {\n            \t\t\"arbitrary\": \"AAAAAAAAAAAA\"\n            \t},\n            \t\"mpls-label1\": 1,\n           \t\t\"mac-address\": \"00:12:34:00:00:04\",\n           \t\t\"ethernet-tag-id\": {\n            \t\t\"vlan-id\": 0\n        \t\t}\n            }\n        }\n\t]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes/evpn-route/AhQAAQsABG8D6QAAAAAwABI0AAAEAA==",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"odl-bgp-evpn:l2vpn-address-family",
+								"odl-bgp-evpn:evpn-subsequent-address-family",
+								"evpn-routes",
+								"evpn-route",
+								"AhQAAQsABG8D6QAAAAAwABI0AAAEAA=="
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "DELETE VAR1 EVPN Route",
 					"request": {
-						"url": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes/evpn-route/AhQAAQsABG8D6QAAAAAwABI0AAAEAA==",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"bgp-evpn:evpn-route\": [\n\t\t{\n  \t    \t\"route-key\": \"AhQAAQsABG8D6QAAAAAwABI0AAAEAA==\",\n            \"attributes\": {\n            \t\"as-path\": {},\n            \t\"extended-communities\": [\n            \t\t{\n                \t\t\"transitive\": true,\n                \t\t\"route-target-extended-community\": {\n                \t\t\t\"local-administrator\": \"AAAD6Q==\",\n                \t\t\t\"global-administrator\": 65504\n               \t\t\t}\n            \t\t}\n            \t],\n            \t\"origin\": {\n                \t\"value\": \"igp\"\n            \t},\n            \t\"local-pref\": {\n                \t\"pref\": 100\n            \t},\n            \t\"ipv4-next-hop\": {\n            \t\t\"global\": \"11.0.4.111\"\n            \t}\n            },\n            \"route-distinguisher\": \"11.0.4.111:1001\",\n            \"mac-ip-adv-route\": {\n            \t\"arbitrary\": {\n            \t\t\"arbitrary\": \"AAAAAAAAAAAA\"\n            \t},\n            \t\"mpls-label1\": 1,\n           \t\t\"mac-address\": \"00:12:34:00:00:04\",\n           \t\t\"ethernet-tag-id\": {\n            \t\t\"vlan-id\": 0\n        \t\t}\n            }\n        }\n\t]\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/example-app-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes/evpn-route/AhQAAQsABG8D6QAAAAAwABI0AAAEAA==",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"example-app-rib",
+								"tables",
+								"odl-bgp-evpn:l2vpn-address-family",
+								"odl-bgp-evpn:evpn-subsequent-address-family",
+								"evpn-routes",
+								"evpn-route",
+								"AhQAAQsABG8D6QAAAAAwABI0AAAEAA=="
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get VAR1 EVPN Route",
 					"request": {
-						"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes/evpn-route/AhQAAQsABG8D6QAAAAAwABI0AAAEAA==",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/odl-bgp-evpn:l2vpn-address-family/odl-bgp-evpn:evpn-subsequent-address-family/evpn-routes/evpn-route/AhQAAQsABG8D6QAAAAAwABI0AAAEAA==",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"loc-rib",
+								"tables",
+								"odl-bgp-evpn:l2vpn-address-family",
+								"odl-bgp-evpn:evpn-subsequent-address-family",
+								"evpn-routes",
+								"evpn-route",
+								"AhQAAQsABG8D6QAAAAAwABI0AAAEAA=="
+							]
+						}
 					},
 					"response": []
 				}
@@ -816,34 +1100,91 @@
 				{
 					"name": "IPv4 Routes",
 					"request": {
-						"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"loc-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv4-routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add IPv4 route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-inet:ipv4-route\": [\n    {\n      \"path-id\": 0,\n      \"prefix\": \"192.168.1.0/24\",\n      \"attributes\": {\n        \"origin\": {\n          \"value\": \"igp\"\n        },\n        \"as-path\": {},\n        \"local-pref\": {\n          \"pref\": 100\n        },\n        \"ipv4-next-hop\": {\n          \"global\": \"{{controller-ip}}\"\n        }\n      }\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/1.2.3.4/tables/bgp-types:ipv4-address-family/bgp-types:unicast-subsequent-address-family/ipv4-routes/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"1.2.3.4",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv4-routes",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "IPv4 Topology",
 					"request": {
-						"url": "{{oper}}/{{topo}}/example-ipv4-topology/",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/{{topo}}/example-ipv4-topology/",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{topo}}",
+								"example-ipv4-topology",
+								""
+							]
+						}
 					},
 					"response": []
 				}
@@ -856,34 +1197,197 @@
 				{
 					"name": "IPv6 Routes",
 					"request": {
-						"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-types:ipv6-address-family/bgp-types:unicast-subsequent-address-family/ipv6-routes",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-types:ipv6-address-family/bgp-types:unicast-subsequent-address-family/ipv6-routes",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"loc-rib",
+								"tables",
+								"bgp-types:ipv6-address-family",
+								"bgp-types:unicast-subsequent-address-family",
+								"ipv6-routes"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "IPv6 Topology",
 					"request": {
-						"url": "{{oper}}/{{topo}}/example-ipv6-topology/",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/{{topo}}/example-ipv6-topology/",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{topo}}",
+								"example-ipv6-topology",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Labelled Unicast",
+			"description": null,
+			"item": [
+				{
+					"name": "IPv4 Labelled Routes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-types:ipv4-address-family/bgp-labeled-unicast:labeled-unicast-subsequent-address-family",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"loc-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-labeled-unicast:labeled-unicast-subsequent-address-family"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Labelled Route",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-types:ipv4-address-family/bgp-labeled-unicast:labeled-unicast-subsequent-address-family/labeled-unicast-routes/labeled-unicast-route/MAAAMShp/0",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"loc-rib",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-labeled-unicast:labeled-unicast-subsequent-address-family",
+								"labeled-unicast-routes",
+								"labeled-unicast-route",
+								"MAAAMShp",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add labelled unicast route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"labeled-unicast-route\": [\n\t\t{\n\t\t\t\"path-id\": 0,\n            \"route-key\": \"MAAAMcCoaA==\",\n            \"label-stack\": [\n            \t{\n                    \"label-value\": 3\n                }\n            ],\n            \"attributes\": {\n                \"ipv4-next-hop\": {\n                    \"global\": {{controller-ip}}\n                },\n                \"origin\": {\n                    \"value\": \"igp\"\n                },\n                \"multi-exit-disc\": {\n                    \"med\": 0\n                },\n                \"local-pref\": {\n                    \"pref\": 100\n                },\n                \"as-path\": {}\n            },\n            \"prefix\": \"4.3.2.1/32\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/192.0.2.6/tables/bgp-types:ipv4-address-family/bgp-labeled-unicast:labeled-unicast-subsequent-address-family/labeled-unicast-routes/",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"192.0.2.6",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-labeled-unicast:labeled-unicast-subsequent-address-family",
+								"labeled-unicast-routes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete labelled unicast route",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"labeled-unicast-route\": [\n\t\t{\n\t\t\t\"path-id\": 0,\n            \"route-key\": \"MAAAMShp\",\n            \"label-stack\": [\n            \t{\n                    \"label-value\": 3\n                }\n            ],\n            \"attributes\": {\n                \"ipv4-next-hop\": {\n                    \"global\": {{controller-ip}}\n                },\n                \"origin\": {\n                    \"value\": \"igp\"\n                },\n                \"multi-exit-disc\": {\n                    \"med\": 0\n                },\n                \"local-pref\": {\n                    \"pref\": 100\n                },\n                \"as-path\": {}\n            },\n            \"prefix\": \"4.3.2.1/32\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/bgp-rib:application-rib/192.0.2.6/tables/bgp-types:ipv4-address-family/bgp-labeled-unicast:labeled-unicast-subsequent-address-family/labeled-unicast-routes/labeled-unicast-route/MAAMShp/0",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"bgp-rib:application-rib",
+								"192.0.2.6",
+								"tables",
+								"bgp-types:ipv4-address-family",
+								"bgp-labeled-unicast:labeled-unicast-subsequent-address-family",
+								"labeled-unicast-routes",
+								"labeled-unicast-route",
+								"MAAMShp",
+								"0"
+							]
+						}
 					},
 					"response": []
 				}
@@ -896,39 +1400,58 @@
 				{
 					"name": "Linkstate Routes",
 					"request": {
-						"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-linkstate:linkstate-address-family/bgp-linkstate:linkstate-subsequent-address-family/linkstate-routes",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib/tables/bgp-linkstate:linkstate-address-family/bgp-linkstate:linkstate-subsequent-address-family/linkstate-routes",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"loc-rib",
+								"tables",
+								"bgp-linkstate:linkstate-address-family",
+								"bgp-linkstate:linkstate-subsequent-address-family",
+								"linkstate-routes"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Linkstate Topology",
 					"request": {
-						"url": "{{oper}}/{{topo}}/example-linkstate-topology",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/{{topo}}/example-linkstate-topology",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{topo}}",
+								"example-linkstate-topology"
+							]
+						}
 					},
 					"response": []
 				}
@@ -941,49 +1464,54 @@
 				{
 					"name": "Get RIBs",
 					"request": {
-						"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "dc155c55-db13-47f0-9b8c-9fb50a36e3c4",
+							"id": "e089efd1-af5e-4482-9509-ddfe9eb6968f",
 							"name": "RIB",
 							"originalRequest": {
-								"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/",
 								"method": "GET",
 								"header": [
 									{
-										"key": "Content-Type",
-										"value": "application/Json",
-										"description": ""
-									},
-									{
-										"key": "Accept",
-										"value": "application/Json",
-										"description": ""
-									},
-									{
 										"key": "Authorization",
-										"value": "{{authorization}}",
-										"description": ""
+										"value": "{{authorization}}"
 									}
 								],
 								"body": {},
-								"description": ""
+								"url": {
+									"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib",
+									"host": [
+										"{{oper}}"
+									],
+									"path": [
+										"bgp-rib:bgp-rib",
+										"rib",
+										"example-bgp-rib"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "javascript",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"name": "Content-Encoding",
@@ -1017,7 +1545,6 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": 448,
 							"body": "{\"rib\":[{\"id\":\"example-bgp-rib\",\"loc-rib\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"bgp-inet:ipv4-routes\":{\"ipv4-route\":[{\"prefix\":\"192.168.116.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.100.0/24\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.110.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.128.0/18\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.122\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506]}]}}},{\"prefix\":\"192.168.112.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.108.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.114.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.118.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]}}},{\"prefix\":\"192.168.106.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.200.0/24\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]}}}]},\"attributes\":{\"uptodate\":true}},{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-flowspec:flowspec-subsequent-address-family\",\"bgp-flowspec:flowspec-routes\":{},\"attributes\":{\"uptodate\":true}},{\"afi\":\"bgp-types:ipv6-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"bgp-inet:ipv6-routes\":{},\"attributes\":{\"uptodate\":true}},{\"afi\":\"bgp-linkstate:linkstate-address-family\",\"safi\":\"bgp-linkstate:linkstate-subsequent-address-family\",\"bgp-linkstate:linkstate-routes\":{},\"attributes\":{\"uptodate\":true}}]},\"peer\":[{\"peer-id\":\"bgp://172.23.29.125\",\"supported-tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\"}],\"peer-role\":\"ebgp\",\"adj-rib-out\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"attributes\":{},\"bgp-inet:ipv4-routes\":{}}]},\"adj-rib-in\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"bgp-inet:ipv4-routes\":{\"ipv4-route\":[{\"prefix\":\"192.168.116.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.100.0/24\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.110.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.112.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.128.0/18\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65506,65504]}]}}},{\"prefix\":\"192.168.108.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.106.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.114.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.118.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"}}},{\"prefix\":\"192.168.200.0/24\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"}}}]},\"attributes\":{\"uptodate\":true}}]},\"effective-rib-in\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"bgp-inet:ipv4-routes\":{\"ipv4-route\":[{\"prefix\":\"192.168.116.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.100.0/24\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.110.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.112.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.128.0/18\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65506,65504]}]}}},{\"prefix\":\"192.168.108.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.114.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.106.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65504]}]}}},{\"prefix\":\"192.168.118.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]}}},{\"prefix\":\"192.168.200.0/24\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.125\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]}}}]},\"attributes\":{\"uptodate\":true}}]}},{\"peer-id\":\"bgp://172.23.29.116\",\"peer-role\":\"ibgp\",\"supported-tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\"}],\"adj-rib-out\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"attributes\":{},\"bgp-inet:ipv4-routes\":{}}]},\"effective-rib-in\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"bgp-inet:ipv4-routes\":{\"ipv4-route\":[{\"prefix\":\"192.168.116.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.4\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.4\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.100.0/24\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.110.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.112.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.128.0/18\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506]}]},\"multi-exit-disc\":{\"med\":0},\"local-pref\":{\"pref\":100},\"ipv4-next-hop\":{\"global\":\"172.23.29.122\"}}},{\"prefix\":\"192.168.106.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"multi-exit-disc\":{\"med\":0},\"local-pref\":{\"pref\":100},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"}}},{\"prefix\":\"192.168.118.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.114.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.4\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.4\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.200.0/24\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}}]},\"attributes\":{\"uptodate\":true}}]},\"adj-rib-in\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"bgp-inet:ipv4-routes\":{\"ipv4-route\":[{\"prefix\":\"192.168.116.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.4\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.4\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.100.0/24\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.110.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.112.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.128.0/18\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506]}]},\"multi-exit-disc\":{\"med\":0},\"local-pref\":{\"pref\":100},\"ipv4-next-hop\":{\"global\":\"172.23.29.122\"}}},{\"prefix\":\"192.168.106.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"multi-exit-disc\":{\"med\":0},\"local-pref\":{\"pref\":100},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"}}},{\"prefix\":\"192.168.118.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.114.0/23\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.4\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.4\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}},{\"prefix\":\"192.168.200.0/24\",\"attributes\":{\"originator-id\":{\"originator\":\"192.168.100.3\"},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"192.168.100.3\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505]}]},\"local-pref\":{\"pref\":100},\"cluster-id\":{\"cluster\":[\"172.23.29.116\"]}}}]},\"attributes\":{\"uptodate\":true}}]}},{\"peer-id\":\"bgp://172.23.29.122\",\"supported-tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\"}],\"peer-role\":\"ebgp\",\"adj-rib-out\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"attributes\":{},\"bgp-inet:ipv4-routes\":{}}]},\"adj-rib-in\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"bgp-inet:ipv4-routes\":{\"ipv4-route\":[{\"prefix\":\"192.168.116.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.100.0/24\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.110.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.128.0/18\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506]}]},\"multi-exit-disc\":{\"med\":0},\"ipv4-next-hop\":{\"global\":\"172.23.29.122\"}}},{\"prefix\":\"192.168.112.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.108.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.114.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.118.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65506,65504]}]}}},{\"prefix\":\"192.168.106.0/23\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.200.0/24\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65506,65504]}]}}}]},\"attributes\":{\"uptodate\":true}}]},\"effective-rib-in\":{\"tables\":[{\"afi\":\"bgp-types:ipv4-address-family\",\"safi\":\"bgp-types:unicast-subsequent-address-family\",\"bgp-inet:ipv4-routes\":{\"ipv4-route\":[{\"prefix\":\"192.168.116.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.100.0/24\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.110.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.128.0/18\",\"attributes\":{\"ipv4-next-hop\":{\"global\":\"172.23.29.122\"},\"origin\":{\"value\":\"igp\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506]}]}}},{\"prefix\":\"192.168.112.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.108.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.114.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.106.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65506,65504]}]}}},{\"prefix\":\"192.168.118.0/23\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65506,65504]}]}}},{\"prefix\":\"192.168.200.0/24\",\"attributes\":{\"origin\":{\"value\":\"igp\"},\"ipv4-next-hop\":{\"global\":\"172.23.29.116\"},\"as-path\":{\"segments\":[{\"as-sequence\":[65505,65506,65504]}]}}}]},\"attributes\":{\"uptodate\":true}}]}}]}]}"
 						}
 					]
@@ -1025,34 +1552,53 @@
 				{
 					"name": "Get peer",
 					"request": {
-						"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/peer/bgp:%2F%2F{{router}}",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/peer/bgp:%2F%2F{{router}}",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"peer",
+								"bgp:%2F%2F{{router}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get LocRib",
 					"request": {
-						"url": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{authorization}}",
-								"description": ""
+								"value": "{{authorization}}"
 							}
 						],
 						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{oper}}/bgp-rib:bgp-rib/rib/example-bgp-rib/loc-rib",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"bgp-rib:bgp-rib",
+								"rib",
+								"example-bgp-rib",
+								"loc-rib"
+							]
+						}
 					},
 					"response": []
 				}
