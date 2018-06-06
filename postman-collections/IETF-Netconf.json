@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "96b16638-a46e-13e3-edf1-780a8c35c2b5",
-		"name": "IETF Netconf",
+		"name": "ODL IETF Netconf",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -67,7 +67,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Interface Gig0/0/0",
+			"name": "Get Interface GigabitEthernet1",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -82,7 +82,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "{{oper}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F0%2F0",
+					"raw": "{{oper}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet1",
 					"host": [
 						"{{oper}}"
 					],
@@ -90,14 +90,44 @@
 						"{{rtr}}",
 						"ietf-interfaces:interfaces",
 						"interface",
-						"GigabitEthernet0%2F0%2F0"
+						"GigabitEthernet1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Configure Interface Gig0/0/0",
+			"name": "Get Interface GigabitEthernet2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{oper}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet1",
+					"host": [
+						"{{oper}}"
+					],
+					"path": [
+						"{{rtr}}",
+						"ietf-interfaces:interfaces",
+						"interface",
+						"GigabitEthernet1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Configure Interface GigabitEthernet2",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -112,10 +142,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"interface\": [\n    {\n      \"name\": \"GigabitEthernet0/0/0\",\n      \"description\": \"volvo local network - modified by Giles\",\n      \"type\": \"iana-if-type:ethernetCsmacd\",\n      \"enabled\": true,\n      \"ietf-ip:ipv4\": {\n        \"address\": [\n          {\n            \"ip\": \"172.15.1.1\",\n            \"netmask\": \"255.255.255.0\"\n          }\n        ]\n      },\n      \"ietf-ip:ipv6\": {}\n    }\n  ]\n}"
+					"raw": "{\n  \"interface\": [\n    {\n      \"name\": \"GigabitEthernet2\",\n      \"description\": \"link to VPP\",\n      \"type\": \"iana-if-type:ethernetCsmacd\",\n      \"enabled\": true,\n      \"ietf-ip:ipv4\": {\n        \"address\": [\n          {\n            \"ip\": \"192.168.1.1\",\n            \"netmask\": \"255.255.255.0\"\n          }\n        ]\n      },\n      \"ietf-ip:ipv6\": {}\n    }\n  ]\n}"
 				},
 				"url": {
-					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F0%2F0/",
+					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet2",
 					"host": [
 						"{{cfg}}"
 					],
@@ -123,8 +153,7 @@
 						"{{rtr}}",
 						"ietf-interfaces:interfaces",
 						"interface",
-						"GigabitEthernet0%2F0%2F0",
-						""
+						"GigabitEthernet2"
 					]
 				}
 			},

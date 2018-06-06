@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "f55d3a6c-2d88-4f79-9ae6-5f589b3c82bd",
+		"name": "ODL OpenConfig Netconf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BGP",
+			"description": "",
+			"item": [
+				{
+					"name": "Get BGP Config",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:afi-safis\": {\n    \"afi-safi\": [\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n      },\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols/protocol/openconfig-policy-types:BGP/{{asn}}",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols",
+								"protocol",
+								"openconfig-policy-types:BGP",
+								"{{asn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get BGP Neighbors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:afi-safis\": {\n    \"afi-safi\": [\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n      },\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols/protocol/openconfig-policy-types:BGP/{{asn}}/bgp/neighbors",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols",
+								"protocol",
+								"openconfig-policy-types:BGP",
+								"{{asn}}",
+								"bgp",
+								"neighbors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add BGP Neighbor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"neighbor\": [\n    \t{\n      \t\t\"neighbor-address\": \"{{controller-ip}}\",\n        \t\"config\": {\n        \t\t\"neighbor-address\": \"{{controller-ip}}\",\n          \t\t\"peer-as\": {{asn}}\n        \t}\n    \t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols/protocol/openconfig-policy-types:BGP/{{asn}}/bgp/neighbors",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols",
+								"protocol",
+								"openconfig-policy-types:BGP",
+								"{{asn}}",
+								"bgp",
+								"neighbors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add BGP Neighbor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"neighbor\": [\n    \t{\n      \t\t\"neighbor-address\": \"{{controller-ip}}\",\n        \t\"config\": {\n          \t\t\"peer-as\": {{asn}}\n        \t},\n        \t\"afi-safis\": {\n          \t\t\"afi-safi\": [\n            \t\t{\n              \t\t\t\"afi-safi-name\": \"openconfig-bgp-types:ipv4-unicast\"\n            \t\t},\n            \t\t{\n              \t\t\t\"afi-safi-name\": \"openconfig-bgp-types:ipv6-unicast\"\n            \t\t}\n          \t\t]\n        \t}\n    \t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-bgp:bgp/neighbors",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-bgp:bgp",
+								"neighbors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create BGP RIB Config",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"global\": {\n    \t\"config\": {\n        \t\"as\": {{asn}},\n        \t\"router-id\": \"{{router-ip}}\"\n    \t },\n    \t\"afi-safis\": {\n        \t\"afi-safi\": [\n          \t\t{\n            \t\t\"afi-safi-name\": \"openconfig-bgp-types:ipv4-unicast\"\n          \t\t},\n          \t\t{\n            \t\t\"afi-safi-name\": \"openconfig-bgp-types:ipv6-unicast\"\n          \t\t}\n        \t]\n      \t}\n    }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-bgp:bgp/global",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-bgp:bgp",
+								"global"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Static Routes",
+			"description": "",
+			"item": [
+				{
+					"name": "Get static routes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols/protocol/openconfig-policy-types:STATIC/DEFAULT/static-routes",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols",
+								"protocol",
+								"openconfig-policy-types:STATIC",
+								"DEFAULT",
+								"static-routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add static route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"static\": [\n\t\t{\n            \"prefix\": \"4.3.2.1/32\",\n            \"next-hops\": {\n                \"next-hop\": [\n                    {\n                        \"index\": \"10.0.2.2\",\n                        \"config\": {\n                            \"next-hop\": \"10.0.2.2\",\n                            \"index\": \"10.0.2.2\"\n                        }\n                    }\n                ]\n            },\n            \"config\": {\n                \"prefix\": \"4.3.2.1/32\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols/protocol/openconfig-policy-types:STATIC/DEFAULT/static-routes",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols",
+								"protocol",
+								"openconfig-policy-types:STATIC",
+								"DEFAULT",
+								"static-routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get static route",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols/protocol/openconfig-policy-types:STATIC/DEFAULT/static-routes/static/4.3.2.1%2F32",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols",
+								"protocol",
+								"openconfig-policy-types:STATIC",
+								"DEFAULT",
+								"static-routes",
+								"static",
+								"4.3.2.1%2F32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete static route",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols/protocol/openconfig-policy-types:STATIC/DEFAULT/static-routes/static/4.3.2.1%2F32",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols",
+								"protocol",
+								"openconfig-policy-types:STATIC",
+								"DEFAULT",
+								"static-routes",
+								"static",
+								"4.3.2.1%2F32"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Network Instances",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Openconfig Network Instances",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:afi-safis\": {\n    \"afi-safi\": [\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n      },\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Openconfig Default Network Instance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:afi-safis\": {\n    \"afi-safi\": [\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n      },\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Openconfig Protocols",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:afi-safis\": {\n    \"afi-safi\": [\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n      },\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{cfg}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols",
+							"host": [
+								"{{cfg}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Openconfig Running Protocols",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:afi-safis\": {\n    \"afi-safi\": [\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n      },\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/protocols",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"protocols"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Openconfig Tables",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bgp-openconfig-extensions:afi-safis\": {\n    \"afi-safi\": [\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV4-UNICAST\"\n      },\n      {\n        \"afi-safi-name\": \"openconfig-bgp-types:IPV6-UNICAST\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{oper}}/{{rtr}}/openconfig-network-instance:network-instances/network-instance/default/tables",
+							"host": [
+								"{{oper}}"
+							],
+							"path": [
+								"{{rtr}}",
+								"openconfig-network-instance:network-instances",
+								"network-instance",
+								"default",
+								"tables"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
