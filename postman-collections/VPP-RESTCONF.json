@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "bcaf3936-fe48-418e-b988-7ebaf93f0f43",
+		"name": "VPP RESTCONF",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List ifcs - cfg",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n        \"interface\": [\r\n            {\r\n                \"name\": \"testInterface\",\r\n                \"description\": \"for testing purposes\",\r\n                \"type\": \"iana-if-type:ethernetCsmacd\",\r\n                \"enabled\": \"true\",\r\n                \"link-up-down-trap-enable\": \"enabled\",\r\n                \"ietf-ip:ipv4\": {\r\n                    \"enabled\": \"true\",\r\n                    \"mtu\": \"1500\",\r\n                    \"address\": [\r\n                        {\r\n                            \"ip\": \"1.2.3.0\",\r\n                            \"netmask\": \"255.255.255.0\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ]\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/",
+					"protocol": "http",
+					"host": [
+						"{{honeycomb_address}}"
+					],
+					"port": "{{router-restconf-port}}",
+					"path": [
+						"restconf",
+						"config",
+						"ietf-interfaces:interfaces",
+						""
+					]
+				},
+				"description": "List ifcs - cfg"
+			},
+			"response": []
+		},
+		{
+			"name": "List ifcs - oper",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n        \"interface\": [\r\n            {\r\n                \"name\": \"testInterface\",\r\n                \"description\": \"for testing purposes\",\r\n                \"type\": \"iana-if-type:ethernetCsmacd\",\r\n                \"enabled\": \"true\",\r\n                \"link-up-down-trap-enable\": \"enabled\",\r\n                \"ietf-ip:ipv4\": {\r\n                    \"enabled\": \"true\",\r\n                    \"mtu\": \"1500\",\r\n                    \"address\": [\r\n                        {\r\n                            \"ip\": \"1.2.3.0\",\r\n                            \"netmask\": \"255.255.255.0\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ]\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://{{honeycomb_address}}:8183/restconf/operational/ietf-interfaces:interfaces-state/",
+					"protocol": "http",
+					"host": [
+						"{{honeycomb_address}}"
+					],
+					"port": "8183",
+					"path": [
+						"restconf",
+						"operational",
+						"ietf-interfaces:interfaces-state",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List ifc host-gigabit-ethernet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n        \"interface\": [\r\n            {\r\n                \"name\": \"testInterface\",\r\n                \"description\": \"for testing purposes\",\r\n                \"type\": \"iana-if-type:ethernetCsmacd\",\r\n                \"enabled\": \"true\",\r\n                \"link-up-down-trap-enable\": \"enabled\",\r\n                \"ietf-ip:ipv4\": {\r\n                    \"enabled\": \"true\",\r\n                    \"mtu\": \"1500\",\r\n                    \"address\": [\r\n                        {\r\n                            \"ip\": \"1.2.3.0\",\r\n                            \"netmask\": \"255.255.255.0\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ]\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/operational/ietf-interfaces:interfaces-state/interface/GigabitEthernet0%2F8%2F0",
+					"protocol": "http",
+					"host": [
+						"{{honeycomb_address}}"
+					],
+					"port": "{{router-restconf-port}}",
+					"path": [
+						"restconf",
+						"operational",
+						"ietf-interfaces:interfaces-state",
+						"interface",
+						"GigabitEthernet0%2F8%2F0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable local0 ifc - cfg",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"interface\": [\r\n        {\r\n            \"name\": \"local0\",\r\n            \"enabled\": true,\r\n            \"type\": \"iana-if-type:ethernetCsmacd\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/interface/local0",
+					"protocol": "http",
+					"host": [
+						"{{honeycomb_address}}"
+					],
+					"port": "{{router-restconf-port}}",
+					"path": [
+						"restconf",
+						"config",
+						"ietf-interfaces:interfaces",
+						"interface",
+						"local0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable gigabit-ethernet ifc - cfg",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"interface\": [\n        {\n            \"name\": \"GigabitEthernet0/8/0\",\n            \"enabled\": true,\n            \"type\": \"iana-if-type:ethernetCsmacd\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
+					"protocol": "http",
+					"host": [
+						"{{honeycomb_address}}"
+					],
+					"port": "{{router-restconf-port}}",
+					"path": [
+						"restconf",
+						"config",
+						"ietf-interfaces:interfaces",
+						"interface",
+						"GigabitEthernet0%2F8%2F0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Interface GigabitEthernet0/8/0 Config",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"interface\": [\n    {\n      \"name\": \"GigabitEthernet0/8/0\",\n      \"description\": \"link to CSR\",\n      \"type\": \"iana-if-type:ethernetCsmacd\",\n      \"enabled\": true,\n      \"ietf-ip:ipv4\": {\n        \"address\": [\n          {\n            \"ip\": \"192.168.1.2\",\n            \"netmask\": \"255.255.255.0\"\n          }\n        ]\n      },\n      \"ietf-ip:ipv6\": {}\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
+					"protocol": "http",
+					"host": [
+						"{{honeycomb_address}}"
+					],
+					"port": "{{router-restconf-port}}",
+					"path": [
+						"restconf",
+						"config",
+						"ietf-interfaces:interfaces",
+						"interface",
+						"GigabitEthernet0%2F8%2F0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Configure Interface GigabitEthernet0/8/0 Copy Copy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"interface\": [\n\t\t{\n    \t\t\"name\": \"GigabitEthernet0/8/0\",\n    \t\t\"enabled\": true,\n    \t\t\"description\": \"link to CSR\",\n    \t\t\"type\": \"iana-if-type:ethernetCsmacd\",\n    \t\t\"ietf-ip:ipv4\": {\n    \t\t\t\"address\": [\n        \t\t\t{\n            \t\t\t\"ip\": \"192.168.1.2\",\n            \t\t\t\"netmask\": \"255.255.255.0\"\n    \t\t\t\t}\n    \t\t\t]\n    \t\t}\n\t\t}\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
+					"protocol": "http",
+					"host": [
+						"{{honeycomb_address}}"
+					],
+					"port": "{{router-restconf-port}}",
+					"path": [
+						"restconf",
+						"config",
+						"ietf-interfaces:interfaces",
+						"interface",
+						"GigabitEthernet0%2F8%2F0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

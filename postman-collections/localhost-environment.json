@@ -78,23 +78,23 @@
       "enabled": true,
       "key": "router-user",
       "type": "text",
-      "value": "vagrant"
+      "value": "devnet"
     },
     {
       "enabled": true,
       "key": "router-pass",
       "type": "text",
-      "value": "vagrant"
+      "value": "devnet"
     },
     {
       "enabled": true,
       "key": "router-port",
       "type": "text",
-      "value": "2223"
+      "value": "2831"
     },
     {
       "key": "router-restconf-port",
-      "value": "2225",
+      "value": "8183",
       "description": "",
       "type": "text",
       "enabled": true
@@ -138,6 +138,6 @@
     }
   ],
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2018-06-11T00:21:27.338Z",
+  "_postman_exported_at": "2018-06-11T00:22:51.432Z",
   "_postman_exported_using": "Postman/6.1.3"
 }

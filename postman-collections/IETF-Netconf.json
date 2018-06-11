@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Get Configured Routes",
+			"name": "Get Configured Interfaces",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -21,16 +21,13 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "{{cfg}}/{{rtr}}/ietf-routing:routing/routing-instance/default/routing-protocols/",
+					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/",
 					"host": [
 						"{{cfg}}"
 					],
 					"path": [
 						"{{rtr}}",
-						"ietf-routing:routing",
-						"routing-instance",
-						"default",
-						"routing-protocols",
+						"ietf-interfaces:interfaces",
 						""
 					]
 				}
@@ -38,7 +35,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Interfaces",
+			"name": "Get Operational Interfaces",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -82,9 +79,9 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "{{oper}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet1",
+					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet1",
 					"host": [
-						"{{oper}}"
+						"{{cfg}}"
 					],
 					"path": [
 						"{{rtr}}",
@@ -112,15 +109,45 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "{{oper}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet1",
+					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet2",
 					"host": [
-						"{{oper}}"
+						"{{cfg}}"
 					],
 					"path": [
 						"{{rtr}}",
 						"ietf-interfaces:interfaces",
 						"interface",
-						"GigabitEthernet1"
+						"GigabitEthernet2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Interface GigabitEthernet0/8/0",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet2",
+					"host": [
+						"{{cfg}}"
+					],
+					"path": [
+						"{{rtr}}",
+						"ietf-interfaces:interfaces",
+						"interface",
+						"GigabitEthernet2"
 					]
 				}
 			},
@@ -142,7 +169,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"interface\": [\n    {\n      \"name\": \"GigabitEthernet2\",\n      \"description\": \"link to VPP\",\n      \"type\": \"iana-if-type:ethernetCsmacd\",\n      \"enabled\": true,\n      \"ietf-ip:ipv4\": {\n        \"address\": [\n          {\n            \"ip\": \"192.168.1.1\",\n            \"netmask\": \"255.255.255.0\"\n          }\n        ]\n      },\n      \"ietf-ip:ipv6\": {}\n    }\n  ]\n}"
+					"raw": "{\n  \"interface\": [\n    {\n      \"name\": \"GigabitEthernet2\",\n      \"description\": \"link to VPP\",\n      \"type\": \"iana-if-type:ethernetCsmacd\",\n      \"enabled\": true,\n      \"ietf-ip:ipv4\": {\n        \"address\": [\n          {\n            \"ip\": \"192.168.1.1\",\n            \"netmask\": \"255.255.255.0\"\n          }\n        ]\n      }\n    }\n  ]\n}"
 				},
 				"url": {
 					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet2",
@@ -154,6 +181,71 @@
 						"ietf-interfaces:interfaces",
 						"interface",
 						"GigabitEthernet2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Configure Interface GigabitEthernet0/8/0",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"interface\": [\n\t\t{\n    \t\t\"name\": \"GigabitEthernet0/8/0\",\n    \t\t\"enabled\": true,\n    \t\t\"description\": \"link to CSR\",\n    \t\t\"type\": \"iana-if-type:ethernetCsmacd\",\n    \t\t\"ietf-ip:ipv4\": {\n    \t\t\t\"address\": [\n        \t\t\t{\n            \t\t\t\"ip\": \"192.168.1.2\",\n            \t\t\t\"netmask\": \"255.255.255.0\"\n    \t\t\t\t}\n    \t\t\t]\n    \t\t}\n\t\t}\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
+					"host": [
+						"{{cfg}}"
+					],
+					"path": [
+						"{{rtr}}",
+						"ietf-interfaces:interfaces",
+						"interface",
+						"GigabitEthernet0%2F8%2F0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Configured Routes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{cfg}}/{{rtr}}/ietf-routing:routing/routing-instance/default/routing-protocols/",
+					"host": [
+						"{{cfg}}"
+					],
+					"path": [
+						"{{rtr}}",
+						"ietf-routing:routing",
+						"routing-instance",
+						"default",
+						"routing-protocols",
+						""
 					]
 				}
 			},
