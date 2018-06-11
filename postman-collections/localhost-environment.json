@@ -5,126 +5,139 @@
     {
       "enabled": true,
       "key": "controller-ip",
-      "value": "127.0.0.1",
-      "type": "text"
+      "type": "text",
+      "value": "127.0.0.1"
     },
     {
       "enabled": true,
       "key": "restconf-port",
-      "value": "8181",
-      "type": "text"
+      "type": "text",
+      "value": "8181"
     },
     {
       "enabled": true,
       "key": "controller",
-      "value": "http://{{controller-ip}}:{{restconf-port}}",
-      "type": "text"
+      "type": "text",
+      "value": "http://{{controller-ip}}:{{restconf-port}}"
     },
     {
       "enabled": true,
       "key": "restconf",
-      "value": "{{controller}}/restconf",
-      "type": "text"
+      "type": "text",
+      "value": "{{controller}}/restconf"
     },
     {
       "enabled": true,
       "key": "cfg",
-      "value": "{{restconf}}/config",
-      "type": "text"
+      "type": "text",
+      "value": "{{restconf}}/config"
     },
     {
       "enabled": true,
       "key": "oper",
-      "value": "{{restconf}}/operational",
-      "type": "text"
+      "type": "text",
+      "value": "{{restconf}}/operational"
     },
     {
       "enabled": true,
       "key": "rpc",
-      "value": "{{restconf}}/operations",
-      "type": "text"
+      "type": "text",
+      "value": "{{restconf}}/operations"
     },
     {
       "enabled": true,
       "key": "topo",
-      "value": "network-topology:network-topology/topology",
-      "type": "text"
+      "type": "text",
+      "value": "network-topology:network-topology/topology"
     },
     {
       "enabled": true,
       "key": "node",
-      "value": "{{topo}}/topology-netconf/node",
-      "type": "text"
+      "type": "text",
+      "value": "{{topo}}/topology-netconf/node"
     },
     {
       "enabled": true,
       "key": "mount",
-      "value": "yang-ext:mount",
-      "type": "text"
+      "type": "text",
+      "value": "yang-ext:mount"
     },
     {
       "enabled": true,
       "key": "router",
-      "value": "kcy",
-      "type": "text"
+      "type": "text",
+      "value": "vpp"
     },
     {
       "enabled": true,
       "key": "router-ip",
-      "value": "198.18.1.30",
-      "type": "text"
+      "type": "text",
+      "value": "127.0.0.1"
     },
     {
       "enabled": true,
       "key": "router-user",
-      "value": "cisco",
-      "type": "text"
+      "type": "text",
+      "value": "vagrant"
     },
     {
       "enabled": true,
       "key": "router-pass",
-      "value": "cisco",
-      "type": "text"
+      "type": "text",
+      "value": "vagrant"
     },
     {
       "enabled": true,
       "key": "router-port",
-      "value": "830",
-      "type": "text"
+      "type": "text",
+      "value": "2223"
+    },
+    {
+      "key": "router-restconf-port",
+      "value": "2225",
+      "description": "",
+      "type": "text",
+      "enabled": true
     },
     {
       "enabled": true,
       "key": "ctrl",
-      "value": "{{node}}/controller-config/{{mount}}",
-      "type": "text"
+      "type": "text",
+      "value": "{{node}}/controller-config/{{mount}}"
     },
     {
       "enabled": true,
       "key": "rtr",
-      "value": "{{node}}/{{router}}/{{mount}}",
-      "type": "text"
+      "type": "text",
+      "value": "{{node}}/{{router}}/{{mount}}"
     },
     {
       "enabled": true,
       "key": "/",
-      "value": "%2F",
-      "type": "text"
+      "type": "text",
+      "value": "%2F"
     },
     {
       "enabled": true,
       "key": "authorization",
-      "value": "Basic YWRtaW46YWRtaW4=",
-      "type": "text"
+      "type": "text",
+      "value": "Basic YWRtaW46YWRtaW4="
     },
     {
       "enabled": true,
       "key": "asn",
-      "value": "65504",
-      "type": "text"
+      "type": "text",
+      "value": "65504"
+    },
+    {
+      "key": "honeycomb_address",
+      "value": "127.0.0.1",
+      "description": "",
+      "type": "text",
+      "enabled": true
     }
   ],
-  "timestamp": 1517489773486,
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2018-02-01T12:56:15.575Z",
-  "_postman_exported_using": "Postman/5.5.2"
+  "_postman_exported_at": "2018-06-11T00:20:34.187Z",
+  "_postman_exported_using": "Postman/6.1.3"
 }
