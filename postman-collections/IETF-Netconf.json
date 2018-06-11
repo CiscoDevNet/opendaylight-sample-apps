@@ -202,7 +202,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"interface\": [\n\t\t{\n    \t\t\"name\": \"GigabitEthernet0/8/0\",\n    \t\t\"enabled\": true,\n    \t\t\"description\": \"link to CSR\",\n    \t\t\"type\": \"iana-if-type:ethernetCsmacd\",\n    \t\t\"ietf-ip:ipv4\": {\n    \t\t\t\"address\": [\n        \t\t\t{\n            \t\t\t\"ip\": \"192.168.1.2\",\n            \t\t\t\"netmask\": \"255.255.255.0\"\n    \t\t\t\t}\n    \t\t\t]\n    \t\t}\n\t\t}\n    ]\n}"
+					"raw": "{\n\t\"interface\": [\n\t\t{\n    \t\t\"name\": \"GigabitEthernet0/8/0\",\n    \t\t\"enabled\": true,\n    \t\t\"description\": \"link to CSR\",\n    \t\t\"type\": \"iana-if-type:ethernetCsmacd\",\n    \t\t\"ietf-ip:ipv4\": {\n    \t\t\t\"address\": [\n        \t\t\t{\n            \t\t\t\"ip\": \"192.168.1.2\",\n            \t\t\t\"netmask\": \"255.255.255.0\"\n    \t\t\t\t}\n    \t\t\t]\n    \t\t},\n    \t\t\"v3po:ethernet\": {\n            \t\"mtu\": 9216\n            }\n\t\t}\n    ]\n}"
 				},
 				"url": {
 					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
