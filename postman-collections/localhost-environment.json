@@ -1,5 +1,5 @@
 {
-  "id": "1aae0e0d-9eed-1bb3-04a3-97a961e491b1",
+  "id": "214313f2-c7bb-4d0b-b0ab-c1c004a10391",
   "name": "OpenDaylight Localhost",
   "values": [
     {
@@ -66,7 +66,7 @@
       "enabled": true,
       "key": "router",
       "type": "text",
-      "value": "vpp"
+      "value": "csr"
     },
     {
       "enabled": true,
@@ -78,19 +78,19 @@
       "enabled": true,
       "key": "router-user",
       "type": "text",
-      "value": "devnet"
+      "value": "vagrant"
     },
     {
       "enabled": true,
       "key": "router-pass",
       "type": "text",
-      "value": "devnet"
+      "value": "vagrant"
     },
     {
       "enabled": true,
       "key": "router-port",
       "type": "text",
-      "value": "2831"
+      "value": "2223"
     },
     {
       "key": "router-restconf-port",
@@ -130,14 +130,56 @@
       "value": "65504"
     },
     {
-      "key": "honeycomb_address",
+      "key": "honeycomb-address",
       "value": "127.0.0.1",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "honeycomb-port",
+      "value": "8183",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "vpp",
+      "value": "{{node}}/vpp/{{mount}}",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "vpp-ip",
+      "value": "127.0.0.1",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "vpp-port",
+      "value": "2831",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "vpp-user",
+      "value": "vagrant",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "vpp-pass",
+      "value": "vagrant",
       "description": "",
       "type": "text",
       "enabled": true
     }
   ],
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2018-06-11T00:22:51.432Z",
+  "_postman_exported_at": "2018-06-12T14:31:20.527Z",
   "_postman_exported_using": "Postman/6.1.3"
 }

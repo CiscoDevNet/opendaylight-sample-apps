@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2c99aab7-8e4e-487d-85b3-6044d6e1ee38",
+		"_postman_id": "bf36d0f2-e872-46ad-9afa-1ed25eeb024d",
 		"name": "ODL VPP Netconf",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -91,12 +91,13 @@
 					"raw": "<module xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:config\">\r\n  <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">prefix:sal-netconf-connector</type>\r\n  <name>new-netconf-device2</name>\r\n  <address xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">192.168.93.165</address>\r\n  <port xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">2831</port>\r\n  <username xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">admin</username>\r\n  <password xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">admin</password>\r\n  <tcp-only xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">false</tcp-only>\r\n  <event-executor xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\r\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:netty\">prefix:netty-event-executor</type>\r\n    <name>global-event-executor</name>\r\n  </event-executor>\r\n  <binding-registry xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\r\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:binding\">prefix:binding-broker-osgi-registry</type>\r\n    <name>binding-osgi-broker</name>\r\n  </binding-registry>\r\n  <dom-registry xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\r\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:dom\">prefix:dom-broker-osgi-registry</type>\r\n    <name>dom-broker</name>\r\n  </dom-registry>\r\n  <client-dispatcher xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\r\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:config:netconf\">prefix:netconf-client-dispatcher</type>\r\n    <name>global-netconf-dispatcher</name>\r\n  </client-dispatcher>\r\n  <processing-executor xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\r\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:threadpool\">prefix:threadpool</type>\r\n    <name>global-netconf-processing-executor</name>\r\n  </processing-executor>\r\n  <keepalive-executor xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\r\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:threadpool\">prefix:scheduled-threadpool</type>\r\n    <name>global-netconf-ssh-scheduled-executor</name>\r\n  </keepalive-executor>\r\n</module>"
 				},
 				"url": {
-					"raw": "{{oper}}/{{topo}}/topology-netconf/",
+					"raw": "{{oper}}/network-topology:network-topology/topology/topology-netconf/",
 					"host": [
 						"{{oper}}"
 					],
 					"path": [
-						"{{topo}}",
+						"network-topology:network-topology",
+						"topology",
 						"topology-netconf",
 						""
 					]
@@ -123,15 +124,12 @@
 					"raw": "{\r\n    \"interface\": [\r\n        {\r\n            \"name\": \"local0\",\r\n            \"enabled\": true,\r\n            \"type\": \"iana-if-type:ethernetCsmacd\"\r\n        }\r\n    ]\r\n}"
 				},
 				"url": {
-					"raw": "http://{{honeycomb_address}}:8183/restconf/config/ietf-interfaces:interfaces/interface/local0",
-					"protocol": "http",
+					"raw": "{{cfg}}/{{vpp}}/ietf-interfaces:interfaces/interface/local0",
 					"host": [
-						"{{honeycomb_address}}"
+						"{{cfg}}"
 					],
-					"port": "8183",
 					"path": [
-						"restconf",
-						"config",
+						"{{vpp}}",
 						"ietf-interfaces:interfaces",
 						"interface",
 						"local0"
@@ -156,54 +154,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"interface\": [\n        {\n            \"name\": \"GigabitEthernet0/8/0\",\n            \"enabled\": true,\n            \"type\": \"iana-if-type:ethernetCsmacd\"\n        }\n    ]\n}"
+					"raw": "{\n    \"interface\": [\n        {\n            \"name\": \"GigabitEthernet0/8/0\",\n            \"enabled\": true,\n            \"type\": \"iana-if-type:ethernetCsmacd\",\n            \"v3po:ethernet\": {\n            \t\"mtu\": 9216\n            }\n        }\n    ]\n}"
 				},
 				"url": {
-					"raw": "http://{{honeycomb_address}}:8183/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
-					"protocol": "http",
+					"raw": "{{cfg}}/{{vpp}}/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
 					"host": [
-						"{{honeycomb_address}}"
+						"{{cfg}}"
 					],
-					"port": "8183",
 					"path": [
-						"restconf",
-						"config",
-						"ietf-interfaces:interfaces",
-						"interface",
-						"GigabitEthernet0%2F8%2F0"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Enable gigabit-ethernet ifc - cfg Copy",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YWRtaW46YWRtaW4="
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"interface\": [\n        {\n            \"name\": \"GigabitEthernet0/8/0\",\n            \"enabled\": true,\n            \"type\": \"iana-if-type:ethernetCsmacd\",\n            \"v3po:ethernet\": {\n                    \"mtu\": 9216\n                }\n        }\n    ]\n}"
-				},
-				"url": {
-					"raw": "http://{{honeycomb_address}}:8183/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
-					"protocol": "http",
-					"host": [
-						"{{honeycomb_address}}"
-					],
-					"port": "8183",
-					"path": [
-						"restconf",
-						"config",
+						"{{vpp}}",
 						"ietf-interfaces:interfaces",
 						"interface",
 						"GigabitEthernet0%2F8%2F0"

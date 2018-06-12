@@ -60,12 +60,12 @@
 					"raw": "{\r\n    \r\n        \"interface\": [\r\n            {\r\n                \"name\": \"testInterface\",\r\n                \"description\": \"for testing purposes\",\r\n                \"type\": \"iana-if-type:ethernetCsmacd\",\r\n                \"enabled\": \"true\",\r\n                \"link-up-down-trap-enable\": \"enabled\",\r\n                \"ietf-ip:ipv4\": {\r\n                    \"enabled\": \"true\",\r\n                    \"mtu\": \"1500\",\r\n                    \"address\": [\r\n                        {\r\n                            \"ip\": \"1.2.3.0\",\r\n                            \"netmask\": \"255.255.255.0\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ]\r\n    \r\n}"
 				},
 				"url": {
-					"raw": "http://{{honeycomb_address}}:8183/restconf/operational/ietf-interfaces:interfaces-state/",
+					"raw": "http://{{honeycomb-address}}:{{honeycomb-port}}/restconf/operational/ietf-interfaces:interfaces-state/",
 					"protocol": "http",
 					"host": [
-						"{{honeycomb_address}}"
+						"{{honeycomb-address}}"
 					],
-					"port": "8183",
+					"port": "{{honeycomb-port}}",
 					"path": [
 						"restconf",
 						"operational",
@@ -95,12 +95,12 @@
 					"raw": "{\r\n    \r\n        \"interface\": [\r\n            {\r\n                \"name\": \"testInterface\",\r\n                \"description\": \"for testing purposes\",\r\n                \"type\": \"iana-if-type:ethernetCsmacd\",\r\n                \"enabled\": \"true\",\r\n                \"link-up-down-trap-enable\": \"enabled\",\r\n                \"ietf-ip:ipv4\": {\r\n                    \"enabled\": \"true\",\r\n                    \"mtu\": \"1500\",\r\n                    \"address\": [\r\n                        {\r\n                            \"ip\": \"1.2.3.0\",\r\n                            \"netmask\": \"255.255.255.0\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ]\r\n    \r\n}"
 				},
 				"url": {
-					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/operational/ietf-interfaces:interfaces-state/interface/GigabitEthernet0%2F8%2F0",
+					"raw": "http://{{honeycomb-address}}:{{honeycomb-port}}/restconf/operational/ietf-interfaces:interfaces-state/interface/GigabitEthernet0%2F8%2F0",
 					"protocol": "http",
 					"host": [
-						"{{honeycomb_address}}"
+						"{{honeycomb-address}}"
 					],
-					"port": "{{router-restconf-port}}",
+					"port": "{{honeycomb-port}}",
 					"path": [
 						"restconf",
 						"operational",
@@ -131,12 +131,12 @@
 					"raw": "{\r\n    \"interface\": [\r\n        {\r\n            \"name\": \"local0\",\r\n            \"enabled\": true,\r\n            \"type\": \"iana-if-type:ethernetCsmacd\"\r\n        }\r\n    ]\r\n}"
 				},
 				"url": {
-					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/interface/local0",
+					"raw": "http://{{honeycomb-address}}:{{honeycomb-port}}/restconf/config/ietf-interfaces:interfaces/interface/local0",
 					"protocol": "http",
 					"host": [
-						"{{honeycomb_address}}"
+						"{{honeycomb-address}}"
 					],
-					"port": "{{router-restconf-port}}",
+					"port": "{{honeycomb-port}}",
 					"path": [
 						"restconf",
 						"config",
@@ -167,12 +167,12 @@
 					"raw": "{\n    \"interface\": [\n        {\n            \"name\": \"GigabitEthernet0/8/0\",\n            \"enabled\": true,\n            \"type\": \"iana-if-type:ethernetCsmacd\"\n        }\n    ]\n}"
 				},
 				"url": {
-					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
+					"raw": "http://{{honeycomb-address}}:{{honeycomb-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
 					"protocol": "http",
 					"host": [
-						"{{honeycomb_address}}"
+						"{{honeycomb-address}}"
 					],
-					"port": "{{router-restconf-port}}",
+					"port": "{{honeycomb-port}}",
 					"path": [
 						"restconf",
 						"config",
@@ -203,12 +203,12 @@
 					"raw": "{\n  \"interface\": [\n    {\n      \"name\": \"GigabitEthernet0/8/0\",\n      \"description\": \"link to CSR\",\n      \"type\": \"iana-if-type:ethernetCsmacd\",\n      \"enabled\": true,\n      \"ietf-ip:ipv4\": {\n        \"address\": [\n          {\n            \"ip\": \"192.168.1.2\",\n            \"netmask\": \"255.255.255.0\"\n          }\n        ]\n      },\n      \"ietf-ip:ipv6\": {}\n    }\n  ]\n}"
 				},
 				"url": {
-					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
+					"raw": "http://{{honeycomb-address}}:{{honeycomb-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
 					"protocol": "http",
 					"host": [
-						"{{honeycomb_address}}"
+						"{{honeycomb-address}}"
 					],
-					"port": "{{router-restconf-port}}",
+					"port": "{{honeycomb-port}}",
 					"path": [
 						"restconf",
 						"config",
@@ -239,12 +239,12 @@
 					"raw": "{\n\t\"interface\": [\n\t\t{\n    \t\t\"name\": \"GigabitEthernet0/8/0\",\n    \t\t\"enabled\": true,\n    \t\t\"description\": \"link to CSR\",\n    \t\t\"type\": \"iana-if-type:ethernetCsmacd\",\n    \t\t\"ietf-ip:ipv4\": {\n    \t\t\t\"address\": [\n        \t\t\t{\n            \t\t\t\"ip\": \"192.168.1.2\",\n            \t\t\t\"netmask\": \"255.255.255.0\"\n    \t\t\t\t}\n    \t\t\t]\n    \t\t}\n\t\t}\n    ]\n}"
 				},
 				"url": {
-					"raw": "http://{{honeycomb_address}}:{{router-restconf-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
+					"raw": "http://{{honeycomb-address}}:{{honeycomb-port}}/restconf/config/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
 					"protocol": "http",
 					"host": [
-						"{{honeycomb_address}}"
+						"{{honeycomb-address}}"
 					],
-					"port": "{{router-restconf-port}}",
+					"port": "{{honeycomb-port}}",
 					"path": [
 						"restconf",
 						"config",

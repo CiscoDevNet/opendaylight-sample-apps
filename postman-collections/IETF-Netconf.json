@@ -154,7 +154,7 @@
 			"response": []
 		},
 		{
-			"name": "Configure Interface GigabitEthernet2",
+			"name": "Configure CSR GigE",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -187,7 +187,7 @@
 			"response": []
 		},
 		{
-			"name": "Configure Interface GigabitEthernet0/8/0",
+			"name": "Configure VPP GigE",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -205,47 +205,15 @@
 					"raw": "{\n\t\"interface\": [\n\t\t{\n    \t\t\"name\": \"GigabitEthernet0/8/0\",\n    \t\t\"enabled\": true,\n    \t\t\"description\": \"link to CSR\",\n    \t\t\"type\": \"iana-if-type:ethernetCsmacd\",\n    \t\t\"ietf-ip:ipv4\": {\n    \t\t\t\"address\": [\n        \t\t\t{\n            \t\t\t\"ip\": \"192.168.1.2\",\n            \t\t\t\"netmask\": \"255.255.255.0\"\n    \t\t\t\t}\n    \t\t\t]\n    \t\t},\n    \t\t\"v3po:ethernet\": {\n            \t\"mtu\": 9216\n            }\n\t\t}\n    ]\n}"
 				},
 				"url": {
-					"raw": "{{cfg}}/{{rtr}}/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
+					"raw": "{{cfg}}/{{vpp}}/ietf-interfaces:interfaces/interface/GigabitEthernet0%2F8%2F0",
 					"host": [
 						"{{cfg}}"
 					],
 					"path": [
-						"{{rtr}}",
+						"{{vpp}}",
 						"ietf-interfaces:interfaces",
 						"interface",
 						"GigabitEthernet0%2F8%2F0"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Configured Routes",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{authorization}}"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "{{cfg}}/{{rtr}}/ietf-routing:routing/routing-instance/default/routing-protocols/",
-					"host": [
-						"{{cfg}}"
-					],
-					"path": [
-						"{{rtr}}",
-						"ietf-routing:routing",
-						"routing-instance",
-						"default",
-						"routing-protocols",
-						""
 					]
 				}
 			},
