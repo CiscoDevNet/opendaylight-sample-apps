@@ -1,4 +1,7 @@
-# opendaylight-sample-apps
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/CiscoDevNet/opendaylight-sample-apps)
+
+# OpenDaylight Sample Apps
+
 This project contains various applications that can be used with OpenDaylight (https://www.opendaylight.org/).
 OpenDaylight is an open source controller for softrware defined networking (SDN).
 
