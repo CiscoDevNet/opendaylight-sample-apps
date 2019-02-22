@@ -11,4 +11,6 @@ These sample applications run on top of an OpenDaylight controller. They are NOT
 * Illustrate how to use various OpenDaylight APIs and interfaces
 * Serve as starter applications for Cisco DevNet hackathons, etc.
 
-Each application exists in its own subdirectory. Each application may have its own LICENSE and AUTHORS file, otherwise the ones in this project level directory apply.
+Each application exists in its own subdirectory. Each application may have its own [README](./README.md), [LICENSE](./LICENSE), [CONTRIBUTING](./CONTRIBUTING.md), and [AUTHORS](./AUTHORS) file, otherwise the ones in this project level directory apply.
+
+> Copyright (c) 2015 Cisco Systems, Inc. and/or its affiliates
